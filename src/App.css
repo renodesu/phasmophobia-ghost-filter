@@ -1,44 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  font-size: 16px;
+}
+
 .App {
-  display: flex;
+  /* display: flex; */
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .App > * {
   flex: 1;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ghosts {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
 }
 
-.App-link {
-  color: #61dafb;
+.ghost {
+  width: 13%;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  width: 165px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filterRow {
+  height: 400px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+}
+
+.filter > * {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  height: 100%;
 }
 
 button {
@@ -46,6 +54,11 @@ button {
 }
 
 input,
+button,
 label {
   cursor: pointer;
+}
+
+input[type="checkbox"] {
+  margin: 0 0.2rem;
 }

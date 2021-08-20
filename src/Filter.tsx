@@ -34,7 +34,7 @@ const pickTrues = (source: Partial<Evidence>) => {
   return res
 }
 
-const Filter = ({ }: FilterProps) => {
+const GhostFilter = ({ }: FilterProps) => {
 
   const [filters, setFilters] = useState(initialState)
 
@@ -105,7 +105,7 @@ const Filter = ({ }: FilterProps) => {
     })
 
   return (
-    <div>
+    <div className="filter">
       <div>
         <h3>Confirmed evidence</h3>
         {hasNodes}
@@ -114,7 +114,9 @@ const Filter = ({ }: FilterProps) => {
         <h3>Confirmed NOT evidence</h3>
         {notNodes}
       </div>
-      <button onClick={resetFilters}>Reset</button>
+      <div>
+        <button onClick={resetFilters}>Reset</button>
+      </div>
       <div>
         <h3>Possible ghosts</h3>
         {possibleGhosts}
@@ -123,4 +125,4 @@ const Filter = ({ }: FilterProps) => {
   )
 }
 
-export default Filter
+export default GhostFilter

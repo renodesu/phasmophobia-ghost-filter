@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import Ghost, { ghostList } from './Ghost'
-import Filter from './Filter'
+import GhostFilter from './Filter'
 
 function App() {
   const allGhosts = Object.entries(ghostList).
@@ -11,9 +11,15 @@ function App() {
 
   return (
     <div className="App">
-      <Filter />
-      <div className="ghosts">
-        {allGhosts}
+      <div className="filterRow">
+        <h1>Ghost filter</h1>
+        <GhostFilter />
+      </div>
+      <div className="ghostRow">
+        <h2>All ghosts</h2>
+        <div className="ghosts">
+          {allGhosts}
+        </div>
       </div>
     </div>
   )

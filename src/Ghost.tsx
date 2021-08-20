@@ -7,7 +7,7 @@ type GhostProps = {
 
 const Ghost = ({ name, evidence }: GhostProps) => {
   return (
-    <div>
+    <div className="ghost">
       <h3>{name}</h3>
       {Object.entries(evidence).map(([evName, status]) => {
         const id = `${name}-${evName}`
