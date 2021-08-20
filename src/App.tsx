@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import './App.css'
-import Ghost, { ghosts } from './Ghost'
+import Ghost, { ghostList } from './Ghost'
 import Filter from './Filter'
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  const g = Object.entries(ghosts).
+  const allGhosts = Object.entries(ghostList).
     map(([ghostName, evidence]) => {
       return <Ghost name={ghostName} evidence={evidence} key={ghostName} />
     })
@@ -15,7 +13,7 @@ function App() {
     <div className="App">
       <Filter />
       <div className="ghosts">
-        {g}
+        {allGhosts}
       </div>
     </div>
   )

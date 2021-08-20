@@ -1,21 +1,31 @@
 import React, { useState } from "react"
-import { Evidence, ghosts } from "./Ghost"
+import { Evidence, ghostList } from "./Ghost"
 import { AnyObject, filterGhost, filterKeysByProp } from "./utils"
 
 type FilterProps = {}
 
 const initialState = {
-  emf: false,
-  freezingTemp: false,
-  spiritBox: false,
-  ghostWriting: false,
-  ghostOrbs: false,
-  fingerPrints: false
+  hasFilters: {
+    emf: false,
+    freezingTemp: false,
+    spiritBox: false,
+    ghostWriting: false,
+    ghostOrbs: false,
+    fingerPrints: false
+  },
+  notFilters: {
+    emf: false,
+    freezingTemp: false,
+    spiritBox: false,
+    ghostWriting: false,
+    ghostOrbs: false,
+    fingerPrints: false
+  }
 }
 
-const pickTrues = (obj: Partial<Evidence>) => {
+const pickTrues = (source: Partial<Evidence>) => {
   const res: Partial<Evidence> = {}
-  Object.entries(obj)
+  Object.entries(source)
     .forEach(([name, status]) => {
       if (status) {
         res[name as keyof Evidence] = status
@@ -26,67 +36,82 @@ const pickTrues = (obj: Partial<Evidence>) => {
 
 const Filter = ({ }: FilterProps) => {
 
-  const [hasFilters, setHasFilters] = useState(initialState)
-  const [notFilters, setNotFilters] = useState(initialState)
+  const [filters, setFilters] = useState(initialState)
 
-  const setFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setHasFilters({ ...hasFilters, [e.target.value]: e.target.checked })
+  const setHasFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.checked
+    if (isChecked) {
+      setFilters({ hasFilters: { ...filters.hasFilters, [e.target.value]: isChecked }, notFilters: { ...filters.notFilters, [e.target.value]: !isChecked } })
+    } else {
+      setFilters({ hasFilters: { ...filters.hasFilters, [e.target.value]: isChecked }, notFilters: filters.notFilters })
+    }
   }
 
-  const setFilter2 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNotFilters({ ...notFilters, [e.target.value]: e.target.checked })
+  const setNotFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const isChecked = e.target.checked
+    if (isChecked) {
+      setFilters({ hasFilters: { ...filters.hasFilters, [e.target.value]: !isChecked }, notFilters: { ...filters.notFilters, [e.target.value]: isChecked } })
+    } else {
+      setFilters({ hasFilters: filters.hasFilters, notFilters: { ...filters.notFilters, [e.target.value]: isChecked } })
+    }
   }
 
   const resetFilters = () => {
-    setHasFilters(initialState)
-    setNotFilters(initialState)
+    setFilters(initialState)
   }
-  const possibleGhosts = filterGhost({ ghostOrbs: true })
 
-  const hasNodes = Object.entries(hasFilters)
+  const hasNodes = Object.entries(filters.hasFilters)
     .map(([name, checked]) => {
       const id = `evidence-has-${name}`
       return (
         <div key={name}>
-          <input type="checkbox" id={id} onChange={setFilter} checked={checked} value={name} />
+          <input type="checkbox" id={id} onChange={setHasFilters} checked={checked} value={name} />
           <label htmlFor={id}>{name}</label>
         </div>
       )
     })
 
-  const notNodes = Object.entries(notFilters)
+  const notNodes = Object.entries(filters.notFilters)
     .map(([name, checked]) => {
       const id = `evidence-not-${name}`
       return (
         <div key={name}>
-          <input type="checkbox" id={id} onChange={setFilter2} checked={checked} value={name} />
+          <input type="checkbox" id={id} onChange={setNotFilters} checked={checked} value={name} />
           <label htmlFor={id}>{name}</label>
         </div>
       )
     })
 
-  console.log({ hasFilters, notFilters })
-  const activeHasFilters = pickTrues(hasFilters)
-  const activeNotFilters = pickTrues(notFilters)
-  const invertedNotFilters: Partial<Evidence> = Object.keys(activeNotFilters).reduce((prev, current) => {
-    prev[current] = false
-    return prev
-  }, {} as AnyObject)
+  const activeHasFilters = pickTrues(filters.hasFilters)
+  const activeNotFilters = pickTrues(filters.notFilters)
+  const invertedNotFilters: Partial<Evidence> = Object.keys(activeNotFilters)
+    .reduce((prev, current) => {
+      prev[current] = false
+      return prev
+    }, {} as AnyObject)
 
   const combinedFilters = {
     ...activeHasFilters,
     ...invertedNotFilters
   }
 
-  console.log('combinedFilters', combinedFilters)
+  const possibleGhosts = filterGhost(combinedFilters)
+    .map(([name, evidence]) => {
+      return (
+        <div key={name}>
+          <p>{name}</p>
+        </div>
+      )
+    })
+
   return (
     <div>
       <div>
-        <h3>Has</h3>
+        <h3>Confirmed evidence</h3>
         {hasNodes}
       </div>
       <div>
-        <h3>Doesn't</h3>
+        <h3>Confirmed NOT evidence</h3>
         {notNodes}
       </div>
       <button onClick={resetFilters}>Reset</button>

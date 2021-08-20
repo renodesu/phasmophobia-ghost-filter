@@ -1,4 +1,9 @@
 .App {
+  display: flex;
+}
+
+.App > * {
+  flex: 1;
 }
 
 .App-logo {

@@ -6,7 +6,6 @@ type GhostProps = {
 }
 
 const Ghost = ({ name, evidence }: GhostProps) => {
-
   return (
     <div>
       <h3>{name}</h3>
@@ -37,8 +36,8 @@ export type Evidence = {
 
 type GhostList = Record<string, Evidence>
 
-export const ghosts: GhostList = {
-  phantom: {
+export const ghostList: GhostList = {
+  Phantom: {
     emf: true,
     freezingTemp: true,
     spiritBox: false,
@@ -46,7 +45,7 @@ export const ghosts: GhostList = {
     ghostOrbs: true,
     fingerPrints: false
   },
-  banshee: {
+  Banshee: {
     emf: true,
     freezingTemp: true,
     spiritBox: false,
@@ -54,7 +53,7 @@ export const ghosts: GhostList = {
     ghostOrbs: false,
     fingerPrints: true
   },
-  jinn: {
+  Jinn: {
     emf: true,
     freezingTemp: false,
     spiritBox: true,
@@ -62,7 +61,7 @@ export const ghosts: GhostList = {
     ghostOrbs: true,
     fingerPrints: false
   },
-  revenant: {
+  Revenant: {
     emf: true,
     freezingTemp: false,
     spiritBox: false,
@@ -70,55 +69,55 @@ export const ghosts: GhostList = {
     ghostOrbs: false,
     fingerPrints: true
   },
-  shade: {
+  Shade: {
     emf: true,
     freezingTemp: false,
-    spiritBox: false,
-    ghostWriting: true,
-    ghostOrbs: true,
-    fingerPrints: false
-  },
-  oni: {
-    emf: true,
-    freezingTemp: false,
-    spiritBox: true,
-    ghostWriting: true,
-    ghostOrbs: false,
-    fingerPrints: false
-  },
-  wraith: {
-    emf: false,
-    freezingTemp: true,
-    spiritBox: true,
-    ghostWriting: false,
-    ghostOrbs: false,
-    fingerPrints: true
-  },
-  mare: {
-    emf: false,
-    freezingTemp: true,
-    spiritBox: true,
-    ghostWriting: false,
-    ghostOrbs: true,
-    fingerPrints: false
-  },
-  demon: {
-    emf: false,
-    freezingTemp: true,
-    spiritBox: true,
-    ghostWriting: true,
-    ghostOrbs: false,
-    fingerPrints: false
-  },
-  yurei: {
-    emf: false,
-    freezingTemp: true,
     spiritBox: false,
     ghostWriting: true,
     ghostOrbs: true,
     fingerPrints: false
   },
-  poltergeist: {
+  Oni: {
+    emf: true,
+    freezingTemp: false,
+    spiritBox: true,
+    ghostWriting: true,
+    ghostOrbs: false,
+    fingerPrints: false
+  },
+  Wraith: {
+    emf: false,
+    freezingTemp: true,
+    spiritBox: true,
+    ghostWriting: false,
+    ghostOrbs: false,
+    fingerPrints: true
+  },
+  Mare: {
+    emf: false,
+    freezingTemp: true,
+    spiritBox: true,
+    ghostWriting: false,
+    ghostOrbs: true,
+    fingerPrints: false
+  },
+  Demon: {
+    emf: false,
+    freezingTemp: true,
+    spiritBox: true,
+    ghostWriting: true,
+    ghostOrbs: false,
+    fingerPrints: false
+  },
+  Yurei: {
+    emf: false,
+    freezingTemp: true,
+    spiritBox: false,
+    ghostWriting: true,
+    ghostOrbs: true,
+    fingerPrints: false
+  },
+  Poltergeist: {
     emf: false,
     freezingTemp: false,
     spiritBox: true,
@@ -126,7 +125,7 @@ export const ghosts: GhostList = {
     ghostOrbs: true,
     fingerPrints: true
   },
-  spirit: {
+  Spirit: {
     emf: false,
     freezingTemp: false,
     spiritBox: true,
@@ -134,7 +133,7 @@ export const ghosts: GhostList = {
     ghostOrbs: false,
     fingerPrints: true
   },
-  hantu: {
+  Hantu: {
     emf: false,
     freezingTemp: false,
     spiritBox: false,
