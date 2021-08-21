@@ -9,7 +9,7 @@ export type Evidence = {
 
 type GhostList = Record<string, Evidence>
 
-export const ghostList: GhostList = {
+export const ghostData: GhostList = {
   Phantom: {
     emf: true,
     freezingTemp: true,

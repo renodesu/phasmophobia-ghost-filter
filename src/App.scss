@@ -14,13 +14,13 @@ body {
   /* display: flex; */
   width: 1200px;
   margin: 0 auto;
+
+  > * {
+    flex: 1;
+  }
 }
 
-.App > * {
-  flex: 1;
-}
-
-.ghosts {
+.ghostList {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
@@ -41,16 +41,17 @@ body {
 .filter {
   display: flex;
   flex-direction: row;
-}
 
-.filter > * {
-  padding: 1rem;
-  border: 1px solid #ccc;
-  height: 100%;
+  > * {
+    padding: 1rem;
+    border: 1px solid #ccc;
+    height: 100%;
+  }
 }
 
 button {
-  font-size: calc(10px + 2vmin);
+  font-size: 2rem;
+  padding: 1rem 2rem;
 }
 
 input,

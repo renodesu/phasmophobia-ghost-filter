@@ -1,15 +1,9 @@
 import React from 'react'
-import './App.css'
-import Ghost from './Ghost'
+import './App.scss'
 import GhostFilter from './Filter'
-import { ghostList } from './data'
+import GhostList from './GhostList'
 
 function App() {
-  const allGhosts = Object.entries(ghostList)
-    .map(([ghostName, evidence]) => {
-      return <Ghost name={ghostName} evidence={evidence} key={ghostName} />
-    })
-
   return (
     <div className="App">
       <div className="filterRow">
@@ -18,9 +12,7 @@ function App() {
       </div>
       <div className="ghostRow">
         <h2>All ghosts</h2>
-        <div className="ghosts">
-          {allGhosts}
-        </div>
+        <GhostList />
       </div>
     </div>
   )

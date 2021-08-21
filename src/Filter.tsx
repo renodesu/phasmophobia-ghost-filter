@@ -2,9 +2,12 @@ import React, { useState } from "react"
 import { Evidence } from "./data"
 import { AnyObject, filterGhost, pickTrues } from "./utils"
 
-type FilterProps = {}
+type FilterState = {
+  hasFilters: Evidence
+  notFilters: Evidence
+}
 
-const initialState = {
+const initialState: FilterState = {
   hasFilters: {
     emf: false,
     freezingTemp: false,
@@ -23,9 +26,9 @@ const initialState = {
   }
 }
 
-const GhostFilter = ({ }: FilterProps) => {
+const GhostFilter = () => {
 
-  const [filters, setFilters] = useState(initialState)
+  const [filters, setFilters] = useState<FilterState>(initialState)
 
   const setHasFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
@@ -109,6 +112,11 @@ const GhostFilter = ({ }: FilterProps) => {
       <div>
         <h3>Possible ghosts</h3>
         {possibleGhosts}
+      </div>
+      <div>
+        <h3>Usage</h3>
+        <p>Use confirmed evidence to narrow down the ghost type.</p>
+        <p>Use excluded evidence further filter the ghost type if you sure it can't be some specific evidence</p>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { Evidence, ghostList } from "./data"
+import { Evidence, ghostData } from "./data"
 
 export type AnyObject = Record<string, unknown>
 
@@ -12,7 +12,7 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
   const ghostHasProps = filterKeysByProp(ghostProps, true)
   const ghostNotProps = filterKeysByProp(ghostProps, false)
 
-  const res = Object.entries(ghostList)
+  const res = Object.entries(ghostData)
     .filter(([name, evidence]) => {
       const trueProps = filterKeysByProp(evidence, true)
       const falseProps = filterKeysByProp(evidence, false)
