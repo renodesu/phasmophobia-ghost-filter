@@ -1,9 +1,9 @@
 import clsx from "clsx"
 import React from "react"
-import { GhostEntry } from "./data"
+import { GhostData } from "./data"
 
 type GhostProps = {
-  ghost: GhostEntry
+  ghost: GhostData
   isPossible: boolean
 }
 

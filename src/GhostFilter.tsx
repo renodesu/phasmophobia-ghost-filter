@@ -1,8 +1,7 @@
-import React, { useState } from "react"
+import React from "react"
 import { useRecoilState } from "recoil"
-import { Evidence } from "./data"
-import { filterState, initialState } from "./state"
-import { AnyObject, filterGhost, pickTrues } from "./utils"
+import CheckboxWithLabel from "./CheckboxWithLabel"
+import { filterState, initialFilterState } from "./state"
 
 const GhostFilter = () => {
   const [filters, setFilters] = useRecoilState(filterState)
@@ -25,15 +24,14 @@ const GhostFilter = () => {
     }
   }
 
-  const resetFilters = () => setFilters(initialState)
+  const resetFilters = () => setFilters(initialFilterState)
 
   const hasNodes = Object.entries(filters.hasFilters)
     .map(([name, checked]) => {
       const id = `evidence-confirmed-${name}`
       return (
         <div key={name}>
-          <input type="checkbox" id={id} onChange={setHasFilters} checked={checked} value={name} />
-          <label htmlFor={id}>{name}</label>
+          <CheckboxWithLabel id={id} onChange={setHasFilters} checked={checked} value={name} />
         </div>
       )
     })
@@ -43,30 +41,7 @@ const GhostFilter = () => {
       const id = `evidence-excluded-${name}`
       return (
         <div key={name}>
-          <input type="checkbox" id={id} onChange={setNotFilters} checked={checked} value={name} />
-          <label htmlFor={id}>{name}</label>
-        </div>
-      )
-    })
-
-  const activeHasFilters = pickTrues(filters.hasFilters)
-  const activeNotFilters = pickTrues(filters.notFilters)
-  const invertedNotFilters: Partial<Evidence> = Object.keys(activeNotFilters)
-    .reduce((prev, curr) => {
-      prev[curr] = false
-      return prev
-    }, {} as AnyObject)
-
-  const combinedFilters = {
-    ...activeHasFilters,
-    ...invertedNotFilters
-  }
-
-  const possibleGhosts = filterGhost(combinedFilters)
-    .map(ghost => {
-      return (
-        <div key={ghost.name}>
-          <p>{ghost.name}</p>
+          <CheckboxWithLabel id={id} onChange={setNotFilters} checked={checked} value={name} />
         </div>
       )
     })

@@ -1,13 +1,13 @@
 import { atom, selector } from "recoil";
 import { Evidence } from "./data";
-import { AnyObject, filterGhost, pickTrues } from "./utils";
+import { filterGhost, pickTrues } from "./utils";
 
 type FilterState = {
   hasFilters: Evidence
   notFilters: Evidence
 }
 
-export const initialState: FilterState = {
+export const initialFilterState: FilterState = {
   hasFilters: {
     emf: false,
     freezingTemp: false,
@@ -28,7 +28,7 @@ export const initialState: FilterState = {
 
 export const filterState = atom({
   key: 'filterState',
-  default: initialState
+  default: initialFilterState
 })
 
 export const possibleGhostsState = selector({
@@ -40,17 +40,15 @@ export const possibleGhostsState = selector({
     const activeNotFilters = pickTrues(filters.notFilters)
     const invertedNotFilters: Partial<Evidence> = Object.keys(activeNotFilters)
       .reduce((prev, curr) => {
-        prev[curr] = false
+        prev[curr as keyof Evidence] = false
         return prev
-      }, {} as AnyObject)
+      }, {} as Partial<Evidence>)
 
     const combinedFilters = {
       ...activeHasFilters,
       ...invertedNotFilters
     }
 
-    const possibleGhosts = filterGhost(combinedFilters)
-
-    return possibleGhosts
+    return filterGhost(combinedFilters)
   }
 })

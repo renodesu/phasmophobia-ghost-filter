@@ -12,8 +12,7 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
   const ghostHasProps = filterKeysByProp(ghostProps, true)
   const ghostNotProps = filterKeysByProp(ghostProps, false)
 
-
-  const res = ghostData.filter(ghost => {
+  const possibleGhosts = ghostData.filter(ghost => {
     const trueProps = filterKeysByProp(ghost.evidence, true)
     const falseProps = filterKeysByProp(ghost.evidence, false)
     const allTruesMatch = ghostHasProps.every((value) => trueProps.includes(value))
@@ -22,16 +21,7 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
     return allTruesMatch && allFalsesMatch
   })
 
-  // const res = Object.entries(ghostData)
-  //   .filter(([name, evidence]) => {
-  //     const trueProps = filterKeysByProp(evidence, true)
-  //     const falseProps = filterKeysByProp(evidence, false)
-  //     const allTruesMatch = ghostHasProps.every((value) => trueProps.includes(value))
-  //     const allFalsesMatch = ghostNotProps.every((value) => falseProps.includes(value))
-
-  //     return allTruesMatch && allFalsesMatch
-  //   })
-  return res
+  return possibleGhosts
 }
 
 export const pickTrues = (source: Partial<Evidence>) => {
