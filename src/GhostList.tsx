@@ -1,10 +1,15 @@
 import React from 'react'
-import GhostEntry from './Ghost'
+import Ghost from './Ghost'
 import { ghostData } from './data'
+import { useRecoilValue } from 'recoil'
+import { possibleGhostsState } from './state'
 
 const GhostList = () => {
+  const possibles = useRecoilValue(possibleGhostsState)
+  const possibleNames = possibles.map(ghost => ghost.name)
+
   const ghostList = ghostData.map(ghost => {
-    return <GhostEntry ghost={ghost} key={ghost.name} />
+    return <Ghost ghost={ghost} key={ghost.name} isPossible={possibleNames.includes(ghost.name)} />
   })
 
   return (

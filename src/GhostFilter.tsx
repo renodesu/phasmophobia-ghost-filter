@@ -1,34 +1,11 @@
 import React, { useState } from "react"
+import { useRecoilState } from "recoil"
 import { Evidence } from "./data"
+import { filterState, initialState } from "./state"
 import { AnyObject, filterGhost, pickTrues } from "./utils"
 
-type FilterState = {
-  hasFilters: Evidence
-  notFilters: Evidence
-}
-
-const initialState: FilterState = {
-  hasFilters: {
-    emf: false,
-    freezingTemp: false,
-    spiritBox: false,
-    ghostWriting: false,
-    ghostOrbs: false,
-    fingerPrints: false
-  },
-  notFilters: {
-    emf: false,
-    freezingTemp: false,
-    spiritBox: false,
-    ghostWriting: false,
-    ghostOrbs: false,
-    fingerPrints: false
-  }
-}
-
 const GhostFilter = () => {
-
-  const [filters, setFilters] = useState<FilterState>(initialState)
+  const [filters, setFilters] = useRecoilState(filterState)
 
   const setHasFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
@@ -106,10 +83,6 @@ const GhostFilter = () => {
       </div>
       <div>
         <button onClick={resetFilters}>Reset</button>
-      </div>
-      <div>
-        <h3>Possible ghosts</h3>
-        {possibleGhosts}
       </div>
       <div className="help">
         <h3>Usage</h3>

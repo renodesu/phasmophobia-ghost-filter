@@ -11,7 +11,7 @@ const App = () => {
         <GhostFilter />
       </div>
       <div className="ghostRow">
-        <h2>All ghosts</h2>
+        <h2>Possible ghosts</h2>
         <GhostList />
       </div>
     </div>

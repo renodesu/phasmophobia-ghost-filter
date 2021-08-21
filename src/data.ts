@@ -157,4 +157,8 @@ export const ghostData: GhostEntry[] = [
       fingerPrints: true
     }
   },
-]
+].sort(({ name }, { name: name2 }) => {
+  if (name < name2) return -1
+  if (name > name2) return 1
+  return 0
+})

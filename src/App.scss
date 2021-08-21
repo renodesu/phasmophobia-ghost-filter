@@ -32,6 +32,11 @@ body {
   border: 1px solid #ccc;
   padding: 1rem;
   width: 165px;
+  opacity: 0.25;
+
+  &.show {
+    opacity: 1;
+  }
 }
 
 .filterRow {

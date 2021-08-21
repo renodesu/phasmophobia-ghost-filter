@@ -1,13 +1,15 @@
+import clsx from "clsx"
 import React from "react"
 import { GhostEntry } from "./data"
 
 type GhostProps = {
   ghost: GhostEntry
+  isPossible: boolean
 }
 
-const Ghost = ({ ghost }: GhostProps) => {
+const Ghost = ({ ghost, isPossible }: GhostProps) => {
   return (
-    <div className="ghost">
+    <div className={clsx('ghost', { show: isPossible })}>
       <h3>{ghost.name}</h3>
       {Object.entries(ghost.evidence).map(([evName, status]) => {
         const id = `${ghost.name}-${evName}`
