@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
-import Ghost, { ghostList } from './Ghost'
+import Ghost from './Ghost'
 import GhostFilter from './Filter'
+import { ghostList } from './data'
 
 function App() {
-  const allGhosts = Object.entries(ghostList).
-    map(([ghostName, evidence]) => {
+  const allGhosts = Object.entries(ghostList)
+    .map(([ghostName, evidence]) => {
       return <Ghost name={ghostName} evidence={evidence} key={ghostName} />
     })
 

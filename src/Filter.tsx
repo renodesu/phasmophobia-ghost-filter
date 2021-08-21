@@ -1,6 +1,6 @@
 import React, { useState } from "react"
-import { Evidence, ghostList } from "./Ghost"
-import { AnyObject, filterGhost, filterKeysByProp } from "./utils"
+import { Evidence } from "./data"
+import { AnyObject, filterGhost, pickTrues } from "./utils"
 
 type FilterProps = {}
 
@@ -21,17 +21,6 @@ const initialState = {
     ghostOrbs: false,
     fingerPrints: false
   }
-}
-
-const pickTrues = (source: Partial<Evidence>) => {
-  const res: Partial<Evidence> = {}
-  Object.entries(source)
-    .forEach(([name, status]) => {
-      if (status) {
-        res[name as keyof Evidence] = status
-      }
-    })
-  return res
 }
 
 const GhostFilter = ({ }: FilterProps) => {
@@ -85,8 +74,8 @@ const GhostFilter = ({ }: FilterProps) => {
   const activeHasFilters = pickTrues(filters.hasFilters)
   const activeNotFilters = pickTrues(filters.notFilters)
   const invertedNotFilters: Partial<Evidence> = Object.keys(activeNotFilters)
-    .reduce((prev, current) => {
-      prev[current] = false
+    .reduce((prev, curr) => {
+      prev[curr] = false
       return prev
     }, {} as AnyObject)
 
@@ -111,7 +100,7 @@ const GhostFilter = ({ }: FilterProps) => {
         {hasNodes}
       </div>
       <div>
-        <h3>Confirmed NOT evidence</h3>
+        <h3>Excluded evidence</h3>
         {notNodes}
       </div>
       <div>

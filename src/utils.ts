@@ -1,4 +1,4 @@
-import { Evidence, ghostList } from "./Ghost"
+import { Evidence, ghostList } from "./data"
 
 export type AnyObject = Record<string, unknown>
 
@@ -20,6 +20,17 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
       const allFalsesMatch = ghostNotProps.every((value) => falseProps.includes(value))
 
       return allTruesMatch && allFalsesMatch
+    })
+  return res
+}
+
+export const pickTrues = (source: Partial<Evidence>) => {
+  const res: Partial<Evidence> = {}
+  Object.entries(source)
+    .forEach(([name, status]) => {
+      if (status) {
+        res[name as keyof Evidence] = status
+      }
     })
   return res
 }
