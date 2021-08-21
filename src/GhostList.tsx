@@ -1,12 +1,11 @@
 import React from 'react'
-import Ghost from './Ghost'
+import GhostEntry from './Ghost'
 import { ghostData } from './data'
 
-function GhostList() {
-  const ghostList = Object.entries(ghostData)
-    .map(([ghostName, evidence]) => {
-      return <Ghost name={ghostName} evidence={evidence} key={ghostName} />
-    })
+const GhostList = () => {
+  const ghostList = ghostData.map(ghost => {
+    return <GhostEntry ghost={ghost} key={ghost.name} />
+  })
 
   return (
     <div className="ghostList">

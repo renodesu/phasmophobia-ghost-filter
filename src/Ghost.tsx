@@ -1,17 +1,16 @@
 import React from "react"
-import { Evidence } from "./data"
+import { GhostEntry } from "./data"
 
 type GhostProps = {
-  name: string
-  evidence: Evidence
+  ghost: GhostEntry
 }
 
-const Ghost = ({ name, evidence }: GhostProps) => {
+const Ghost = ({ ghost }: GhostProps) => {
   return (
     <div className="ghost">
-      <h3>{name}</h3>
-      {Object.entries(evidence).map(([evName, status]) => {
-        const id = `${name}-${evName}`
+      <h3>{ghost.name}</h3>
+      {Object.entries(ghost.evidence).map(([evName, status]) => {
+        const id = `${ghost.name}-${evName}`
         return (
           <div key={evName}>
             <input type="checkbox" id={id} checked={status} readOnly />

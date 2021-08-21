@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.scss'
-import GhostFilter from './Filter'
+import GhostFilter from './GhostFilter'
 import GhostList from './GhostList'
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <div className="filterRow">
