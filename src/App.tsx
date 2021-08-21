@@ -6,11 +6,11 @@ import GhostList from './GhostList'
 const App = () => {
   return (
     <div className="App">
-      <div className="filterRow">
-        <h1>Ghost filter</h1>
+      <div className="filterRow row">
+        <h1>Phasmophobia Ghost Filter</h1>
         <GhostFilter />
       </div>
-      <div className="ghostRow">
+      <div className="ghostRow row">
         <h2>Possible ghosts</h2>
         <GhostList />
       </div>

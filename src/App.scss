@@ -11,13 +11,13 @@ body {
 }
 
 .App {
-  /* display: flex; */
-  width: 1200px;
+  max-width: 1200px;
   margin: 0 auto;
+}
 
-  > * {
-    flex: 1;
-  }
+.row {
+  flex: 1;
+  padding: 1rem;
 }
 
 .ghostList {
@@ -28,39 +28,45 @@ body {
 }
 
 .ghost {
-  width: 13%;
+  flex: 1;
   border: 1px solid #ccc;
   padding: 1rem;
-  width: 165px;
+  // margin: 0.2rem;
+  min-width: 165px;
+  max-width: 165px;
   opacity: 0.25;
 
   &.show {
     opacity: 1;
+    border: 1px solid #666;
   }
 }
 
-.filterRow {
-  height: 400px;
-}
-
 .filter {
-  display: flex;
-  flex-direction: row;
-
-  > * {
-    padding: 1rem;
-    border: 1px solid #ccc;
-    height: 100%;
+  .columns {
+    display: flex;
+    > * {
+      margin: 0 1rem 0 0;
+    }
   }
 }
 
 .help {
   flex: 1;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 1rem 0;
+}
+
+.border {
+  border: 1px solid #ccc;
+  padding: 1rem;
 }
 
 button {
   font-size: 2rem;
   padding: 1rem 2rem;
+  margin: 2rem;
 }
 
 input,
@@ -71,4 +77,13 @@ label {
 
 input[type="checkbox"] {
   margin: 0 0.2rem;
+}
+
+h1,
+h2 {
+  margin: 0.4rem 0 1rem 0;
+}
+
+h3 {
+  margin: 0.1rem 0 0.5rem 0;
 }

@@ -73,21 +73,23 @@ const GhostFilter = () => {
 
   return (
     <div className="filter">
-      <div>
-        <h3>Confirmed evidence</h3>
-        {hasNodes}
-      </div>
-      <div>
-        <h3>Excluded evidence</h3>
-        {notNodes}
-      </div>
-      <div>
-        <button onClick={resetFilters}>Reset</button>
-      </div>
       <div className="help">
         <h3>Usage</h3>
         <p>Use confirmed evidence to narrow down the ghost type.</p>
         <p>Use excluded evidence to further filter the ghost type if you sure it can't be some specific evidence.</p>
+      </div>
+      <div className="columns">
+        <div className="border">
+          <h3>Confirmed evidence</h3>
+          {hasNodes}
+        </div>
+        <div className="border">
+          <h3>Excluded evidence</h3>
+          {notNodes}
+        </div>
+        <div>
+          <button onClick={resetFilters}>Reset</button>
+        </div>
       </div>
     </div>
   )
