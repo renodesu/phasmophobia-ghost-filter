@@ -10,20 +10,20 @@ type FilterState = {
 export const initialFilterState: FilterState = {
   hasFilters: {
     emf: false,
-    freezingTemp: false,
     spiritBox: false,
-    ghostWriting: false,
-    ghostOrbs: false,
     fingerPrints: false,
+    ghostOrbs: false,
+    ghostWriting: false,
+    freezingTemp: false,
     DOTS: false
   },
   notFilters: {
     emf: false,
-    freezingTemp: false,
     spiritBox: false,
-    ghostWriting: false,
-    ghostOrbs: false,
     fingerPrints: false,
+    ghostOrbs: false,
+    ghostWriting: false,
+    freezingTemp: false,
     DOTS: false
   }
 }

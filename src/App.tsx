@@ -10,7 +10,7 @@ const App = () => {
         <h1>Phasmophobia Ghost Filter</h1>
         <GhostFilter />
       </div>
-      <div className="ghostRow">
+      <div className="ghostRow row">
         <h2>Possible ghosts</h2>
         <GhostList />
       </div>
