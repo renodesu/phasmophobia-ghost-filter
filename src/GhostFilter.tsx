@@ -1,7 +1,7 @@
-import React from "react"
-import { useRecoilState } from "recoil"
-import CheckboxWithLabel from "./CheckboxWithLabel"
-import { filterState, initialFilterState } from "./state"
+import React from 'react'
+import { useRecoilState } from 'recoil'
+import CheckboxWithLabel from './CheckboxWithLabel'
+import { filterState, initialFilterState } from './state'
 
 const GhostFilter = () => {
   const [filters, setFilters] = useRecoilState(filterState)

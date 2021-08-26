@@ -206,7 +206,7 @@ export const ghostData: GhostData[] = [
       freezingTemp: false,
       DOTS: false
     }
-  },
+  }
 ].sort(({ name }, { name: nameB }) => {
   if (name < nameB) return -1
   if (name > nameB) return 1

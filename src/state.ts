@@ -1,6 +1,6 @@
-import { atom, selector } from "recoil";
-import { Evidence } from "./data";
-import { filterGhost, pickTrues } from "./utils";
+import { atom, selector } from 'recoil'
+import { Evidence } from './data'
+import { filterGhost, pickTrues } from './utils'
 
 type FilterState = {
   hasFilters: Evidence

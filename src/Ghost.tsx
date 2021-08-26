@@ -1,6 +1,6 @@
-import clsx from "clsx"
-import React from "react"
-import { GhostData } from "./data"
+import clsx from 'clsx'
+import React from 'react'
+import { GhostData } from './data'
 
 type GhostProps = {
   ghost: GhostData

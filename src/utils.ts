@@ -1,4 +1,4 @@
-import { Evidence, ghostData } from "./data"
+import { Evidence, ghostData } from './data'
 
 export type AnyObject = Record<string, unknown>
 
