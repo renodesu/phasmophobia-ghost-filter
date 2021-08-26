@@ -5,6 +5,7 @@ export type Evidence = {
   ghostWriting: boolean
   ghostOrbs: boolean
   fingerPrints: boolean
+  DOTS: boolean
 }
 
 export type GhostData = {
@@ -17,89 +18,97 @@ export const ghostData: GhostData[] = [
   {
     name: 'Phantom',
     evidence: {
-      emf: true,
-      freezingTemp: true,
-      spiritBox: false,
+      emf: false,
+      freezingTemp: false,
+      spiritBox: true,
       ghostWriting: false,
-      ghostOrbs: true,
-      fingerPrints: false
+      ghostOrbs: false,
+      fingerPrints: true,
+      DOTS: true
     }
   },
   {
     name: 'Banshee',
     evidence: {
-      emf: true,
-      freezingTemp: true,
+      emf: false,
+      freezingTemp: false,
       spiritBox: false,
       ghostWriting: false,
-      ghostOrbs: false,
-      fingerPrints: true
+      ghostOrbs: true,
+      fingerPrints: true,
+      DOTS: true
     }
   },
   {
     name: 'Jinn',
     evidence: {
       emf: true,
-      freezingTemp: false,
-      spiritBox: true,
+      freezingTemp: true,
+      spiritBox: false,
       ghostWriting: false,
-      ghostOrbs: true,
-      fingerPrints: false
+      ghostOrbs: false,
+      fingerPrints: true,
+      DOTS: false
     }
   },
   {
     name: 'Revenant',
     evidence: {
-      emf: true,
-      freezingTemp: false,
+      emf: false,
+      freezingTemp: true,
       spiritBox: false,
       ghostWriting: true,
-      ghostOrbs: false,
-      fingerPrints: true
+      ghostOrbs: true,
+      fingerPrints: false,
+      DOTS: false
     }
   },
   {
     name: 'Shade',
     evidence: {
       emf: true,
-      freezingTemp: false,
+      freezingTemp: true,
       spiritBox: false,
       ghostWriting: true,
-      ghostOrbs: true,
-      fingerPrints: false
+      ghostOrbs: false,
+      fingerPrints: false,
+      DOTS: false
     }
   },
   {
     name: 'Oni',
     evidence: {
       emf: true,
-      freezingTemp: false,
-      spiritBox: true,
-      ghostWriting: true,
+      freezingTemp: true,
+      spiritBox: false,
+      ghostWriting: false,
       ghostOrbs: false,
-      fingerPrints: false
+      fingerPrints: false,
+      DOTS: true
     }
   },
   {
     name: 'Wraith',
     evidence: {
-      emf: false,
-      freezingTemp: true,
+      emf: true,
+      freezingTemp: false,
       spiritBox: true,
       ghostWriting: false,
       ghostOrbs: false,
-      fingerPrints: true
+      fingerPrints: false,
+      DOTS: true
     }
   },
   {
     name: 'Mare',
     evidence: {
       emf: false,
-      freezingTemp: true,
+      freezingTemp: false,
       spiritBox: true,
-      ghostWriting: false,
+      ghostWriting: true,
       ghostOrbs: true,
-      fingerPrints: false
+      fingerPrints: false,
+      DOTS: false
     }
   },
   {
@@ -107,10 +116,11 @@ export const ghostData: GhostData[] = [
     evidence: {
       emf: false,
       freezingTemp: true,
-      spiritBox: true,
+      spiritBox: false,
       ghostWriting: true,
       ghostOrbs: false,
-      fingerPrints: false
+      fingerPrints: true,
+      DOTS: false
     }
   },
   {
@@ -119,9 +129,10 @@ export const ghostData: GhostData[] = [
       emf: false,
       freezingTemp: true,
       spiritBox: false,
-      ghostWriting: true,
+      ghostWriting: false,
       ghostOrbs: true,
-      fingerPrints: false
+      fingerPrints: false,
+      DOTS: true
     }
   },
   {
@@ -130,31 +141,34 @@ export const ghostData: GhostData[] = [
       emf: false,
       freezingTemp: false,
       spiritBox: true,
-      ghostWriting: false,
-      ghostOrbs: true,
-      fingerPrints: true
+      ghostWriting: true,
+      ghostOrbs: false,
+      fingerPrints: true,
+      DOTS: false
     }
   },
   {
     name: 'Spirit',
     evidence: {
-      emf: false,
+      emf: true,
       freezingTemp: false,
       spiritBox: true,
       ghostWriting: true,
       ghostOrbs: false,
-      fingerPrints: true
+      fingerPrints: false,
+      DOTS: false
     }
   },
   {
     name: 'Hantu',
     evidence: {
       emf: false,
-      freezingTemp: false,
+      freezingTemp: true,
       spiritBox: false,
-      ghostWriting: true,
+      ghostWriting: false,
       ghostOrbs: true,
-      fingerPrints: true
+      fingerPrints: true,
+      DOTS: false
     }
   },
   {
@@ -163,9 +177,34 @@ export const ghostData: GhostData[] = [
       emf: false,
       freezingTemp: false,
       spiritBox: true,
-      ghostWriting: true,
+      ghostWriting: false,
       ghostOrbs: true,
-      fingerPrints: false
+      fingerPrints: false,
+      DOTS: true
+    }
+  },
+  {
+    name: 'Goryo',
+    evidence: {
+      emf: true,
+      freezingTemp: false,
+      spiritBox: false,
+      ghostWriting: false,
+      ghostOrbs: false,
+      fingerPrints: true,
+      DOTS: true
+    }
+  },
+  {
+    name: 'Myling',
+    evidence: {
+      emf: true,
+      freezingTemp: false,
+      spiritBox: false,
+      ghostWriting: true,
+      ghostOrbs: false,
+      fingerPrints: true,
+      DOTS: false
     }
   },
 ].sort(({ name }, { name: nameB }) => {

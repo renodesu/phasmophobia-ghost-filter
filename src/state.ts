@@ -14,7 +14,8 @@ export const initialFilterState: FilterState = {
     spiritBox: false,
     ghostWriting: false,
     ghostOrbs: false,
-    fingerPrints: false
+    fingerPrints: false,
+    DOTS: false
   },
   notFilters: {
     emf: false,
@@ -22,7 +23,8 @@ export const initialFilterState: FilterState = {
     spiritBox: false,
     ghostWriting: false,
     ghostOrbs: false,
-    fingerPrints: false
+    fingerPrints: false,
+    DOTS: false
   }
 }
 
