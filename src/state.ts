@@ -76,7 +76,6 @@ export const impossibleRemainingEvidenceState = selector({
       })
       return res
     })
-    console.log('impossibleFilters', impossibleFilters)
     return impossibleFilters
   }
 })

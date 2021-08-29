@@ -1,6 +1,8 @@
+import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import CheckboxWithLabel from './CheckboxWithLabel'
+import { Evidence } from './data'
 import { filterState, impossibleRemainingEvidenceState, initialFilterState, isAnyFilterActiveState, possibleRemainingEvidenceState } from './state'
 
 const GhostFilter = () => {
@@ -32,8 +34,12 @@ const GhostFilter = () => {
   const hasNodes = Object.entries(filters.hasFilters)
     .map(([name, checked]) => {
       const id = `evidence-confirmed-${name}`
+      const isEvidenceImpossible = impossibleRemainingEvidence.includes(name as keyof Evidence)
+      const isEvidenceExcluded = filters.notFilters[name as keyof Evidence]
+
+      // TODO: Check the logits of coloring notpossibles
       return (
-        <div key={name}>
+        <div key={name} className={clsx({ evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded })}>
           <CheckboxWithLabel id={id} onChange={setHasFilters} checked={checked} value={name} />
         </div>
       )
@@ -67,7 +73,7 @@ const GhostFilter = () => {
         </div>
       )
     })
-    : '(All)'
+    : '(None)'
 
   return (
     <div className="filter">
@@ -78,6 +84,9 @@ const GhostFilter = () => {
         <p>
           <span className="greenBg">Green</span> highlight means that evidence is missing to identify that specific ghost.
         </p>
+        {/* <p>
+          <span className="redBg">Red</span> highlight means that evidence isn't possible (invalid evidence combination {'->'} no Ghost found).
+        </p> */}
       </div>
       <div className="columns">
         <div className="border">

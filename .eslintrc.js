@@ -22,6 +22,8 @@ module.exports = {
   rules: {
     'no-use-before-define': 0,
     '@typescript-eslint/no-use-before-define': 2,
-    'react/no-unescaped-entities': 0
+    'react/no-unescaped-entities': 0,
+    indent: 0,
+    '@typescript-eslint/indent': [2, 2]
   }
 }

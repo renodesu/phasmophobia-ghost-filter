@@ -65,11 +65,19 @@ body {
   background: rgba($color: #0f0, $alpha: 0.4);
 }
 
+.redBg {
+  background: rgba($color: #f00, $alpha: 0.4);
+}
+
 .filter {
   .columns {
     display: flex;
     > * {
       margin: 0 1rem 0 0;
+    }
+
+    .evidenceNotPossible {
+      // @extend .redBg;
     }
   }
 }
