@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil'
-import { Evidence } from './data'
+import { Evidence, evidenceKeys } from './data'
 import { filterGhost, pickTrues } from './utils'
 
 type FilterState = {
@@ -33,6 +33,16 @@ export const filterState = atom({
   default: initialFilterState
 })
 
+export const isAnyFilterActiveState = selector({
+  key: 'isAnyFilterActiveState',
+  get: ({ get }) => {
+    const filters = get(filterState)
+    const activeHasFilters = pickTrues(filters.hasFilters)
+    const activeNotFilters = pickTrues(filters.notFilters)
+    return Object.keys(activeHasFilters).length > 0 || Object.keys(activeNotFilters).length > 0
+  }
+})
+
 export const possibleGhostsState = selector({
   key: 'possibleGhostsState',
   get: ({ get }) => {
@@ -52,5 +62,39 @@ export const possibleGhostsState = selector({
     }
 
     return filterGhost(combinedFilters)
+  }
+})
+
+export const impossibleRemainingEvidenceState = selector({
+  key: 'impossibleRemainingEvidenceState',
+  get: ({ get }) => {
+    const possibleGhosts = get(possibleGhostsState)
+
+    const impossibleFilters = evidenceKeys.filter((filter) => {
+      const res = possibleGhosts.every(ghost => {
+        return ghost.evidence[filter] === false
+      })
+      return res
+    })
+    console.log('impossibleFilters', impossibleFilters)
+    return impossibleFilters
+  }
+})
+
+export const possibleRemainingEvidenceState = selector({
+  key: 'possibleRemainingEvidenceState',
+  get: ({ get }) => {
+    const impossibleRemainingEvidence = get(impossibleRemainingEvidenceState)
+    const evidence = get(filterState)
+
+    const activeIncludedEvidence = Object.keys(pickTrues(evidence.hasFilters))
+    const activeExcludedEvidence = Object.keys(pickTrues(evidence.notFilters))
+
+    // Has and Nots are always mutually exclusive, but just in case - uniquefy them
+    const uniqueActiveEvidence = Array.from(new Set([...activeIncludedEvidence, ...activeExcludedEvidence]))
+    const activeAndImpossibleEvidence = Array.from(new Set([...uniqueActiveEvidence, ...impossibleRemainingEvidence]))
+    const possibleRemainingEvidence = evidenceKeys.filter(key => !activeAndImpossibleEvidence.includes(key))
+
+    return possibleRemainingEvidence
   }
 })

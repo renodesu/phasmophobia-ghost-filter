@@ -1,10 +1,13 @@
 import React from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import CheckboxWithLabel from './CheckboxWithLabel'
-import { filterState, initialFilterState } from './state'
+import { filterState, impossibleRemainingEvidenceState, initialFilterState, isAnyFilterActiveState, possibleRemainingEvidenceState } from './state'
 
 const GhostFilter = () => {
   const [filters, setFilters] = useRecoilState(filterState)
+  const possibleRemainingEvidence = useRecoilValue(possibleRemainingEvidenceState)
+  const impossibleRemainingEvidence = useRecoilValue(impossibleRemainingEvidenceState)
+  const isAnyFilterActive = useRecoilValue(isAnyFilterActiveState)
 
   const setHasFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
@@ -46,12 +49,35 @@ const GhostFilter = () => {
       )
     })
 
+  const possibleRemainingEvidenceNode = isAnyFilterActive
+    ? possibleRemainingEvidence.map(filter => {
+      return (
+        <div key={filter}>
+          {filter}
+        </div>
+      )
+    })
+    : '(All)'
+
+  const impossibleRemainingEvidenceNode = isAnyFilterActive
+    ? impossibleRemainingEvidence.map(filter => {
+      return (
+        <div key={filter}>
+          {filter}
+        </div>
+      )
+    })
+    : '(All)'
+
   return (
     <div className="filter">
       <div className="help">
         <h3>Usage</h3>
         <p>Use confirmed evidence to narrow down the ghost type.</p>
         <p>Use excluded evidence to further filter the ghost type if you sure it can't be some specific evidence.</p>
+        <p>
+          <span className="greenBg">Green</span> highlight means that evidence is missing to identify that specific ghost.
+        </p>
       </div>
       <div className="columns">
         <div className="border">
@@ -61,6 +87,14 @@ const GhostFilter = () => {
         <div className="border">
           <h3>Excluded evidence</h3>
           {notNodes}
+        </div>
+        <div>
+          <h3>Possible remaining evidence</h3>
+          {possibleRemainingEvidenceNode}
+        </div>
+        <div>
+          <h3>Impossible remaining evidence</h3>
+          {impossibleRemainingEvidenceNode}
         </div>
         <div>
           <button onClick={resetFilters}>Reset</button>

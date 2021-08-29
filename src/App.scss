@@ -30,16 +30,39 @@ body {
 .ghost {
   flex: 1;
   border: 1px solid #ccc;
-  padding: 1rem;
+  padding: 0.8rem;
   // margin: 0.2rem;
   min-width: 150px;
   max-width: 150px;
   opacity: 0.25;
 
+  &.noActiveFilters,
   &.show {
     opacity: 1;
     border: 1px solid #666;
   }
+
+  .ghost-evidence {
+    padding: 0.1rem 0;
+  }
+
+  &.show .ghost-evidence {
+    &.disabled {
+      background: rgba($color: #f00, $alpha: 0.4);
+      opacity: 0.4;
+    }
+    &.possible {
+      // color: rgb(0, 44, 189);
+      background: rgba($color: #0f0, $alpha: 0.4);
+    }
+    &.isRemainingFilter {
+      background: rgba($color: #0f0, $alpha: 0.4);
+    }
+  }
+}
+
+.greenBg {
+  background: rgba($color: #0f0, $alpha: 0.4);
 }
 
 .filter {

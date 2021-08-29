@@ -8,11 +8,15 @@ export type Evidence = {
   DOTS: boolean
 }
 
+export type EvidenceKeys = (keyof Evidence)[]
+
 export type GhostData = {
   name: string
   evidence: Evidence
   description?: string
 }
+
+export const evidenceKeys: EvidenceKeys = ['emf', 'spiritBox', 'fingerPrints', 'ghostOrbs', 'ghostWriting', 'freezingTemp', 'DOTS']
 
 export const ghostData: GhostData[] = [
   {

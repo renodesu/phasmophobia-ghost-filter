@@ -2,6 +2,12 @@ import { Evidence, ghostData } from './data'
 
 export type AnyObject = Record<string, unknown>
 
+/**
+ * Returns a new object where object keys match `filterValue`
+ * @param object
+ * @param filterValue
+ * @returns
+ */
 export const filterKeysByProp = (object: AnyObject, filterValue: unknown) => {
   return Object.entries(object)
     .filter(([, value]) => value === filterValue)
