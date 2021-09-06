@@ -1,12 +1,13 @@
 import clsx from 'clsx'
 import React from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 import CheckboxWithLabel from './CheckboxWithLabel'
 import { Evidence } from './data'
-import { filterState, impossibleRemainingEvidenceState, initialFilterState, isAnyFilterActiveState, possibleRemainingEvidenceState } from './state'
+import { filterState, impossibleRemainingEvidenceState, isAnyFilterActiveState, possibleRemainingEvidenceState } from './state'
 
 const GhostFilter = () => {
   const [filters, setFilters] = useRecoilState(filterState)
+  const resetFilters = useResetRecoilState(filterState)
   const possibleRemainingEvidence = useRecoilValue(possibleRemainingEvidenceState)
   const impossibleRemainingEvidence = useRecoilValue(impossibleRemainingEvidenceState)
   const isAnyFilterActive = useRecoilValue(isAnyFilterActiveState)
@@ -28,8 +29,6 @@ const GhostFilter = () => {
       setFilters({ hasFilters: filters.hasFilters, notFilters: { ...filters.notFilters, [e.target.value]: isChecked } })
     }
   }
-
-  const resetFilters = () => setFilters(initialFilterState)
 
   const hasNodes = Object.entries(filters.hasFilters)
     .map(([name, checked]) => {
