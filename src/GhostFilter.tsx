@@ -77,35 +77,40 @@ const GhostFilter = () => {
   return (
     <div className="filter">
       <div className="help">
-        <h3>Usage</h3>
-        <p>Use confirmed evidence to narrow down the ghost type.</p>
-        <p>Use excluded evidence to further filter the ghost type if you sure it can't be some specific evidence.</p>
-        <p>
-          <span className="greenBg">Green</span> highlight means that evidence is missing to identify that specific ghost.
-        </p>
-        {/* <p>
+        <div>
+          <h3>Usage</h3>
+          <p>Use confirmed evidence to narrow down the ghost type.</p>
+          <p>Use excluded evidence to further filter the ghost type if you sure it can't be some specific evidence.</p>
+          <p>
+            <span className="greenBg">Green</span> highlight means that evidence is missing to identify that specific ghost.
+          </p>
+          {/* <p>
           <span className="redBg">Red</span> highlight means that evidence isn't possible (invalid evidence combination {'->'} no Ghost found).
         </p> */}
+
+        </div>
+        <div>
+          <div style={{ textAlign: 'center' }}>
+            <button onClick={resetFilters}>Reset</button>
+          </div>
+        </div>
       </div>
       <div className="columns">
+        <div>
+          <h3>Possible remaining</h3>
+          {possibleRemainingEvidenceNode}
+        </div>
         <div className="border">
-          <h3>Confirmed evidence</h3>
+          <h3>Confirmed</h3>
           {hasNodes}
         </div>
         <div className="border">
-          <h3>Excluded evidence</h3>
+          <h3>Excluded</h3>
           {notNodes}
         </div>
         <div>
-          <h3>Possible remaining evidence</h3>
-          {possibleRemainingEvidenceNode}
-        </div>
-        <div>
-          <h3>Impossible remaining evidence</h3>
+          <h3>Impossible remaining</h3>
           {impossibleRemainingEvidenceNode}
-        </div>
-        <div>
-          <button onClick={resetFilters}>Reset</button>
         </div>
       </div>
     </div>
