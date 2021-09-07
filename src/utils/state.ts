@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil'
-import { Evidence, evidenceKeys } from './ghostData'
+import { Evidence, evidenceKeys } from '../data/ghostData'
 import { filterGhost, pickTrues } from './utils'
 
 type EvidenceState = {

@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { Evidence, GhostData } from './ghostData'
-import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from './state'
+import { Evidence, GhostData } from './data/ghostData'
+import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from './utils/state'
 
 type GhostProps = {
   ghost: GhostData
@@ -16,20 +16,22 @@ const Ghost = ({ ghost }: GhostProps) => {
 
   return (
     <div className={clsx('ghost', { show: isGhostPossible && isAnyEvidenceSelected, noActiveEvidence: !isAnyEvidenceSelected })}>
-      <h3>{ghost.name}</h3>
-      {Object.entries(ghost.evidence).map(([evidenceKey, status]) => {
-        const id = `${ghost.name}-${evidenceKey}`
-        const isRemainingEvidence = status && possibleRemainingEvidence.includes(evidenceKey as keyof Evidence)
+      <span className="ghostName">{ghost.name}</span>
+      <div>
+        {Object.entries(ghost.evidence).map(([evidenceKey, status]) => {
+          const id = `${ghost.name}-${evidenceKey}`
+          const isRemainingEvidence = status && possibleRemainingEvidence.includes(evidenceKey as keyof Evidence)
 
-        return (
-          <div key={evidenceKey} className={clsx('ghost-evidence', { isRemainingFilter: isRemainingEvidence })}>
-            <input type="checkbox" id={id} checked={status} readOnly />
-            <label htmlFor={id}>
-              {evidenceKey}
-            </label>
-          </div>
-        )
-      })}
+          return (
+            <div key={evidenceKey} className={clsx('ghost-evidence', { isRemainingFilter: isRemainingEvidence })}>
+              <input type="checkbox" id={id} checked={status} readOnly />
+              <label htmlFor={id}>
+                {evidenceKey}
+              </label>
+            </div>
+          )
+        })}
+      </div>
     </div>
   )
 }

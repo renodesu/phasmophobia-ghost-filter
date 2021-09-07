@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 import CheckboxWithLabel from './CheckboxWithLabel'
-import { Evidence } from './ghostData'
-import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from './state'
+import { Evidence } from './data/ghostData'
+import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from './utils/state'
 
 const GhostFilter = () => {
   const [evidence, setEvidence] = useRecoilState(evidenceState)

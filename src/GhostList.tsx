@@ -1,6 +1,6 @@
 import React from 'react'
 import Ghost from './Ghost'
-import { ghostData } from './ghostData'
+import { ghostData } from './data/ghostData'
 
 const GhostList = () => {
   const ghostNodes = ghostData.map(ghost => {
