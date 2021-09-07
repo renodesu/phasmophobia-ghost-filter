@@ -2,12 +2,12 @@ import { atom, selector } from 'recoil'
 import { Evidence, evidenceKeys } from './ghostData'
 import { filterGhost, pickTrues } from './utils'
 
-type FilterState = {
+type EvidenceState = {
   included: Evidence
   excluded: Evidence
 }
 
-export const initialEvidenceState: FilterState = {
+export const initialEvidenceState: EvidenceState = {
   included: {
     emf: false,
     spiritBox: false,
@@ -36,10 +36,10 @@ export const evidenceState = atom({
 export const isAnyEvidenceSelectedState = selector({
   key: 'isAnyEvidenceSelectedState',
   get: ({ get }) => {
-    const filters = get(evidenceState)
-    const activeHasFilters = pickTrues(filters.included)
-    const activeNotFilters = pickTrues(filters.excluded)
-    return Object.keys(activeHasFilters).length > 0 || Object.keys(activeNotFilters).length > 0
+    const evidence = get(evidenceState)
+    const activeIncludedEvidence = pickTrues(evidence.included)
+    const activeExcludedEvidence = pickTrues(evidence.excluded)
+    return Object.keys(activeIncludedEvidence).length > 0 || Object.keys(activeExcludedEvidence).length > 0
   }
 })
 

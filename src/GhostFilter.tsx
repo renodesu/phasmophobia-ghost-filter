@@ -10,7 +10,7 @@ const GhostFilter = () => {
   const resetEvidence = useResetRecoilState(evidenceState)
   const possibleRemainingEvidence = useRecoilValue(possibleRemainingEvidenceState)
   const impossibleRemainingEvidence = useRecoilValue(impossibleRemainingEvidenceState)
-  const isAnyFilterActive = useRecoilValue(isAnyEvidenceSelectedState)
+  const isAnyEvidenceSelected = useRecoilValue(isAnyEvidenceSelectedState)
 
   const setIncludedEvidence = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
@@ -54,7 +54,7 @@ const GhostFilter = () => {
       )
     })
 
-  const possibleRemainingEvidenceNode = isAnyFilterActive
+  const possibleRemainingEvidenceNode = isAnyEvidenceSelected
     ? possibleRemainingEvidence.map(evidenceKey => {
       return (
         <div key={evidenceKey}>
@@ -64,7 +64,7 @@ const GhostFilter = () => {
     })
     : '(All)'
 
-  const impossibleRemainingEvidenceNode = isAnyFilterActive
+  const impossibleRemainingEvidenceNode = isAnyEvidenceSelected
     ? impossibleRemainingEvidence.map(evidenceKey => {
       return (
         <div key={evidenceKey}>

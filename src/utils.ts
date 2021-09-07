@@ -3,10 +3,10 @@ import { Evidence, ghostData } from './ghostData'
 export type AnyObject = Record<string, unknown>
 
 /**
- * Returns a new object where object keys match `filterValue`
+ * Returns an array of object keys where keys match `filterValue`
  * @param object
  * @param filterValue
- * @returns Filtered object
+ * @returns String array
  */
 export const filterKeysByProp = (object: AnyObject, filterValue: unknown) => {
   return Object.entries(object)
@@ -17,17 +17,17 @@ export const filterKeysByProp = (object: AnyObject, filterValue: unknown) => {
 /**
  * Filter ghosts based on `ghostProps`
  * @param ghostProps
- * @returns List of possible Ghosts after filtering
+ * @returns Array of possible Ghosts
  */
 export const filterGhost = (ghostProps: Partial<Evidence>) => {
-  const ghostHasProps = filterKeysByProp(ghostProps, true)
-  const ghostNotProps = filterKeysByProp(ghostProps, false)
+  const ghostIncludedEvidence = filterKeysByProp(ghostProps, true)
+  const ghostExcludedEvidence = filterKeysByProp(ghostProps, false)
 
   const possibleGhosts = ghostData.filter(ghost => {
     const trueProps = filterKeysByProp(ghost.evidence, true)
     const falseProps = filterKeysByProp(ghost.evidence, false)
-    const allTruesMatch = ghostHasProps.every((value) => trueProps.includes(value))
-    const allFalsesMatch = ghostNotProps.every((value) => falseProps.includes(value))
+    const allTruesMatch = ghostIncludedEvidence.every((value) => trueProps.includes(value))
+    const allFalsesMatch = ghostExcludedEvidence.every((value) => falseProps.includes(value))
 
     return allTruesMatch && allFalsesMatch
   })

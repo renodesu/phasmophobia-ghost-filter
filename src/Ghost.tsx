@@ -15,7 +15,7 @@ const Ghost = ({ ghost }: GhostProps) => {
   const isGhostPossible = possibleGhosts.includes(ghost)
 
   return (
-    <div className={clsx('ghost', { show: isGhostPossible && isAnyEvidenceSelected, noActiveFilters: !isAnyEvidenceSelected })}>
+    <div className={clsx('ghost', { show: isGhostPossible && isAnyEvidenceSelected, noActiveEvidence: !isAnyEvidenceSelected })}>
       <h3>{ghost.name}</h3>
       {Object.entries(ghost.evidence).map(([evidenceKey, status]) => {
         const id = `${ghost.name}-${evidenceKey}`
