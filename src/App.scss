@@ -47,19 +47,18 @@ body {
   max-width: 150px;
   opacity: 0.25;
 
+  .ghostName {
+    font-weight: bold;
+    font-size: 1.1rem;
+  }
+
   &.noActiveEvidence,
   &.show {
     opacity: 1;
     border: 1px solid #666;
   }
 
-  .ghost-evidence {
-    padding: 0.1rem 0;
-    display: flex;
-    align-items: center;
-  }
-
-  &.show .ghost-evidence {
+  &.show .ghostEvidence {
     &.disabled {
       background: rgba($color: #f00, $alpha: 0.4);
       opacity: 0.4;
@@ -71,6 +70,18 @@ body {
     &.isRemainingFilter {
       background: rgba($color: #0f0, $alpha: 0.4);
     }
+  }
+}
+
+.cbWithLabel {
+  padding: 0.1rem 0;
+  display: flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    margin: 0 0.2rem;
+    width: 1rem;
+    height: 1rem;
   }
 }
 
@@ -128,12 +139,6 @@ label {
   cursor: pointer;
 }
 
-input[type="checkbox"] {
-  margin: 0 0.2rem;
-  width: 1rem;
-  height: 1rem;
-}
-
 h1 {
   display: flex;
 
@@ -150,11 +155,6 @@ h2 {
 
 h3 {
   margin: 0.1rem 0 0.5rem 0;
-}
-
-.ghostName {
-  font-weight: bold;
-  font-size: 1.1rem;
 }
 
 .githubMark {

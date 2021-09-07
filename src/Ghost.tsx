@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
+import CheckboxWithLabel from './CheckboxWithLabel'
 import { Evidence, GhostData } from './data/ghostData'
 import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from './utils/state'
 
@@ -23,11 +24,8 @@ const Ghost = ({ ghost }: GhostProps) => {
           const isRemainingEvidence = status && possibleRemainingEvidence.includes(evidenceKey as keyof Evidence)
 
           return (
-            <div key={evidenceKey} className={clsx('ghost-evidence', { isRemainingFilter: isRemainingEvidence })}>
-              <input type="checkbox" id={id} checked={status} readOnly />
-              <label htmlFor={id}>
-                {evidenceKey}
-              </label>
+            <div key={evidenceKey} className={clsx('ghostEvidence', { isRemainingFilter: isRemainingEvidence })}>
+              <CheckboxWithLabel id= {id} checked={status} value={evidenceKey} readOnly />
             </div>
           )
         })}
