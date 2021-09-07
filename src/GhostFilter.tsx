@@ -2,73 +2,73 @@ import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 import CheckboxWithLabel from './CheckboxWithLabel'
-import { Evidence } from './data'
-import { filterState, impossibleRemainingEvidenceState, isAnyFilterActiveState, possibleRemainingEvidenceState } from './state'
+import { Evidence } from './ghostData'
+import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from './state'
 
 const GhostFilter = () => {
-  const [filters, setFilters] = useRecoilState(filterState)
-  const resetFilters = useResetRecoilState(filterState)
+  const [evidence, setEvidence] = useRecoilState(evidenceState)
+  const resetEvidence = useResetRecoilState(evidenceState)
   const possibleRemainingEvidence = useRecoilValue(possibleRemainingEvidenceState)
   const impossibleRemainingEvidence = useRecoilValue(impossibleRemainingEvidenceState)
-  const isAnyFilterActive = useRecoilValue(isAnyFilterActiveState)
+  const isAnyFilterActive = useRecoilValue(isAnyEvidenceSelectedState)
 
-  const setHasFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setIncludedEvidence = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
     if (isChecked) {
-      setFilters({ hasFilters: { ...filters.hasFilters, [e.target.value]: isChecked }, notFilters: { ...filters.notFilters, [e.target.value]: !isChecked } })
+      setEvidence({ included: { ...evidence.included, [e.target.value]: isChecked }, excluded: { ...evidence.excluded, [e.target.value]: !isChecked } })
     } else {
-      setFilters({ hasFilters: { ...filters.hasFilters, [e.target.value]: isChecked }, notFilters: filters.notFilters })
+      setEvidence({ included: { ...evidence.included, [e.target.value]: isChecked }, excluded: evidence.excluded })
     }
   }
 
-  const setNotFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const setExcludedEvidence = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
     if (isChecked) {
-      setFilters({ hasFilters: { ...filters.hasFilters, [e.target.value]: !isChecked }, notFilters: { ...filters.notFilters, [e.target.value]: isChecked } })
+      setEvidence({ included: { ...evidence.included, [e.target.value]: !isChecked }, excluded: { ...evidence.excluded, [e.target.value]: isChecked } })
     } else {
-      setFilters({ hasFilters: filters.hasFilters, notFilters: { ...filters.notFilters, [e.target.value]: isChecked } })
+      setEvidence({ included: evidence.included, excluded: { ...evidence.excluded, [e.target.value]: isChecked } })
     }
   }
 
-  const hasNodes = Object.entries(filters.hasFilters)
+  const includedNodes = Object.entries(evidence.included)
     .map(([name, checked]) => {
       const id = `evidence-confirmed-${name}`
       const isEvidenceImpossible = impossibleRemainingEvidence.includes(name as keyof Evidence)
-      const isEvidenceExcluded = filters.notFilters[name as keyof Evidence]
+      const isEvidenceExcluded = evidence.excluded[name as keyof Evidence]
 
       // TODO: Check the logits of coloring notpossibles
       return (
         <div key={name} className={clsx({ evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded })}>
-          <CheckboxWithLabel id={id} onChange={setHasFilters} checked={checked} value={name} />
+          <CheckboxWithLabel id={id} onChange={setIncludedEvidence} checked={checked} value={name} />
         </div>
       )
     })
 
-  const notNodes = Object.entries(filters.notFilters)
+  const excludedNodes = Object.entries(evidence.excluded)
     .map(([name, checked]) => {
       const id = `evidence-excluded-${name}`
       return (
         <div key={name}>
-          <CheckboxWithLabel id={id} onChange={setNotFilters} checked={checked} value={name} />
+          <CheckboxWithLabel id={id} onChange={setExcludedEvidence} checked={checked} value={name} />
         </div>
       )
     })
 
   const possibleRemainingEvidenceNode = isAnyFilterActive
-    ? possibleRemainingEvidence.map(filter => {
+    ? possibleRemainingEvidence.map(evidenceKey => {
       return (
-        <div key={filter}>
-          {filter}
+        <div key={evidenceKey}>
+          {evidenceKey}
         </div>
       )
     })
     : '(All)'
 
   const impossibleRemainingEvidenceNode = isAnyFilterActive
-    ? impossibleRemainingEvidence.map(filter => {
+    ? impossibleRemainingEvidence.map(evidenceKey => {
       return (
-        <div key={filter}>
-          {filter}
+        <div key={evidenceKey}>
+          {evidenceKey}
         </div>
       )
     })
@@ -91,7 +91,7 @@ const GhostFilter = () => {
         </div>
         <div>
           <div style={{ textAlign: 'center' }}>
-            <button onClick={resetFilters}>Reset</button>
+            <button onClick={resetEvidence}>Reset</button>
           </div>
         </div>
       </div>
@@ -102,11 +102,11 @@ const GhostFilter = () => {
         </div>
         <div className="border">
           <h3>Confirmed</h3>
-          {hasNodes}
+          {includedNodes}
         </div>
         <div className="border">
           <h3>Excluded</h3>
-          {notNodes}
+          {excludedNodes}
         </div>
         <div>
           <h3>Impossible remaining</h3>

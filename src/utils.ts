@@ -1,4 +1,4 @@
-import { Evidence, ghostData } from './data'
+import { Evidence, ghostData } from './ghostData'
 
 export type AnyObject = Record<string, unknown>
 
@@ -6,7 +6,7 @@ export type AnyObject = Record<string, unknown>
  * Returns a new object where object keys match `filterValue`
  * @param object
  * @param filterValue
- * @returns
+ * @returns Filtered object
  */
 export const filterKeysByProp = (object: AnyObject, filterValue: unknown) => {
   return Object.entries(object)
@@ -14,6 +14,11 @@ export const filterKeysByProp = (object: AnyObject, filterValue: unknown) => {
     .map(([key]) => key)
 }
 
+/**
+ * Filter ghosts based on `ghostProps`
+ * @param ghostProps
+ * @returns List of possible Ghosts after filtering
+ */
 export const filterGhost = (ghostProps: Partial<Evidence>) => {
   const ghostHasProps = filterKeysByProp(ghostProps, true)
   const ghostNotProps = filterKeysByProp(ghostProps, false)
@@ -30,6 +35,11 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
   return possibleGhosts
 }
 
+/**
+ * Pick only props with `true` values from `source`
+ * @param source Object
+ * @returns Filtered object
+ */
 export const pickTrues = (source: Partial<Evidence>) => {
   const res: Partial<Evidence> = {}
   Object.entries(source)

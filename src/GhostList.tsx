@@ -1,15 +1,15 @@
 import React from 'react'
 import Ghost from './Ghost'
-import { ghostData } from './data'
+import { ghostData } from './ghostData'
 
 const GhostList = () => {
-  const allGhosts = ghostData.map(ghost => {
+  const ghostNodes = ghostData.map(ghost => {
     return <Ghost ghost={ghost} key={ghost.name} />
   })
 
   return (
     <div className="ghostList">
-      {allGhosts}
+      {ghostNodes}
     </div>
   )
 }

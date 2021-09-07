@@ -15,4 +15,5 @@ const CheckboxWithLabel = ({ id, onChange, checked, value }: CheckboxWithLabelPr
     </>
   )
 }
+
 export default CheckboxWithLabel
