@@ -17,7 +17,7 @@ const Ghost = ({ ghost }: GhostProps) => {
 
   return (
     <div className={clsx('ghost', { show: isGhostPossible && isAnyEvidenceSelected, noActiveEvidence: !isAnyEvidenceSelected })}>
-      <span className="ghostName">{ghost.name}</span>
+      <div className="ghostName">{ghost.name}</div>
       <div>
         {Object.entries(ghost.evidence).map(([evidenceKey, status]) => {
           const id = `${ghost.name}-${evidenceKey}`
@@ -25,7 +25,7 @@ const Ghost = ({ ghost }: GhostProps) => {
 
           return (
             <div key={evidenceKey} className={clsx('ghostEvidence', { isRemainingFilter: isRemainingEvidence })}>
-              <CheckboxWithLabel id= {id} checked={status} value={evidenceKey} readOnly />
+              <CheckboxWithLabel id={id} checked={status} value={evidenceKey} readOnly />
             </div>
           )
         })}
