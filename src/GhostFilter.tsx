@@ -4,6 +4,7 @@ import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 import CheckboxWithLabel from './CheckboxWithLabel'
 import { Evidence } from './data/ghostData'
 import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from './utils/state'
+import { evidencePrettyName } from './utils/utils'
 
 const GhostFilter = () => {
   const [evidence, setEvidence] = useRecoilState(evidenceState)
@@ -58,7 +59,7 @@ const GhostFilter = () => {
     ? possibleRemainingEvidence.map(evidenceKey => {
       return (
         <div key={evidenceKey}>
-          {evidenceKey}
+          {evidencePrettyName(evidenceKey)}
         </div>
       )
     })
@@ -68,7 +69,7 @@ const GhostFilter = () => {
     ? impossibleRemainingEvidence.map(evidenceKey => {
       return (
         <div key={evidenceKey}>
-          {evidenceKey}
+          {evidencePrettyName(evidenceKey)}
         </div>
       )
     })
