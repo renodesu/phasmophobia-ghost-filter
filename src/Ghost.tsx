@@ -25,7 +25,7 @@ const Ghost = ({ ghost }: GhostProps) => {
 
           return (
             <div key={evidenceKey} className={clsx('ghostEvidence', { isRemainingFilter: isRemainingEvidence })}>
-              <CheckboxWithLabel id={id} checked={status} value={evidenceKey} readOnly />
+              <CheckboxWithLabel id={id} checked={status} value={evidenceKey} disabled />
             </div>
           )
         })}

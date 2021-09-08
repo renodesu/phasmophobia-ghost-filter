@@ -1,0 +1,17 @@
+@mixin customCheckbox {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  border: 1px solid #000;
+  background-color: #fff;
+  border-radius: 2px;
+}
+
+@mixin checkmarkBg {
+  background-image: url(../static/checkmark.svg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

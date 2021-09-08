@@ -5,15 +5,15 @@ type CheckboxWithLabelProps = {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   checked: boolean
   value: string
-  readOnly?: boolean
+  disabled?: boolean
 }
 
 const noop = () => undefined
 
-const CheckboxWithLabel = ({ id, onChange = noop, checked, value, readOnly }: CheckboxWithLabelProps) => {
+const CheckboxWithLabel = ({ id, onChange = noop, checked, value, disabled: readOnly }: CheckboxWithLabelProps) => {
   return (
     <div className="cbWithLabel">
-      <input type="checkbox" id={id} onChange={onChange} checked={checked} value={value} readOnly={readOnly} />
+      <input type="checkbox" id={id} onChange={onChange} checked={checked} value={value} disabled={readOnly} />
       <label htmlFor={id}>{value}</label>
     </div>
   )

@@ -1,3 +1,5 @@
+@use 'mixins';
+
 * {
   margin: 0;
   padding: 0;
@@ -87,11 +89,30 @@ body {
     margin: 0 0.2rem;
     width: 1rem;
     height: 1rem;
-    grid-area: checkbox;
+
+    &:not(:checked):after {
+      @include mixins.customCheckbox;
+    }
+
+    &:checked:after {
+      @include mixins.customCheckbox;
+      @include mixins.checkmarkBg;
+      background-color: #0275ff;
+    }
+
+    &:disabled:after {
+      @include mixins.customCheckbox;
+      background-color: #fff;
+    }
+
+    &:disabled:checked:after {
+      @include mixins.customCheckbox;
+      @include mixins.checkmarkBg;
+      background-color: #ccc;
+    }
   }
 
   label {
-    grid-area: label;
     font-size: 1rem;
     line-height: 1rem;
   }

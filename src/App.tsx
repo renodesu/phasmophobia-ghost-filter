@@ -1,5 +1,5 @@
 import React from 'react'
-import './App.scss'
+import './styles/App.scss'
 import GhostFilter from './GhostFilter'
 import GhostList from './GhostList'
 import GithubMark from './GithubMark'
