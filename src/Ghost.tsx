@@ -20,7 +20,7 @@ const Ghost = ({ ghost }: GhostProps) => {
       <div className="ghostName">{ghost.name}</div>
       <div>
         {Object.entries(ghost.evidence).map(([evidenceKey, status]) => {
-          const id = `${ghost.name}-${evidenceKey}`
+          const id = `evidence-${ghost.name}-${evidenceKey}`
           const isRemainingEvidence = status && possibleRemainingEvidence.includes(evidenceKey as keyof Evidence)
 
           return (

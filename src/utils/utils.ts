@@ -51,6 +51,9 @@ export const pickTrues = (source: Partial<Evidence>) => {
   return res
 }
 
+/**
+ * Evidence pretty-name mapping
+ */
 const evidencePrettyNameMap: Record<string, string> = {
   emf: 'EMF5',
   spiritBox: 'Spirix box',

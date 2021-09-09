@@ -11,11 +11,13 @@ type CheckboxWithLabelProps = {
 
 const noop = () => undefined
 
-const CheckboxWithLabel = ({ id, onChange = noop, checked, value, disabled: readOnly }: CheckboxWithLabelProps) => {
+const CheckboxWithLabel = ({ id, onChange = noop, checked, value, disabled }: CheckboxWithLabelProps) => {
   return (
-    <div className="cbWithLabel">
-      <input type="checkbox" id={id} onChange={onChange} checked={checked} value={value} disabled={readOnly} />
-      <label htmlFor={id}>{evidencePrettyName(value)}</label>
+    <div className="labelWithCB">
+      <label htmlFor={id}>
+        <input type="checkbox" id={id} onChange={onChange} checked={checked} value={value} disabled={disabled} />
+        <span>{evidencePrettyName(value)}</span>
+      </label>
     </div>
   )
 }

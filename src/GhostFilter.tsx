@@ -33,7 +33,7 @@ const GhostFilter = () => {
 
   const includedNodes = Object.entries(evidence.included)
     .map(([name, checked]) => {
-      const id = `evidence-confirmed-${name}`
+      const id = `evidence-included-${name}`
       const isEvidenceImpossible = impossibleRemainingEvidence.includes(name as keyof Evidence)
       const isEvidenceExcluded = evidence.excluded[name as keyof Evidence]
 
