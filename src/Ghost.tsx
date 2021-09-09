@@ -4,6 +4,7 @@ import { useRecoilValue } from 'recoil'
 import CheckboxWithLabel from './CheckboxWithLabel'
 import { Evidence, GhostData } from './data/ghostData'
 import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from './utils/state'
+import { evidencePrettyName } from './utils/utils'
 
 type GhostProps = {
   ghost: GhostData
@@ -25,7 +26,7 @@ const Ghost = ({ ghost }: GhostProps) => {
 
           return (
             <div key={evidenceKey} className={clsx('ghostEvidence', { isRemainingFilter: isRemainingEvidence })}>
-              <CheckboxWithLabel id={id} checked={status} value={evidenceKey} disabled />
+              <CheckboxWithLabel id={id} checked={status} value={evidenceKey} text={evidencePrettyName(evidenceKey)} disabled />
             </div>
           )
         })}

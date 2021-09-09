@@ -1,22 +1,22 @@
 import React from 'react'
-import { evidencePrettyName } from './utils/utils'
 
 type CheckboxWithLabelProps = {
   id: string
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   checked: boolean
   value: string
+  text: string
   disabled?: boolean
 }
 
 const noop = () => undefined
 
-const CheckboxWithLabel = ({ id, onChange = noop, checked, value, disabled }: CheckboxWithLabelProps) => {
+const CheckboxWithLabel = ({ id, onChange = noop, checked, value, disabled = false, text }: CheckboxWithLabelProps) => {
   return (
     <div className="labelWithCB">
       <label htmlFor={id}>
         <input type="checkbox" id={id} onChange={onChange} checked={checked} value={value} disabled={disabled} />
-        <span>{evidencePrettyName(value)}</span>
+        <span>{text}</span>
       </label>
     </div>
   )

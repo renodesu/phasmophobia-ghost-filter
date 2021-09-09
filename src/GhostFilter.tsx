@@ -37,10 +37,10 @@ const GhostFilter = () => {
       const isEvidenceImpossible = impossibleRemainingEvidence.includes(name as keyof Evidence)
       const isEvidenceExcluded = evidence.excluded[name as keyof Evidence]
 
-      // TODO: Check the logits of coloring notpossibles
+      // TODO: Check the logic of coloring notpossibles
       return (
         <div key={name} className={clsx({ evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded })}>
-          <CheckboxWithLabel id={id} onChange={setIncludedEvidence} checked={checked} value={name} />
+          <CheckboxWithLabel id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
         </div>
       )
     })
@@ -50,7 +50,7 @@ const GhostFilter = () => {
       const id = `evidence-excluded-${name}`
       return (
         <div key={name}>
-          <CheckboxWithLabel id={id} onChange={setExcludedEvidence} checked={checked} value={name} />
+          <CheckboxWithLabel id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
         </div>
       )
     })
