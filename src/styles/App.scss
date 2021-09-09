@@ -1,5 +1,7 @@
 @use 'mixins';
 
+$appWidth: 1400px;
+
 * {
   margin: 0;
   padding: 0;
@@ -25,7 +27,7 @@ body {
 }
 
 .App {
-  max-width: 1400px;
+  max-width: $appWidth;
   margin: 0 auto;
 }
 
@@ -45,8 +47,8 @@ body {
   flex: 1;
   border: 1px solid #ccc;
   padding: 0.8rem;
-  min-width: 160px;
-  max-width: 160px;
+  min-width: $appWidth / 8;
+  max-width: $appWidth / 8;
   opacity: 0.25;
 
   .ghostName {
