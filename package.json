@@ -24,8 +24,21 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.25.1",
+    "http-server": "^13.0.1",
     "sass": "^1.39.0",
     "typescript": "^4.4.2",
     "vite": "^2.5.4"
-  }
+  },
+  "description": "[LIVE version](https://phasmophobia-ghost-filter.vercel.app/)",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renodesu/phasmophobia-ghost-filter.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renodesu/phasmophobia-ghost-filter/issues"
+  },
+  "homepage": "https://github.com/renodesu/phasmophobia-ghost-filter#readme"
 }
