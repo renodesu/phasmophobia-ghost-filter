@@ -75,10 +75,10 @@ body {
     }
     &.possible {
       // color: rgb(0, 44, 189);
-      background: rgba($color: #0f0, $alpha: 0.4);
+      background: rgba($color: rgb(255, 251, 0), $alpha: 0.4);
     }
     &.isRemainingFilter {
-      background: rgba($color: #0f0, $alpha: 0.4);
+      background: rgba($color: #f1ff28, $alpha: 0.4);
     }
   }
 }
@@ -132,7 +132,7 @@ body {
 }
 
 .greenBg {
-  background: rgba($color: #0f0, $alpha: 0.4);
+  background: rgba($color: rgb(255, 251, 0), $alpha: 0.4);
 }
 
 .redBg {
