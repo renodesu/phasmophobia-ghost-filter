@@ -1,11 +1,11 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
+import { Evidence, GhostData } from '../data/ghostData'
+import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from '../utils/state'
+import { evidencePrettyName } from '../utils/utils'
+import styles from '../styles/Ghost.module.scss'
 import LabelWithCB from './LabelWithCB'
-import { Evidence, GhostData } from './data/ghostData'
-import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from './utils/state'
-import { evidencePrettyName } from './utils/utils'
-import styles from './styles/Ghost.module.scss'
 
 type GhostProps = {
   ghost: GhostData

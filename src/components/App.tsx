@@ -1,12 +1,12 @@
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import './styles/global.scss'
-import styles from './styles/App.module.scss'
+import '../styles/global.scss'
+import { darkModeState } from '../utils/state'
+import styles from '../styles/App.module.scss'
 import GhostFilter from './GhostFilter'
 import GhostList from './GhostList'
 import GithubMark from './GithubMark'
 import DarkModeToggle from './DarkModeToggle'
-import { darkModeState } from './utils/state'
 
 const App = () => {
   const darkMode = useRecoilValue(darkModeState)

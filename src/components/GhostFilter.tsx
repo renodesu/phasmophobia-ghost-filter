@@ -1,11 +1,11 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
+import { Evidence } from '../data/ghostData'
+import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from '../utils/state'
+import { evidencePrettyName } from '../utils/utils'
+import styles from '../styles/GhostFilter.module.scss'
 import LabelWithCB from './LabelWithCB'
-import { Evidence } from './data/ghostData'
-import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from './utils/state'
-import { evidencePrettyName } from './utils/utils'
-import styles from './styles/GhostFilter.module.scss'
 
 const GhostFilter = () => {
   const [evidence, setEvidence] = useRecoilState(evidenceState)

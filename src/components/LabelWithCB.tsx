@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './styles/LabelWithCB.module.scss'
+import styles from '../styles/LabelWithCB.module.scss'
 
 type CheckboxWithLabelProps = {
   id: string
