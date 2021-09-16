@@ -4,7 +4,7 @@ import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 import { Evidence } from '../data/ghostData'
 import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from '../utils/state'
 import { evidencePrettyName } from '../utils/utils'
-import styles from '../styles/GhostFilter.module.scss'
+import styles from './GhostFilter.module.scss'
 import LabelWithCB from './LabelWithCB'
 
 const GhostFilter = () => {

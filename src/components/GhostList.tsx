@@ -1,6 +1,6 @@
 import React from 'react'
 import { ghostData } from '../data/ghostData'
-import styles from '../styles/GhostList.module.scss'
+import styles from './GhostList.module.scss'
 import Ghost from './Ghost'
 
 const GhostList = () => {
