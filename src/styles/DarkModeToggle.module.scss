@@ -1,0 +1,28 @@
+@use 'variables';
+
+.darkModeToggle {
+  position: relative;
+  cursor: pointer;
+  height: 32px;
+  width: 32px;
+
+  .icon {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: opacity variables.$transitionSpeed linear;
+
+    &.show {
+      opacity: 1;
+    }
+
+    svg {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

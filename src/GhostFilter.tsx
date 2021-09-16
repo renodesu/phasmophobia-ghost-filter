@@ -1,10 +1,11 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
-import CheckboxWithLabel from './CheckboxWithLabel'
+import LabelWithCB from './LabelWithCB'
 import { Evidence } from './data/ghostData'
 import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from './utils/state'
 import { evidencePrettyName } from './utils/utils'
+import styles from './styles/GhostFilter.module.scss'
 
 const GhostFilter = () => {
   const [evidence, setEvidence] = useRecoilState(evidenceState)
@@ -40,7 +41,7 @@ const GhostFilter = () => {
       // TODO: Check the logic of coloring notpossibles
       return (
         <div key={name} className={clsx({ evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded })}>
-          <CheckboxWithLabel id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
+          <LabelWithCB id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
         </div>
       )
     })
@@ -50,7 +51,7 @@ const GhostFilter = () => {
       const id = `evidence-excluded-${name}`
       return (
         <div key={name}>
-          <CheckboxWithLabel id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
+          <LabelWithCB id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
         </div>
       )
     })
@@ -76,36 +77,32 @@ const GhostFilter = () => {
     : '(None)'
 
   return (
-    <div className="filter">
-      <div className="help">
+    <div className={styles.ghostFilter}>
+      <div className={styles.help}>
         <div>
           <h3>Usage</h3>
           <p>Use confirmed evidence to narrow down the ghost type.</p>
           <p>Use excluded evidence to further filter the ghost type if you sure it can't be some specific evidence.</p>
           <p>
-            <span className="greenBg">Green</span> highlight means that evidence is missing to identify that specific ghost.
+            <span className={styles.greenBg}>Green</span> highlight means that evidence is missing to identify that specific ghost.
           </p>
-          {/* <p>
-          <span className="redBg">Red</span> highlight means that evidence isn't possible (invalid evidence combination {'->'} no Ghost found).
-        </p> */}
-
         </div>
         <div>
-          <div style={{ textAlign: 'center' }}>
+          <div className={styles.center}>
             <button onClick={resetEvidence}>Reset</button>
           </div>
         </div>
       </div>
-      <div className="columns">
+      <div className={styles.columns}>
         <div>
           <h3>Possible remaining</h3>
           {possibleRemainingEvidenceNode}
         </div>
-        <div className="border">
+        <div className={styles.border}>
           <h3>Confirmed</h3>
           {includedNodes}
         </div>
-        <div className="border">
+        <div className={styles.border}>
           <h3>Excluded</h3>
           {excludedNodes}
         </div>

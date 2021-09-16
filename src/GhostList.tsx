@@ -1,6 +1,7 @@
 import React from 'react'
 import Ghost from './Ghost'
 import { ghostData } from './data/ghostData'
+import styles from './styles/GhostList.module.scss'
 
 const GhostList = () => {
   const ghostNodes = ghostData.map(ghost => {
@@ -8,7 +9,7 @@ const GhostList = () => {
   })
 
   return (
-    <div className="ghostList">
+    <div className={styles.ghostList}>
       {ghostNodes}
     </div>
   )

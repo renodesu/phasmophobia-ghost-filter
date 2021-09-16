@@ -1,4 +1,5 @@
 import React from 'react'
+import styles from './styles/LabelWithCB.module.scss'
 
 type CheckboxWithLabelProps = {
   id: string
@@ -11,9 +12,9 @@ type CheckboxWithLabelProps = {
 
 const noop = () => undefined
 
-const CheckboxWithLabel = ({ id, onChange = noop, checked, value, disabled = false, text }: CheckboxWithLabelProps) => {
+const LabelWithCB = ({ id, onChange = noop, checked, value, disabled = false, text }: CheckboxWithLabelProps) => {
   return (
-    <div className="labelWithCB">
+    <div className={styles.labelWithCB}>
       <label htmlFor={id}>
         <input type="checkbox" id={id} onChange={onChange} checked={checked} value={value} disabled={disabled} />
         <span>{text}</span>
@@ -22,4 +23,4 @@ const CheckboxWithLabel = ({ id, onChange = noop, checked, value, disabled = fal
   )
 }
 
-export default CheckboxWithLabel
+export default LabelWithCB

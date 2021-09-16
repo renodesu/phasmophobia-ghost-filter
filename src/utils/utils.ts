@@ -37,7 +37,7 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
 
 /**
  * Pick only props with `true` values from `source`
- * @param source Object
+ * @param source Evidence Object
  * @returns Filtered object
  */
 export const pickTrues = (source: Partial<Evidence>) => {
