@@ -8,6 +8,7 @@ type CheckboxWithLabelProps = {
   value: string
   text: string
   disabled?: boolean
+  hideCheckbox?: boolean
 }
 
 const noop = () => undefined
