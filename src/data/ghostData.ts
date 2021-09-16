@@ -1,14 +1,6 @@
-export type Evidence = {
-  emf: boolean
-  freezingTemp: boolean
-  spiritBox: boolean
-  ghostWriting: boolean
-  ghostOrbs: boolean
-  fingerPrints: boolean
-  DOTS: boolean
-}
+export const evidenceKeys = ['emf', 'spiritBox', 'fingerPrints', 'ghostOrbs', 'ghostWriting', 'freezingTemp', 'DOTS'] as const
 
-export type EvidenceKeys = (keyof Evidence)[]
+export type EvidenceKey = typeof evidenceKeys[number]
 
 export type GhostData = {
   name: string
@@ -16,7 +8,9 @@ export type GhostData = {
   description?: string
 }
 
-export const evidenceKeys: EvidenceKeys = ['emf', 'spiritBox', 'fingerPrints', 'ghostOrbs', 'ghostWriting', 'freezingTemp', 'DOTS']
+export type Evidence = {
+  [key in EvidenceKey]: boolean
+}
 
 export const ghostData: GhostData[] = [
   {

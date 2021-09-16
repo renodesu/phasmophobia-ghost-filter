@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import { Evidence, GhostData } from '../data/ghostData'
+import { EvidenceKey, GhostData } from '../data/ghostData'
 import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from '../utils/state'
 import { evidencePrettyName } from '../utils/utils'
 import styles from './Ghost.module.scss'
@@ -10,8 +10,6 @@ import LabelWithCB from './LabelWithCB'
 type GhostProps = {
   ghost: GhostData
 }
-
-console.log('asd', styles)
 
 const Ghost = ({ ghost }: GhostProps) => {
   const possibleGhosts = useRecoilValue(possibleGhostsState)
@@ -25,7 +23,7 @@ const Ghost = ({ ghost }: GhostProps) => {
       <div>
         {Object.entries(ghost.evidence).map(([evidenceKey, status]) => {
           const id = `evidence-${ghost.name}-${evidenceKey}`
-          const isRemainingEvidence = status && possibleRemainingEvidence.includes(evidenceKey as keyof Evidence)
+          const isRemainingEvidence = status && possibleRemainingEvidence.includes(evidenceKey as EvidenceKey)
 
           return (
             <div key={evidenceKey} className={clsx(styles.ghostEvidence, { [styles.isRemainingFilter]: isRemainingEvidence })}>

@@ -1,4 +1,4 @@
-import { Evidence, ghostData } from '../data/ghostData'
+import { Evidence, EvidenceKey, ghostData } from '../data/ghostData'
 
 export type AnyObject = Record<string, unknown>
 
@@ -45,7 +45,7 @@ export const pickTrues = (source: Partial<Evidence>) => {
   Object.entries(source)
     .forEach(([name, status]) => {
       if (status) {
-        res[name as keyof Evidence] = status
+        res[name as EvidenceKey] = status
       }
     })
   return res

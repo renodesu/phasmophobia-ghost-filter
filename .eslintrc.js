@@ -28,12 +28,13 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 2,
     'react/no-unescaped-entities': 0,
     indent: 0,
+    'no-unused-vars': 0,
     '@typescript-eslint/indent': [2, 2],
     'import/order': 2,
     'import/no-unresolved': [
       'error',
       {
-        ignore: ['svg?']
+        ignore: ['\\.svg\\?component$']
       }
     ]
   }

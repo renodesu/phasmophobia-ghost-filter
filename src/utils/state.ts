@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil'
-import { Evidence, evidenceKeys } from '../data/ghostData'
+import { Evidence, EvidenceKey, evidenceKeys } from '../data/ghostData'
 import { filterGhost, pickTrues, readLocalStorage, writeLocalStorage } from './utils'
 
 type EvidenceState = {
@@ -52,7 +52,7 @@ export const possibleGhostsState = selector({
     const activeExcludedEvidence = pickTrues(evidence.excluded)
     const invertedExcludedEvidence: Partial<Evidence> = Object.keys(activeExcludedEvidence)
       .reduce((prev, curr) => {
-        prev[curr as keyof Evidence] = false
+        prev[curr as EvidenceKey] = false
         return prev
       }, {} as Partial<Evidence>)
 
