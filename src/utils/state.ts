@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil'
 import { Evidence, evidenceKeys } from '../data/ghostData'
-import { filterGhost, pickTrues } from './utils'
+import { filterGhost, pickTrues, readLocalStorage, writeLocalStorage } from './utils'
 
 type EvidenceState = {
   included: Evidence
@@ -95,4 +95,22 @@ export const possibleRemainingEvidenceState = selector({
 
     return possibleRemainingEvidence
   }
+})
+
+const getDarkModeInitialState = () => {
+  const themeState = readLocalStorage('darkMode')
+  const preferDarkTheme = window.matchMedia('(prefers-color-scheme)')?.matches
+  if (themeState === 'true') { return true } else if (themeState === 'false') { return false } else {
+    return preferDarkTheme
+  }
+}
+
+export const darkModeState = atom({
+  key: 'darkModeState',
+  default: getDarkModeInitialState(),
+  effects_UNSTABLE: [
+    ({ onSet }) => {
+      onSet(darkMode => writeLocalStorage('darkMode', String(darkMode)))
+    }
+  ]
 })

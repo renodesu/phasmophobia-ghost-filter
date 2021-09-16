@@ -5,6 +5,10 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
+    'plugin:import/recommended',
+    // 'plugin:import/errors',
+    // 'plugin:import/warnings',
+    'plugin:import/typescript',
     'standard'
   ],
   parser: '@typescript-eslint/parser',
@@ -24,6 +28,13 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': 2,
     'react/no-unescaped-entities': 0,
     indent: 0,
-    '@typescript-eslint/indent': [2, 2]
+    '@typescript-eslint/indent': [2, 2],
+    'import/order': 2,
+    'import/no-unresolved': [
+      'error',
+      {
+        ignore: ['svg?']
+      }
+    ]
   }
 }
