@@ -37,9 +37,7 @@ export const isAnyEvidenceSelectedState = selector({
   key: 'isAnyEvidenceSelectedState',
   get: ({ get }) => {
     const evidence = get(evidenceState)
-    const activeIncludedEvidence = pickTrues(evidence.included)
-    const activeExcludedEvidence = pickTrues(evidence.excluded)
-    return Object.keys(activeIncludedEvidence).length > 0 || Object.keys(activeExcludedEvidence).length > 0
+    return Object.values(evidence.included).some(Boolean) || Object.values(evidence.excluded).some(Boolean)
   }
 })
 
