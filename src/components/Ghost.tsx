@@ -1,9 +1,11 @@
 import clsx from 'clsx'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
+
 import { EvidenceKey, GhostData } from '../data/ghostData'
 import { isAnyEvidenceSelectedState, possibleGhostsState, possibleRemainingEvidenceState } from '../utils/state'
 import { evidencePrettyName } from '../utils/utils'
+
 import styles from './Ghost.module.scss'
 import LabelWithCB from './LabelWithCB'
 

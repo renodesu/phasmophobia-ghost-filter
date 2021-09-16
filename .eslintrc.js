@@ -6,9 +6,8 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'plugin:import/recommended',
-    // 'plugin:import/errors',
-    // 'plugin:import/warnings',
     'plugin:import/typescript',
+    // 'plugin:@typescript-eslint/recommended',
     'standard'
   ],
   parser: '@typescript-eslint/parser',
@@ -30,12 +29,19 @@ module.exports = {
     indent: 0,
     'no-unused-vars': 0,
     '@typescript-eslint/indent': [2, 2],
-    'import/order': 2,
+    'import/order': [2, {
+      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
+      'newlines-between': 'always',
+      alphabetize: {
+        order: 'asc'
+      }
+    }],
     'import/no-unresolved': [
       'error',
       {
         ignore: ['\\.svg\\?component$']
       }
     ]
+    // '@typescript-eslint/consistent-type-imports': [2, { prefer: 'type-imports' }]
   }
 }

@@ -1,7 +1,9 @@
 import React from 'react'
+
 import { ghostData } from '../data/ghostData'
-import styles from './GhostList.module.scss'
+
 import Ghost from './Ghost'
+import styles from './GhostList.module.scss'
 
 const GhostList = () => {
   const ghostNodes = ghostData.map(ghost => {

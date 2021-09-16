@@ -1,16 +1,21 @@
+import '../styles/global.scss'
 import React from 'react'
 import { useRecoilValue } from 'recoil'
-import '../styles/global.scss'
+
 import { darkModeState } from '../utils/state'
+
 import styles from './App.module.scss'
+import DarkModeToggle from './DarkModeToggle'
 import GhostFilter from './GhostFilter'
 import GhostList from './GhostList'
 import GithubMark from './GithubMark'
-import DarkModeToggle from './DarkModeToggle'
+
+import type { EvidenceKey } from '../data/ghostData'
 
 const App = () => {
   const darkMode = useRecoilValue(darkModeState)
   const theme = darkMode ? 'dark' : 'light'
+  const kek: EvidenceKey = 'DOTS'
 
   return (
     <div className={styles.App} data-theme={theme}>

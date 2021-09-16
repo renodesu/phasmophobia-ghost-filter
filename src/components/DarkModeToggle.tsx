@@ -1,9 +1,11 @@
+import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState } from 'recoil'
-import clsx from 'clsx'
-import { darkModeState } from '../utils/state'
-import SunIcon from '../static/sun.svg?component'
+
 import MoonIcon from '../static/moon.svg?component'
+import SunIcon from '../static/sun.svg?component'
+import { darkModeState } from '../utils/state'
+
 import styles from './DarkModeToggle.module.scss'
 
 const DarkModeToggle = () => {

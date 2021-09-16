@@ -1,5 +1,7 @@
 import { atom, selector } from 'recoil'
+
 import { Evidence, EvidenceKey, evidenceKeys } from '../data/ghostData'
+
 import { filterGhost, pickTrues, readLocalStorage, writeLocalStorage } from './utils'
 
 type EvidenceState = {
