@@ -2,17 +2,17 @@
 
 .darkModeToggle {
   position: relative;
-  cursor: pointer;
-  height: 32px;
   width: 32px;
+  height: 32px;
+  cursor: pointer;
 
   .icon {
-    opacity: 0;
     position: absolute;
     top: 0;
     left: 0;
-    height: 100%;
     width: 100%;
+    height: 100%;
+    opacity: 0;
     transition: opacity variables.$transitionSpeed linear;
 
     &.show {
@@ -21,8 +21,8 @@
 
     svg {
       display: block;
-      height: 100%;
       width: 100%;
+      height: 100%;
     }
   }
 }

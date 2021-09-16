@@ -2,24 +2,24 @@
 @use "../styles/variables";
 
 .ghost {
-  flex: 1;
-  border: 1px solid #ccc;
-  padding: 0.8rem;
   min-width: math.div(variables.$appWidth, 8);
   max-width: math.div(variables.$appWidth, 8);
+  flex: 1;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
   opacity: 0.25;
   transition: opacity variables.$transitionSpeed linear;
 
   .ghostName {
-    font-weight: bold;
-    font-size: 1.1rem;
     margin: 0.1rem 0 0.4rem 0;
+    font-size: 1.1rem;
+    font-weight: bold;
   }
 
   &.noActiveEvidence,
   &.show {
-    opacity: 1;
     border: 1px solid #666;
+    opacity: 1;
   }
 
   .ghostEvidence {

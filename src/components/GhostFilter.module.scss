@@ -3,10 +3,10 @@
     display: flex;
 
     > * {
-      flex-grow: 1;
       flex-basis: 0;
-      margin: 0 1rem 0 0;
+      flex-grow: 1;
       padding: 1rem;
+      margin: 0 1rem 0 0;
     }
 
     .evidenceNotPossible {
@@ -16,12 +16,12 @@
 }
 
 .help {
-  flex: 1;
-  border: 1px solid #ccc;
-  padding: 1rem;
-  margin: 1rem 0;
   display: flex;
+  flex: 1;
   align-items: center;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  margin: 1rem 0;
 
   > :first-child {
     flex: 1;
@@ -33,8 +33,8 @@
 }
 
 .border {
-  border: 1px solid #ccc;
   padding: 1rem;
+  border: 1px solid #ccc;
 }
 
 .greenBg {
@@ -42,8 +42,8 @@
 }
 
 .greenWord {
-  background: rgba($color: #0f0, $alpha: 0.4);
   padding: 0 0.4rem;
+  background: rgba($color: #0f0, $alpha: 0.4);
   border-radius: 0.1rem;
 }
 
