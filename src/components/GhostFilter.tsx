@@ -84,7 +84,7 @@ const GhostFilter = () => {
           <p>Use confirmed evidence to narrow down the ghost type.</p>
           <p>Use excluded evidence to further filter the ghost type if you sure it can't be some specific evidence.</p>
           <p>
-            <span className={styles.greenBg}>Green</span> highlight means that evidence is missing to identify that specific ghost.
+            <span className={styles.greenWord}>Green</span> highlight means that evidence is missing to identify that specific ghost.
           </p>
         </div>
         <div>
