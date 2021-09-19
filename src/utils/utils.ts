@@ -54,7 +54,7 @@ export const pickTrues = (source: Partial<Evidence>) => {
 /**
  * Evidence pretty-name mapping
  */
-const evidencePrettyNameMap: Record<string, string> = {
+const evidencePrettyNameMap: Record<EvidenceKey, string> = {
   emf: 'EMF5',
   spiritBox: 'Spirit box',
   fingerPrints: 'Fingerprints',
@@ -64,7 +64,7 @@ const evidencePrettyNameMap: Record<string, string> = {
   DOTS: 'D.O.T.S.'
 }
 
-export const evidencePrettyName = (evidenceKey: string) => evidencePrettyNameMap[evidenceKey]
+export const evidencePrettyName = (evidenceKey: EvidenceKey) => evidencePrettyNameMap[evidenceKey]
 
 export const writeLocalStorage = (key: string, value: string) => localStorage.setItem(key, value)
 export const readLocalStorage = (key: string) => localStorage.getItem(key)

@@ -43,7 +43,7 @@ const GhostFilter = () => {
       // TODO: Check the logic of coloring notpossibles
       return (
         <div key={name} className={clsx({ evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded })}>
-          <LabelWithCB id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
+          <LabelWithCB id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name as EvidenceKey)} value={name} />
         </div>
       )
     })
@@ -53,7 +53,7 @@ const GhostFilter = () => {
       const id = `evidence-excluded-${name}`
       return (
         <div key={name}>
-          <LabelWithCB id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
+          <LabelWithCB id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name as EvidenceKey)} value={name} />
         </div>
       )
     })
@@ -87,6 +87,9 @@ const GhostFilter = () => {
           <p>Use excluded evidence to further filter the ghost type if you're sure it can't be some specific evidence.</p>
           <p>
             <span className={styles.greenWord}>Green</span> highlight means that evidence is missing to identify that specific ghost.
+          </p>
+          <p>
+            Press ESC to reset the filter.
           </p>
         </div>
         <div>

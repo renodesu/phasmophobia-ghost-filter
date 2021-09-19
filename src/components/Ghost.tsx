@@ -29,7 +29,7 @@ const Ghost = ({ ghost }: GhostProps) => {
 
           return (
             <div key={evidenceKey} className={clsx(styles.ghostEvidence, { [styles.isRemainingFilter]: isRemainingEvidence })}>
-              <LabelWithCB id={id} checked={status} value={evidenceKey} text={evidencePrettyName(evidenceKey)} disabled hideCheckbox />
+              <LabelWithCB id={id} checked={status} value={evidenceKey} text={evidencePrettyName(evidenceKey as EvidenceKey)} disabled hideCheckbox />
             </div>
           )
         })}
