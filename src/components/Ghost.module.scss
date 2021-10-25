@@ -2,8 +2,8 @@
 @use "../styles/variables";
 
 .ghost {
-  min-width: math.div(variables.$appWidth, 8);
-  max-width: math.div(variables.$appWidth, 8);
+  min-width: math.div(variables.$appWidth, 7);
+  max-width: math.div(variables.$appWidth, 7);
   flex: 1;
   padding: 0.8rem;
   border: 1px solid #ccc;
