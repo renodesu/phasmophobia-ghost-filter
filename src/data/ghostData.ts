@@ -204,6 +204,54 @@ export const ghostData: GhostData[] = [
       freezingTemp: false,
       DOTS: false
     }
+  },
+  {
+    name: 'Onryo',
+    evidence: {
+      emf: false,
+      spiritBox: true,
+      fingerPrints: false,
+      ghostOrbs: true,
+      ghostWriting: false,
+      freezingTemp: true,
+      DOTS: false
+    }
+  },
+  {
+    name: 'The Twins',
+    evidence: {
+      emf: true,
+      spiritBox: true,
+      fingerPrints: false,
+      ghostOrbs: false,
+      ghostWriting: false,
+      freezingTemp: true,
+      DOTS: false
+    }
+  },
+  {
+    name: 'Raiju',
+    evidence: {
+      emf: true,
+      spiritBox: false,
+      fingerPrints: false,
+      ghostOrbs: true,
+      ghostWriting: false,
+      freezingTemp: false,
+      DOTS: true
+    }
+  },
+  {
+    name: 'Obake',
+    evidence: {
+      emf: true,
+      spiritBox: false,
+      fingerPrints: true,
+      ghostOrbs: true,
+      ghostWriting: false,
+      freezingTemp: false,
+      DOTS: false
+    }
   }
 ].sort(({ name }, { name: nameB }) => {
   if (name < nameB) return -1
