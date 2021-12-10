@@ -252,6 +252,18 @@ export const ghostData: GhostData[] = [
       freezingTemp: false,
       DOTS: false
     }
+  },
+  {
+    name: 'Mimic*',
+    evidence: {
+      emf: false,
+      spiritBox: true,
+      fingerPrints: true,
+      ghostOrbs: false,
+      ghostWriting: false,
+      freezingTemp: true,
+      DOTS: false
+    }
   }
 ].sort(({ name }, { name: nameB }) => {
   if (name < nameB) return -1
