@@ -40,4 +40,8 @@
       border-radius: 0.1rem;
     }
   }
+  .isExtra label>span::after {
+    content: ' *';
+    color: gold;
+  }
 }

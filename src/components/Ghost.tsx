@@ -26,9 +26,10 @@ const Ghost = ({ ghost }: GhostProps) => {
         {Object.entries(ghost.evidence).map(([evidenceKey, status]) => {
           const id = `evidence-${ghost.name}-${evidenceKey}`
           const isRemainingEvidence = status && possibleRemainingEvidence.includes(evidenceKey as EvidenceKey)
+          const isExtra = ghost.isMimic && evidenceKey === 'ghostOrbs'
 
           return (
-            <div key={evidenceKey} className={clsx(styles.ghostEvidence, { [styles.isRemainingFilter]: isRemainingEvidence })}>
+            <div key={evidenceKey} className={clsx(styles.ghostEvidence, { [styles.isRemainingFilter]: isRemainingEvidence, [styles.isExtra]: isExtra })}>
               <LabelWithCB id={id} checked={status} value={evidenceKey} text={evidencePrettyName(evidenceKey as EvidenceKey)} disabled hideCheckbox />
             </div>
           )

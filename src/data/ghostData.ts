@@ -6,6 +6,7 @@ export type GhostData = {
   name: string
   evidence: Evidence
   description?: string
+  isMimic?: boolean
 }
 
 export type Evidence = {
@@ -254,12 +255,13 @@ export const ghostData: GhostData[] = [
     }
   },
   {
-    name: 'Mimic*',
+    name: 'Mimic',
+    isMimic: true,
     evidence: {
       emf: false,
       spiritBox: true,
       fingerPrints: true,
-      ghostOrbs: false,
+      ghostOrbs: true,
       ghostWriting: false,
       freezingTemp: true,
       DOTS: false
