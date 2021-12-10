@@ -35,13 +35,7 @@ module.exports = {
       alphabetize: {
         order: 'asc'
       }
-    }],
-    'import/no-unresolved': [
-      'error',
-      {
-        ignore: ['\\.svg\\?component$']
-      }
-    ]
+    }]
     // '@typescript-eslint/consistent-type-imports': [2, { prefer: 'type-imports' }]
   }
 }
