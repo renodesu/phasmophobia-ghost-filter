@@ -16,6 +16,9 @@ const GhostFilter = () => {
   const impossibleRemainingEvidence = useRecoilValue(impossibleRemainingEvidenceState)
   const isAnyEvidenceSelected = useRecoilValue(isAnyEvidenceSelectedState)
 
+  const includedEvidence = Object.entries(evidence.included) as [EvidenceKey, boolean][]
+  const excludedEvidence = Object.entries(evidence.excluded) as [EvidenceKey, boolean][]
+
   const setIncludedEvidence = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
     if (isChecked) {
@@ -34,26 +37,26 @@ const GhostFilter = () => {
     }
   }
 
-  const includedNodes = Object.entries(evidence.included)
+  const includedNodes = includedEvidence
     .map(([name, checked]) => {
       const id = `evidence-included-${name}`
-      const isEvidenceImpossible = impossibleRemainingEvidence.includes(name as EvidenceKey)
+      const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
       const isEvidenceExcluded = evidence.excluded[name as keyof Evidence]
 
-      // TODO: Check the logic of coloring notpossibles
+      // TODO: Check the logic of coloring notPossibles
       return (
         <div key={name} className={clsx({ evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded })}>
-          <LabelWithCB id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name as EvidenceKey)} value={name} />
+          <LabelWithCB id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
         </div>
       )
     })
 
-  const excludedNodes = Object.entries(evidence.excluded)
+  const excludedNodes = excludedEvidence
     .map(([name, checked]) => {
       const id = `evidence-excluded-${name}`
       return (
         <div key={name}>
-          <LabelWithCB id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name as EvidenceKey)} value={name} />
+          <LabelWithCB id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
         </div>
       )
     })

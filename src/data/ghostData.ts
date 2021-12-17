@@ -1,19 +1,29 @@
+// TODO: enum
+enum Ev {
+  EMF5 = 'emf',
+  SpiritBox = 'spiritBox',
+  FingerPrints = 'fingerPrints',
+  GhostOrbs = 'ghostOrbs',
+  GhostWriting = 'ghostWriting',
+  FreezingTemp = 'freezingTemp',
+  DOTS = 'DOTS',
+}
+
 export const evidenceKeys = ['emf', 'spiritBox', 'fingerPrints', 'ghostOrbs', 'ghostWriting', 'freezingTemp', 'DOTS'] as const
 
 export type EvidenceKey = typeof evidenceKeys[number]
-
-export type GhostData = {
-  name: string
-  evidence: Evidence
-  description?: string
-  isMimic?: boolean
-}
-
 export type Evidence = {
   [key in EvidenceKey]: boolean
 }
 
-export const ghostData: GhostData[] = [
+export type GhostData = {
+  name: string
+  evidence: Evidence
+  fakeEvidence?: EvidenceKey[]
+  description?: string
+}
+
+const ghostData: GhostData[] = [
   {
     name: 'Phantom',
     evidence: {
@@ -256,7 +266,6 @@ export const ghostData: GhostData[] = [
   },
   {
     name: 'Mimic',
-    isMimic: true,
     evidence: {
       emf: false,
       spiritBox: true,
@@ -265,10 +274,18 @@ export const ghostData: GhostData[] = [
       ghostWriting: false,
       freezingTemp: true,
       DOTS: false
-    }
+    },
+    fakeEvidence: ['ghostOrbs']
   }
-].sort(({ name }, { name: nameB }) => {
-  if (name < nameB) return -1
-  if (name > nameB) return 1
-  return 0
-})
+]
+
+const sortedGhostData = ghostData
+  .sort(({ name }, { name: nameB }) => {
+    if (name < nameB) return -1
+    if (name > nameB) return 1
+    return 0
+  })
+
+export {
+  sortedGhostData as ghostData
+}
