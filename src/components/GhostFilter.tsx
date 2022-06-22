@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import React from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 
 import { EvidenceKey } from '../data/ghostData'

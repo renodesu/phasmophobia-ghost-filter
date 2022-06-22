@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { ghostData } from '../data/ghostData'
 
 import Ghost from './Ghost'

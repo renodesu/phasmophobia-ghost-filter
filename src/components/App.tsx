@@ -1,5 +1,5 @@
 import '../styles/global.scss'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useRecoilValue, useResetRecoilState } from 'recoil'
 
 import { darkModeState, evidenceState } from '../utils/state'

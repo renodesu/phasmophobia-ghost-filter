@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import React from 'react'
 import { useRecoilState } from 'recoil'
 
 import moonIcon from '../static/moon.svg'

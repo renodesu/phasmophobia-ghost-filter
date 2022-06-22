@@ -1,4 +1,3 @@
-import React from 'react'
 import { useRecoilValue } from 'recoil'
 
 import githubDark from '../static/GitHub-Mark-64px.png'
