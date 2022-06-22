@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 
-import { Evidence, EvidenceKey } from '../data/ghostData'
+import { EvidenceKey } from '../data/ghostData'
 import {
   evidenceState,
   impossibleRemainingEvidenceState,
@@ -67,7 +67,7 @@ const GhostFilter = () => {
   const includedNodes = includedEvidence.map(([name, checked]) => {
     const id = `evidence-included-${name}`
     const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
-    const isEvidenceExcluded = evidence.excluded[name as keyof Evidence]
+    const isEvidenceExcluded = evidence.excluded[name]
 
     // TODO: Check the logic of coloring notPossibles
     return (

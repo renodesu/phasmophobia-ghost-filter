@@ -5,23 +5,23 @@ module.exports = {
   env: {
     node: true,
     es2021: true,
-    jest: true
   },
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    // TODO: Cannot add with shared configs - see https://typescript-eslint.io/docs/linting/type-linting/
-    // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'plugin:react/recommended',
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: 'module',
+    tsconfigRootDir: __dirname,
+    project: ['./tsconfig.json'],
   },
   plugins: ['@typescript-eslint', 'eslint-plugin-import'],
   rules: {
-    // Lumiverse specific styles
     'linebreak-style': [2, 'unix'],
     '@typescript-eslint/member-delimiter-style': [
       2,

@@ -2,8 +2,8 @@ import clsx from 'clsx'
 import React from 'react'
 import { useRecoilState } from 'recoil'
 
-import { ReactComponent as MoonIcon } from '../static/moon.svg'
-import { ReactComponent as SunIcon } from '../static/sun.svg'
+import moonIcon from '../static/moon.svg'
+import sunIcon from '../static/sun.svg'
 import { darkModeState } from '../utils/state'
 
 import styles from './DarkModeToggle.module.scss'
@@ -18,10 +18,14 @@ const DarkModeToggle = () => {
       title={`Switch to ${darkMode ? 'Light' : 'Dark'} theme`}
     >
       <div className={clsx(styles.icon, { [styles.show]: darkMode })}>
-        <SunIcon />
+        {/* <SunIcon /> */}
+        <img src={sunIcon} alt="sunIcon" />
+        {/* {sunIcon} */}
       </div>
       <div className={clsx(styles.icon, { [styles.show]: !darkMode })}>
-        <MoonIcon />
+        {/* <MoonIcon /> */}
+        <img src={moonIcon} alt="moonIcon" />
+        {/* {moonIcon} */}
       </div>
     </div>
   )
