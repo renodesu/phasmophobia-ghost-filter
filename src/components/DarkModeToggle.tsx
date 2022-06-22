@@ -23,7 +23,7 @@ const DarkModeToggle = () => {
       <div className={clsx(styles.icon, { [styles.show]: !darkMode })}>
         <MoonIcon />
       </div>
-    </div >
+    </div>
   )
 }
 

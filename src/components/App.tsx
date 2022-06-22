@@ -32,9 +32,7 @@ const App = () => {
       <div id={styles.appContent}>
         <div className={styles.row}>
           <div className={styles.titleRow}>
-            <h1>
-              Phasmophobia Ghost Filter
-            </h1>
+            <h1>Phasmophobia Ghost Filter</h1>
             <div className={styles.headingRight}>
               <DarkModeToggle />
               <GithubMark />

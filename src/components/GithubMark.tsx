@@ -18,7 +18,12 @@ const GithubMark = () => {
       className={styles.githubMark}
       title="Check out the source code on Github!"
     >
-      <img src={darkMode ? githubLight : githubDark} alt="" width={32} height={32} />
+      <img
+        src={darkMode ? githubLight : githubDark}
+        alt=""
+        width={32}
+        height={32}
+      />
     </a>
   )
 }

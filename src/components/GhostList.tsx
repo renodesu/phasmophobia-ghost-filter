@@ -10,11 +10,7 @@ const GhostList = () => {
     return <Ghost ghost={ghost} key={ghost.name} />
   })
 
-  return (
-    <div className={styles.ghostList}>
-      {ghostNodes}
-    </div>
-  )
+  return <div className={styles.ghostList}>{ghostNodes}</div>
 }
 
 export default GhostList

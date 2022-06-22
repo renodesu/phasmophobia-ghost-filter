@@ -3,7 +3,12 @@ import React from 'react'
 import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
 
 import { Evidence, EvidenceKey } from '../data/ghostData'
-import { evidenceState, impossibleRemainingEvidenceState, isAnyEvidenceSelectedState, possibleRemainingEvidenceState } from '../utils/state'
+import {
+  evidenceState,
+  impossibleRemainingEvidenceState,
+  isAnyEvidenceSelectedState,
+  possibleRemainingEvidenceState,
+} from '../utils/state'
 import { evidencePrettyName } from '../utils/utils'
 
 import styles from './GhostFilter.module.scss'
@@ -12,72 +17,101 @@ import LabelWithCB from './LabelWithCB'
 const GhostFilter = () => {
   const [evidence, setEvidence] = useRecoilState(evidenceState)
   const resetEvidence = useResetRecoilState(evidenceState)
-  const possibleRemainingEvidence = useRecoilValue(possibleRemainingEvidenceState)
-  const impossibleRemainingEvidence = useRecoilValue(impossibleRemainingEvidenceState)
+  const possibleRemainingEvidence = useRecoilValue(
+    possibleRemainingEvidenceState
+  )
+  const impossibleRemainingEvidence = useRecoilValue(
+    impossibleRemainingEvidenceState
+  )
   const isAnyEvidenceSelected = useRecoilValue(isAnyEvidenceSelectedState)
 
-  const includedEvidence = Object.entries(evidence.included) as [EvidenceKey, boolean][]
-  const excludedEvidence = Object.entries(evidence.excluded) as [EvidenceKey, boolean][]
+  const includedEvidence = Object.entries(evidence.included) as [
+    EvidenceKey,
+    boolean
+  ][]
+  const excludedEvidence = Object.entries(evidence.excluded) as [
+    EvidenceKey,
+    boolean
+  ][]
 
   const setIncludedEvidence = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
     if (isChecked) {
-      setEvidence({ included: { ...evidence.included, [e.target.value]: isChecked }, excluded: { ...evidence.excluded, [e.target.value]: !isChecked } })
+      setEvidence({
+        included: { ...evidence.included, [e.target.value]: isChecked },
+        excluded: { ...evidence.excluded, [e.target.value]: !isChecked },
+      })
     } else {
-      setEvidence({ included: { ...evidence.included, [e.target.value]: isChecked }, excluded: evidence.excluded })
+      setEvidence({
+        included: { ...evidence.included, [e.target.value]: isChecked },
+        excluded: evidence.excluded,
+      })
     }
   }
 
   const setExcludedEvidence = (e: React.ChangeEvent<HTMLInputElement>) => {
     const isChecked = e.target.checked
     if (isChecked) {
-      setEvidence({ included: { ...evidence.included, [e.target.value]: !isChecked }, excluded: { ...evidence.excluded, [e.target.value]: isChecked } })
+      setEvidence({
+        included: { ...evidence.included, [e.target.value]: !isChecked },
+        excluded: { ...evidence.excluded, [e.target.value]: isChecked },
+      })
     } else {
-      setEvidence({ included: evidence.included, excluded: { ...evidence.excluded, [e.target.value]: isChecked } })
+      setEvidence({
+        included: evidence.included,
+        excluded: { ...evidence.excluded, [e.target.value]: isChecked },
+      })
     }
   }
 
-  const includedNodes = includedEvidence
-    .map(([name, checked]) => {
-      const id = `evidence-included-${name}`
-      const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
-      const isEvidenceExcluded = evidence.excluded[name as keyof Evidence]
+  const includedNodes = includedEvidence.map(([name, checked]) => {
+    const id = `evidence-included-${name}`
+    const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
+    const isEvidenceExcluded = evidence.excluded[name as keyof Evidence]
 
-      // TODO: Check the logic of coloring notPossibles
-      return (
-        <div key={name} className={clsx({ evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded })}>
-          <LabelWithCB id={id} onChange={setIncludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
-        </div>
-      )
-    })
+    // TODO: Check the logic of coloring notPossibles
+    return (
+      <div
+        key={name}
+        className={clsx({
+          evidenceNotPossible: isEvidenceImpossible && !isEvidenceExcluded,
+        })}
+      >
+        <LabelWithCB
+          id={id}
+          onChange={setIncludedEvidence}
+          checked={checked}
+          text={evidencePrettyName(name)}
+          value={name}
+        />
+      </div>
+    )
+  })
 
-  const excludedNodes = excludedEvidence
-    .map(([name, checked]) => {
-      const id = `evidence-excluded-${name}`
-      return (
-        <div key={name}>
-          <LabelWithCB id={id} onChange={setExcludedEvidence} checked={checked} text={evidencePrettyName(name)} value={name} />
-        </div>
-      )
-    })
+  const excludedNodes = excludedEvidence.map(([name, checked]) => {
+    const id = `evidence-excluded-${name}`
+    return (
+      <div key={name}>
+        <LabelWithCB
+          id={id}
+          onChange={setExcludedEvidence}
+          checked={checked}
+          text={evidencePrettyName(name)}
+          value={name}
+        />
+      </div>
+    )
+  })
 
   const possibleRemainingEvidenceNode = isAnyEvidenceSelected
     ? possibleRemainingEvidence.map(evidenceKey => {
-      return (
-        <div key={evidenceKey}>
-          {evidencePrettyName(evidenceKey)}
-        </div>
-      )
+      return <div key={evidenceKey}>{evidencePrettyName(evidenceKey)}</div>
     })
     : '(All)'
 
   const impossibleRemainingEvidenceNode = isAnyEvidenceSelected
     ? impossibleRemainingEvidence.map(evidenceKey => {
-      return (
-        <div key={evidenceKey}>
-          {evidencePrettyName(evidenceKey)}
-        </div>
-      )
+      return <div key={evidenceKey}>{evidencePrettyName(evidenceKey)}</div>
     })
     : '(None)'
 
@@ -87,13 +121,15 @@ const GhostFilter = () => {
         <div>
           <h3>Usage</h3>
           <p>Use confirmed evidence to narrow down the ghost type.</p>
-          <p>Use excluded evidence to further filter the ghost type if you're sure it can't be some specific evidence.</p>
           <p>
-            <span className={styles.greenWord}>Green</span> highlight means that evidence is missing to identify that specific ghost.
+            Use excluded evidence to further filter the ghost type if you're
+            sure it can't be some specific evidence.
           </p>
           <p>
-            Press ESC to reset the filter.
+            <span className={styles.greenWord}>Green</span> highlight means that
+            evidence is missing to identify that specific ghost.
           </p>
+          <p>Press ESC to reset the filter.</p>
         </div>
         <div>
           <div className={styles.center}>

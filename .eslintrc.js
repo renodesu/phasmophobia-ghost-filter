@@ -1,41 +1,71 @@
+/**
+ * @type {import("eslint").Linter.Config}
+ */
 module.exports = {
   env: {
-    browser: true,
-    es2021: true
+    node: true,
+    es2021: true,
+    jest: true
   },
   extends: [
-    'plugin:react/recommended',
-    'plugin:import/recommended',
-    'plugin:import/typescript',
-    // 'plugin:@typescript-eslint/recommended',
-    'standard'
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    // TODO: Cannot add with shared configs - see https://typescript-eslint.io/docs/linting/type-linting/
+    // 'plugin:@typescript-eslint/recommended-requiring-type-checking',
+    'prettier',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaFeatures: {
-      jsx: true
-    },
-    ecmaVersion: 12,
-    sourceType: 'module'
+    ecmaVersion: 2022,
+    sourceType: 'module',
   },
-  plugins: [
-    'react',
-    '@typescript-eslint'
-  ],
+  plugins: ['@typescript-eslint', 'eslint-plugin-import'],
   rules: {
-    'no-use-before-define': 0,
-    '@typescript-eslint/no-use-before-define': 2,
-    'react/no-unescaped-entities': 0,
-    indent: 0,
-    'no-unused-vars': 0,
-    '@typescript-eslint/indent': [2, 2],
-    'import/order': [2, {
-      groups: ['builtin', 'external', 'internal', 'parent', 'sibling', 'index', 'object', 'type'],
-      'newlines-between': 'always',
-      alphabetize: {
-        order: 'asc'
-      }
-    }]
-    // '@typescript-eslint/consistent-type-imports': [2, { prefer: 'type-imports' }]
-  }
+    // Lumiverse specific styles
+    'linebreak-style': [2, 'unix'],
+    '@typescript-eslint/member-delimiter-style': [
+      2,
+      {
+        multiline: {
+          delimiter: 'none',
+        },
+        singleline: {
+          delimiter: 'semi',
+        },
+      },
+    ],
+    // '@typescript-eslint/class-literal-property-style': [1, 'fields'],
+    '@typescript-eslint/prefer-ts-expect-error': 1,
+
+    // Rules where typescript-eslint overrides core rules
+    // Some rules require turning off core rule (eslint) and enabling ts-rule
+    // See: https://github.com/typescript-eslint/typescript-eslint/blob/main/docs/linting/TROUBLESHOOTING.md
+    indent: 'off',
+    '@typescript-eslint/indent': ['error', 2],
+    semi: 'off',
+    '@typescript-eslint/semi': [2, 'never'],
+    'no-extra-semi': 'off',
+    '@typescript-eslint/no-extra-semi': ['error'],
+    'no-invalid-this': 'off',
+    '@typescript-eslint/no-invalid-this': ['error'],
+
+    // Import ordering
+    'import/order': [
+      2,
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+          'type',
+        ],
+        'newlines-between': 'always',
+        alphabetize: { order: 'asc' },
+      },
+    ],
+  },
 }

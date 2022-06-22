@@ -26,8 +26,12 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
   const possibleGhosts = ghostData.filter(ghost => {
     const trueProps = filterKeysByProp(ghost.evidence, true)
     const falseProps = filterKeysByProp(ghost.evidence, false)
-    const allTruesMatch = ghostIncludedEvidence.every((value) => trueProps.includes(value))
-    const allFalsesMatch = ghostExcludedEvidence.every((value) => falseProps.includes(value))
+    const allTruesMatch = ghostIncludedEvidence.every(value =>
+      trueProps.includes(value)
+    )
+    const allFalsesMatch = ghostExcludedEvidence.every(value =>
+      falseProps.includes(value)
+    )
 
     return allTruesMatch && allFalsesMatch
   })
@@ -42,12 +46,11 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
  */
 export const pickTrues = (source: Partial<Evidence>) => {
   const res: Partial<Evidence> = {}
-  Object.entries(source)
-    .forEach(([name, status]) => {
-      if (status) {
-        res[name as EvidenceKey] = status
-      }
-    })
+  Object.entries(source).forEach(([name, status]) => {
+    if (status) {
+      res[name as EvidenceKey] = status
+    }
+  })
   return res
 }
 
@@ -61,11 +64,13 @@ const evidencePrettyNameMap: Record<EvidenceKey, string> = {
   ghostOrbs: 'Ghost orbs',
   ghostWriting: 'Ghost writing',
   freezingTemp: 'Freezing temp',
-  DOTS: 'D.O.T.S.'
+  DOTS: 'D.O.T.S.',
 }
 
-export const evidencePrettyName = (evidenceKey: EvidenceKey) => evidencePrettyNameMap[evidenceKey]
+export const evidencePrettyName = (evidenceKey: EvidenceKey) =>
+  evidencePrettyNameMap[evidenceKey]
 
-export const writeLocalStorage = (key: string, value: string) => localStorage.setItem(key, value)
+export const writeLocalStorage = (key: string, value: string) =>
+  localStorage.setItem(key, value)
 export const readLocalStorage = (key: string) => localStorage.getItem(key)
 export const clearLocalStorage = () => localStorage.clear()
