@@ -1,1 +1,13 @@
 @use "reset";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+svg {
+  fill: #aaa;
+}
+
+.show {
+  @apply opacity-100;
+}

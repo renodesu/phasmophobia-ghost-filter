@@ -39,8 +39,8 @@ module.exports = {
     // Rules where typescript-eslint overrides core rules
     // Some rules require turning off core rule (eslint) and enabling ts-rule
     // See: https://github.com/typescript-eslint/typescript-eslint/blob/main/docs/linting/TROUBLESHOOTING.md
-    indent: 'off',
-    '@typescript-eslint/indent': ['error', 2],
+    // indent: 'off',
+    // '@typescript-eslint/indent': ['error', 2],
     semi: 'off',
     '@typescript-eslint/semi': [2, 'never'],
     'no-extra-semi': 'off',

@@ -18,11 +18,15 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "types": [
+      "vite-plugin-svgr/client"
+    ]
   },
   "include": [
     "src",
     "vite.config.ts",
+    "tailwind.config.js",
     ".eslintrc.js",
   ],
   "references": [

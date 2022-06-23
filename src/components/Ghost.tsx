@@ -7,13 +7,37 @@ import {
   possibleGhostsState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
-import { evidencePrettyName } from '../utils/utils'
 
 import styles from './Ghost.module.scss'
-import LabelWithCB from './LabelWithCB'
+import {
+  DOTS,
+  EMF,
+  Fingerprints,
+  FreezingTemp,
+  GhostOrbs,
+  GhostWriting,
+  SpiritBox,
+} from './Icon'
 
 type GhostProps = {
   ghost: GhostData
+}
+
+const iconMap: Record<
+  EvidenceKey,
+  React.FunctionComponent<
+    React.SVGProps<SVGSVGElement> & {
+      title?: string | undefined
+    }
+  >
+> = {
+  emf: EMF,
+  spiritBox: SpiritBox,
+  fingerPrints: Fingerprints,
+  ghostOrbs: GhostOrbs,
+  ghostWriting: GhostWriting,
+  freezingTemp: FreezingTemp,
+  DOTS: DOTS,
 }
 
 const Ghost = ({ ghost }: GhostProps) => {
@@ -30,35 +54,38 @@ const Ghost = ({ ghost }: GhostProps) => {
 
   return (
     <div
-      className={clsx(styles.ghost, {
-        [styles.show]: isGhostPossible && isAnyEvidenceSelected,
-        [styles.noActiveEvidence]: !isAnyEvidenceSelected,
-      })}
+      className={clsx(
+        styles.ghost,
+        'w-auto p-2 px-4 m-1 opacity-10 border-gray-300 border rounded',
+        {
+          [styles.show]:
+            (isGhostPossible && isAnyEvidenceSelected) ||
+            !isAnyEvidenceSelected,
+        }
+      )}
     >
-      <div className={styles.ghostName}>{ghost.name}</div>
-      <div>
+      <div className="text-xl mb-1">{ghost.name}</div>
+      <div className="flex">
         {evidenceEntries.map(([evidenceKey, status]) => {
           const id = `evidence-${ghost.name}-${evidenceKey}`
           const isRemainingEvidence =
             status && possibleRemainingEvidence.includes(evidenceKey)
           const isFakeEvidence = ghost.fakeEvidence?.includes(evidenceKey)
+          const Comp = iconMap[evidenceKey]
 
           return (
             <div
               key={evidenceKey}
-              className={clsx(styles.ghostEvidence, {
-                [styles.isRemainingFilter]: isRemainingEvidence,
+              id={id}
+              className={clsx('w-10 mx-1 p-1 border border-transparent', {
+                [styles.isRemainingFilter]:
+                  isRemainingEvidence && isAnyEvidenceSelected,
                 [styles.isFakeEvidence]: isFakeEvidence,
+                'opacity-10': !status,
+                'opacity-100': status,
               })}
             >
-              <LabelWithCB
-                id={id}
-                checked={status}
-                value={evidenceKey}
-                text={evidencePrettyName(evidenceKey)}
-                disabled
-                hideCheckbox
-              />
+              <Comp />
             </div>
           )
         })}

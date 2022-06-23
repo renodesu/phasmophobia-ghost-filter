@@ -8,11 +8,11 @@
       padding: 1rem;
       margin: 0 1rem 0 0;
     }
-
-    .evidenceNotPossible {
-      opacity: 1;
-    }
   }
+}
+
+.evidenceNotPossible {
+  border: 1px solid #f00;
 }
 
 .help {
@@ -26,27 +26,4 @@
   > :first-child {
     flex: 1;
   }
-}
-
-.center {
-  text-align: center;
-}
-
-.border {
-  padding: 1rem;
-  border: 1px solid #ccc;
-}
-
-.greenBg {
-  background: rgba($color: #0f0, $alpha: 0.4);
-}
-
-.greenWord {
-  padding: 0 0.4rem;
-  background: rgba($color: #0f0, $alpha: 0.4);
-  border-radius: 0.1rem;
-}
-
-.redBg {
-  background: rgba($color: #f00, $alpha: 0.4);
 }

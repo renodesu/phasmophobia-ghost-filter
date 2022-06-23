@@ -2,46 +2,23 @@
 @use "../styles/variables";
 
 .ghost {
-  min-width: math.div(variables.$appWidth, 7);
-  max-width: math.div(variables.$appWidth, 7);
-  flex: 1;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  opacity: 0.25;
-  transition: opacity variables.$transitionSpeed linear;
+  transition: border-color, background-color, opacity variables.$transitionSpeed linear;
 
-  .ghostName {
-    margin: 0.1rem 0 0.4rem 0;
-    font-size: 1.1rem;
-    font-weight: bold;
-  }
-
-  &.noActiveEvidence,
   &.show {
-    border: 1px solid #666;
     opacity: 1;
   }
 
-  .ghostEvidence {
-    padding: 0.1rem 0;
-  }
-
-  &.show .ghostEvidence {
-    // &.disabled {
-    //   background: rgba($color: #f00, $alpha: 0.4);
-    //   opacity: 0.4;
-    // }
-    // &.possible {
-    //   background: rgba($color: #0f0, $alpha: 0.4);
-    // }
-
-    &.isRemainingFilter {
-      background: rgba($color: #0f0, $alpha: 0.4);
-      border-radius: 0.1rem;
+  &.show {
+    .isRemainingFilter {
+      @apply rounded-sm;
+      @apply border-orange-400;
+      border: 1px solid gold;
     }
   }
-  .isFakeEvidence label > span::after {
-    content: " *";
-    color: gold;
-  }
+
+  // .isFakeEvidence label > span::after {
+  //   // TODO
+  //   content: " *";
+  //   color: gold;
+  // }
 }
