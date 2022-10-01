@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { EvidenceKey } from '../data/ghostData'
 import { evidenceState, impossibleRemainingEvidenceState } from '../utils/state'
-import { evidencePrettyNameMap } from '../utils/utils'
+import { evidencePrettyNameMap, sortEvidence } from '../utils/utils'
 
 import { iconMap } from './Icon'
 
@@ -15,7 +15,7 @@ const EvidenceList = () => {
     impossibleRemainingEvidenceState
   )
 
-  const includedEvidence = toArray(evidence.included)
+  const evidenceList = sortEvidence(toArray(evidence.included))
 
   const setConfirmedEvidence = (name: EvidenceKey) => {
     const currentValue = evidence.included[name]
@@ -36,7 +36,7 @@ const EvidenceList = () => {
 
   return (
     <div>
-      {includedEvidence.map(([name, checked]) => {
+      {evidenceList.map(([name, checked]) => {
         const id = `evidence-included-${name}`
         const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
         const EvidenceIcon = iconMap[name]

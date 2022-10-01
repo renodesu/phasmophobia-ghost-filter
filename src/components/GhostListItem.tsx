@@ -8,6 +8,7 @@ import {
   possibleGhostsState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
+import { sortEvidence } from '../utils/utils'
 
 import { iconMap } from './Icon'
 
@@ -24,7 +25,9 @@ const GhostListItem = ({ ghost }: GhostListItemProps) => {
   const isGhostPossible = possibleGhosts.includes(ghost)
   const ghostEvidenceEntries = toArray(ghost.evidence)
 
-  const filteredEvidenceEntries = ghostEvidenceEntries.filter(ev => ev[1])
+  const filteredEvidenceEntries = sortEvidence(
+    ghostEvidenceEntries.filter(ev => ev[1])
+  )
 
   const show =
     (isGhostPossible && isAnyEvidenceSelected) || !isAnyEvidenceSelected

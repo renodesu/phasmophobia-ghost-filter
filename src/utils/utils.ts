@@ -76,3 +76,20 @@ export const writeLocalStorage = (key: string, value: string) =>
   localStorage.setItem(key, value)
 export const readLocalStorage = (key: string) => localStorage.getItem(key)
 export const clearLocalStorage = () => localStorage.clear()
+
+const sortingArr: EvidenceKey[] = [
+  'emf',
+  'fingerPrints',
+  'ghostWriting',
+  'freezingTemp',
+  'DOTS',
+  'ghostOrbs',
+  'spiritBox',
+]
+
+type EvidenceSortOrder = [EvidenceKey, boolean][]
+
+export const sortEvidence = (evidenceArray: EvidenceSortOrder) =>
+  evidenceArray
+    .slice()
+    .sort((a, b) => sortingArr.indexOf(a[0]) - sortingArr.indexOf(b[0]))

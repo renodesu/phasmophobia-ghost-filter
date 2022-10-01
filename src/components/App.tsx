@@ -28,7 +28,7 @@ const App = () => {
   })
 
   return (
-    <div className={clsx(theme, 'min-h-screen')}>
+    <div id="app" className={clsx(theme, 'min-h-screen')}>
       <div className="max-w-[1400px] mx-auto pb-4">
         <div className="flex items-center py-2">
           <h1 className="text-xl font-bold">Phasmophobia Ghost Filter</h1>
