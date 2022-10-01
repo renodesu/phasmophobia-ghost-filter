@@ -45,7 +45,6 @@ const GhostListItem = ({ ghost }: GhostListItemProps) => {
           const id = `evidence-${ghost.name}-${evidenceKey}`
           const isRemainingEvidence =
             status && possibleRemainingEvidence.includes(evidenceKey)
-          // const isFakeEvidence = ghost.fakeEvidence?.includes(evidenceKey)
           const EvidenceIcon = iconMap[evidenceKey]
 
           return (

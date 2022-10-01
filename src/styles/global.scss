@@ -8,10 +8,6 @@ svg {
   fill: #aaa;
 }
 
-.show {
-  @apply opacity-100;
-}
-
 .dark {
   background-color: #000;
   color: #ccc;
@@ -20,4 +16,8 @@ svg {
 .light {
   background-color: #fff;
   color: #000;
+}
+
+h3 {
+  @apply font-semibold;
 }

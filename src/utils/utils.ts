@@ -1,3 +1,5 @@
+import { toArray } from 'fp-ts/lib/Record'
+
 import { Evidence, EvidenceKey, ghostData } from '../data/ghostData'
 
 export type AnyObject = Record<string, unknown>
@@ -9,7 +11,7 @@ export type AnyObject = Record<string, unknown>
  * @returns String array
  */
 export const filterKeysByProp = (object: AnyObject, filterValue: unknown) => {
-  return Object.entries(object)
+  return toArray(object)
     .filter(([, value]) => value === filterValue)
     .map(([key]) => key)
 }
