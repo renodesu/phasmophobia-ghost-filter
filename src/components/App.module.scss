@@ -2,31 +2,11 @@
 
 .App {
   min-height: 100vh;
-  background-color: #fff;
-  color: #000;
-  transition: color variables.$transitionSpeed linear, background-color variables.$transitionSpeed linear;
 
-  &[data-theme="dark"] {
-    background-color: #000;
-    color: #ccc;
-  }
+  transition: color variables.$transitionSpeed linear, background-color variables.$transitionSpeed linear;
 }
 
 #appContent {
   max-width: variables.$appWidth;
   margin: 0 auto;
-}
-
-.titleRow {
-  display: flex;
-  align-items: center;
-}
-
-.headingRight {
-  display: flex;
-  margin-left: auto;
-
-  > * {
-    margin-left: 1rem;
-  }
 }

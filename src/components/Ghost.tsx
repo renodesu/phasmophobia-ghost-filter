@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import { toArray } from 'fp-ts/lib/Record'
 import { useRecoilValue } from 'recoil'
 
 import { EvidenceKey, GhostData } from '../data/ghostData'
@@ -8,7 +9,6 @@ import {
   possibleRemainingEvidenceState,
 } from '../utils/state'
 
-import styles from './Ghost.module.scss'
 import {
   DOTS,
   EMF,
@@ -47,47 +47,47 @@ const Ghost = ({ ghost }: GhostProps) => {
   )
   const isAnyEvidenceSelected = useRecoilValue(isAnyEvidenceSelectedState)
   const isGhostPossible = possibleGhosts.includes(ghost)
-  const ghostEvidenceEntries = Object.entries(ghost.evidence) as [
-    EvidenceKey,
-    boolean
-  ][]
+  const ghostEvidenceEntries = toArray(ghost.evidence)
 
   const filteredEvidenceEntries = ghostEvidenceEntries.filter(ev => ev[1])
+
+  const show =
+    (isGhostPossible && isAnyEvidenceSelected) || !isAnyEvidenceSelected
 
   return (
     <div
       className={clsx(
-        styles.ghost,
-        'w-[200px] p-2 px-4 m-1 opacity-10 border-gray-300 border rounded',
+        'w-[200px] p-2 px-4 m-1 border-gray-300 border rounded-md overflow-hidden transition-all',
         {
-          [styles.show]:
-            (isGhostPossible && isAnyEvidenceSelected) ||
-            !isAnyEvidenceSelected,
+          ['opacity-100']: show,
+          ['opacity-10']: !show,
         }
       )}
     >
-      <div className="text-xl mb-1">{ghost.name}</div>
+      <div className="font-semibold mb-1">{ghost.name}</div>
       <div className="flex">
         {filteredEvidenceEntries.map(([evidenceKey, status]) => {
           const id = `evidence-${ghost.name}-${evidenceKey}`
           const isRemainingEvidence =
             status && possibleRemainingEvidence.includes(evidenceKey)
-          const isFakeEvidence = ghost.fakeEvidence?.includes(evidenceKey)
-          const Comp = iconMap[evidenceKey]
+          // const isFakeEvidence = ghost.fakeEvidence?.includes(evidenceKey)
+          const EvidenceIcon = iconMap[evidenceKey]
 
           return (
             <div
               key={evidenceKey}
               id={id}
-              className={clsx('w-10 mx-1 p-1 border border-transparent', {
-                [styles.isRemainingFilter]:
-                  isRemainingEvidence && isAnyEvidenceSelected,
-                [styles.isFakeEvidence]: isFakeEvidence,
-                'opacity-10': !status,
-                'opacity-100': status,
-              })}
+              className={clsx(
+                'w-10 mx-1 p-1 border border-transparent transition-all',
+                {
+                  'rounded border-orange-400':
+                    isRemainingEvidence && isAnyEvidenceSelected,
+                  'opacity-10': !status,
+                  'opacity-100': status,
+                }
+              )}
             >
-              <Comp />
+              <EvidenceIcon />
             </div>
           )
         })}

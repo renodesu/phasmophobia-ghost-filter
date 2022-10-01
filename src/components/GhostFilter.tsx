@@ -1,5 +1,6 @@
 import clsx from 'clsx'
-import { useRecoilState, useRecoilValue, useResetRecoilState } from 'recoil'
+import { AiOutlineStop } from 'react-icons/ai'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { EvidenceKey } from '../data/ghostData'
 import {
@@ -8,15 +9,13 @@ import {
   isAnyEvidenceSelectedState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
-import { evidencePrettyName, evidencePrettyNameMap } from '../utils/utils'
+import { evidencePrettyNameMap } from '../utils/utils'
 
-import styles from './GhostFilter.module.scss'
 import GhostList from './GhostList'
 import { iconMap } from './Icon'
 
 const GhostFilter = () => {
   const [evidence, setEvidence] = useRecoilState(evidenceState)
-  const resetEvidence = useResetRecoilState(evidenceState)
   const possibleRemainingEvidence = useRecoilValue(
     possibleRemainingEvidenceState
   )
@@ -92,7 +91,14 @@ const GhostFilter = () => {
       >
         <Icon className="h-10 mr-4" />
         {evidencePrettyNameMap[name]}
-        <div className="ml-auto">{String(isEvidenceImpossible)}</div>
+        <div className="ml-auto">
+          <AiOutlineStop
+            className={clsx('w-8 h-8 transition-all', {
+              'opacity-100': isEvidenceImpossible,
+              'opacity-0': !isEvidenceImpossible,
+            })}
+          />
+        </div>
       </div>
     )
   })
@@ -149,7 +155,7 @@ const GhostFilter = () => {
     : '(None)'
 
   return (
-    <div className={styles.ghostFilter}>
+    <div>
       {/* <div className={styles.help}>
         <div>
           <p>Use confirmed evidence to narrow down the ghost type.</p>
@@ -173,15 +179,32 @@ const GhostFilter = () => {
           </div>
         </div>
       </div> */}
-      <div className="grid grid-cols-2 gap-4">
-        <div className="border border-gray-300 p-4">
-          <h3>Confirmed</h3>
-          <div className="flex flex-col">{includedNodes}</div>
+      <div className="flex gap-4">
+        <div className="w-1/3 flex flex-col gap-4">
+          <div className="border border-gray-300 p-4">
+            <h3>Confirmed evidence</h3>
+            <div className="flex flex-col">{includedNodes}</div>
+          </div>
+
+          <div className="border border-gray-300 p-4">
+            <h2 className="font-semibold mb-2">Help</h2>
+            <div className="flex items-center my-2">
+              <AiOutlineStop className={clsx('w-8 h-8 mr-2')} />
+              means evidence is impossible.
+            </div>
+            <div className="my-2">
+              <span className="border border-orange-400 rounded p-1 mr-1">
+                Border
+              </span>
+              means that evidence is missing.
+            </div>
+          </div>
         </div>
-        <div className="border border-gray-300 p-4">
-          <h3>Excluded</h3>
-          {/* <div className="flex justify-center">{excludedNodes}</div> */}
-          <GhostList />
+        <div className="w-2/3">
+          <div className="border border-gray-300 p-4">
+            <h3>Ghosts</h3>
+            <GhostList />
+          </div>
         </div>
         {/* <div className="border border-gray-300 p-4">
           <h3>Possible remaining</h3>
