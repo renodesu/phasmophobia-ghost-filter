@@ -8,9 +8,10 @@ import {
   isAnyEvidenceSelectedState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
-import { evidencePrettyName } from '../utils/utils'
+import { evidencePrettyName, evidencePrettyNameMap } from '../utils/utils'
 
 import styles from './GhostFilter.module.scss'
+import GhostList from './GhostList'
 import { iconMap } from './Icon'
 
 const GhostFilter = () => {
@@ -69,7 +70,7 @@ const GhostFilter = () => {
 
   const includedNodes = includedEvidence.map(([name, checked]) => {
     const id = `evidence-included-${name}`
-    // const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
+    const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
     // const isEvidenceExcluded = evidence.excluded[name]
 
     const Icon = iconMap[name]
@@ -80,10 +81,8 @@ const GhostFilter = () => {
         key={name}
         id={id}
         className={clsx(
-          'cursor-pointer border opacity-50 hover:opacity-100 rounded p-1 w-12 h-12 mx-1',
+          'cursor-pointer border opacity-50 hover:opacity-100 rounded-md p-2 my-1 flex items-center',
           {
-            // [styles.evidenceNotPossible]:
-            //   isEvidenceImpossible && !isEvidenceExcluded,
             'border-transparent': !checked,
             'border-gray-400': checked,
             show: checked,
@@ -91,7 +90,9 @@ const GhostFilter = () => {
         )}
         onClick={() => setIncludedEvidence(name)}
       >
-        <Icon />
+        <Icon className="h-10 mr-4" />
+        {evidencePrettyNameMap[name]}
+        <div className="ml-auto">{String(isEvidenceImpossible)}</div>
       </div>
     )
   })
@@ -149,7 +150,7 @@ const GhostFilter = () => {
 
   return (
     <div className={styles.ghostFilter}>
-      <div className={styles.help}>
+      {/* <div className={styles.help}>
         <div>
           <p>Use confirmed evidence to narrow down the ghost type.</p>
           <p>
@@ -162,7 +163,7 @@ const GhostFilter = () => {
           </p>
         </div>
         <div>
-          <div className="">
+          <div>
             <button
               className="p-4 px-8 border border-gray-400 rounded text-xl uppercase font-bold"
               onClick={resetEvidence}
@@ -171,28 +172,29 @@ const GhostFilter = () => {
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="grid grid-cols-2 gap-4">
         <div className="border border-gray-300 p-4">
           <h3>Confirmed</h3>
-          <div className="flex justify-center">{includedNodes}</div>
+          <div className="flex flex-col">{includedNodes}</div>
         </div>
         <div className="border border-gray-300 p-4">
           <h3>Excluded</h3>
-          <div className="flex justify-center">{excludedNodes}</div>
+          {/* <div className="flex justify-center">{excludedNodes}</div> */}
+          <GhostList />
         </div>
-        <div className="border border-gray-300 p-4">
+        {/* <div className="border border-gray-300 p-4">
           <h3>Possible remaining</h3>
           <div className="flex justify-center h-10">
             {possibleRemainingEvidenceNode}
           </div>
-        </div>
-        <div className="border border-gray-300 p-4">
+        </div> */}
+        {/* <div className="border border-gray-300 p-4">
           <h3>Impossible remaining</h3>
           <div className="flex justify-center h-10">
             {impossibleRemainingEvidenceNode}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

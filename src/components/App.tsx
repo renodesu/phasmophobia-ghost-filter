@@ -30,20 +30,20 @@ const App = () => {
   return (
     <div className={styles.App} data-theme={theme}>
       <div id={styles.appContent}>
-        <div className={styles.row}>
-          <div className={styles.titleRow}>
-            <h1 className='text-xl font-bold'>Phasmophobia Ghost Filter</h1>
-            <div className={styles.headingRight}>
+        <div>
+          <div className="flex items-center py-2">
+            <h1 className="text-xl font-bold">Phasmophobia Ghost Filter</h1>
+            <div className="ml-auto flex">
               <DarkModeToggle />
               <GithubMark />
             </div>
           </div>
           <GhostFilter />
         </div>
-        <div className={styles.row}>
+        {/* <div>
           <h2>Possible ghosts</h2>
           <GhostList />
-        </div>
+        </div> */}
       </div>
     </div>
   )

@@ -47,16 +47,18 @@ const Ghost = ({ ghost }: GhostProps) => {
   )
   const isAnyEvidenceSelected = useRecoilValue(isAnyEvidenceSelectedState)
   const isGhostPossible = possibleGhosts.includes(ghost)
-  const evidenceEntries = Object.entries(ghost.evidence) as [
+  const ghostEvidenceEntries = Object.entries(ghost.evidence) as [
     EvidenceKey,
     boolean
   ][]
+
+  const filteredEvidenceEntries = ghostEvidenceEntries.filter(ev => ev[1])
 
   return (
     <div
       className={clsx(
         styles.ghost,
-        'w-auto p-2 px-4 m-1 opacity-10 border-gray-300 border rounded',
+        'w-[200px] p-2 px-4 m-1 opacity-10 border-gray-300 border rounded',
         {
           [styles.show]:
             (isGhostPossible && isAnyEvidenceSelected) ||
@@ -66,7 +68,7 @@ const Ghost = ({ ghost }: GhostProps) => {
     >
       <div className="text-xl mb-1">{ghost.name}</div>
       <div className="flex">
-        {evidenceEntries.map(([evidenceKey, status]) => {
+        {filteredEvidenceEntries.map(([evidenceKey, status]) => {
           const id = `evidence-${ghost.name}-${evidenceKey}`
           const isRemainingEvidence =
             status && possibleRemainingEvidence.includes(evidenceKey)
