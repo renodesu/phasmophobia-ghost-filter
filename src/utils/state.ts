@@ -115,6 +115,7 @@ export const possibleRemainingEvidenceState = selector({
 const getDarkModeInitialState = () => {
   const themeState = readLocalStorage('darkMode')
   const preferDarkTheme = window.matchMedia('(prefers-color-scheme)')?.matches
+
   if (themeState === 'true') {
     return true
   } else if (themeState === 'false') {

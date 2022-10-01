@@ -1,13 +1,13 @@
-import '../styles/global.scss'
+import clsx from 'clsx'
 import { useEffect } from 'react'
+import { FiRefreshCcw } from 'react-icons/fi'
 import { useRecoilValue, useResetRecoilState } from 'recoil'
 
+import '../styles/global.scss'
 import { darkModeState, evidenceState } from '../utils/state'
 
-import styles from './App.module.scss'
 import DarkModeToggle from './DarkModeToggle'
 import GhostFilter from './GhostFilter'
-import GhostList from './GhostList'
 import GithubMark from './GithubMark'
 
 const App = () => {
@@ -28,22 +28,25 @@ const App = () => {
   })
 
   return (
-    <div className={styles.App} data-theme={theme}>
-      <div id={styles.appContent}>
-        <div className={styles.row}>
-          <div className={styles.titleRow}>
-            <h1 className='text-xl font-bold'>Phasmophobia Ghost Filter</h1>
-            <div className={styles.headingRight}>
-              <DarkModeToggle />
-              <GithubMark />
-            </div>
+    <div className={clsx(theme, 'min-h-screen')}>
+      <div className="max-w-[1400px] mx-auto pb-4">
+        <div className="flex items-center py-2">
+          <h1 className="text-xl font-bold">Phasmophobia Ghost Filter</h1>
+          <div className="ml-4">
+            <button
+              className="rounded p-2 px-6 border-2 font-semibold cursor-pointer opacity-70 hover:opacity-100 active:border-orange-400 flex items-center"
+              onClick={resetEvidence}
+            >
+              <FiRefreshCcw className="w-4 h-4 mr-2 stroke-black fill-transparent dark:stroke-white" />
+              RESET (ESC)
+            </button>
           </div>
-          <GhostFilter />
+          <div className="ml-auto flex">
+            <DarkModeToggle />
+            <GithubMark />
+          </div>
         </div>
-        <div className={styles.row}>
-          <h2>Possible ghosts</h2>
-          <GhostList />
-        </div>
+        <GhostFilter />
       </div>
     </div>
   )

@@ -1,13 +1,15 @@
 import { ghostData } from '../data/ghostData'
 
-import Ghost from './Ghost'
+import GhostListItem from './GhostListItem'
 
 const GhostList = () => {
-  const ghostNodes = ghostData.map(ghost => {
-    return <Ghost ghost={ghost} key={ghost.name} />
-  })
-
-  return <div className="flex flex-wrap justify-center">{ghostNodes}</div>
+  return (
+    <div className="flex flex-wrap">
+      {ghostData.map(ghost => (
+        <GhostListItem ghost={ghost} key={ghost.name} />
+      ))}
+    </div>
+  )
 }
 
 export default GhostList
