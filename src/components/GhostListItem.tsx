@@ -2,45 +2,20 @@ import clsx from 'clsx'
 import { toArray } from 'fp-ts/lib/Record'
 import { useRecoilValue } from 'recoil'
 
-import { EvidenceKey, GhostData } from '../data/ghostData'
+import { Ghost } from '../data/ghostData'
 import {
   isAnyEvidenceSelectedState,
   possibleGhostsState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
 
-import {
-  DOTS,
-  EMF,
-  Fingerprints,
-  FreezingTemp,
-  GhostOrbs,
-  GhostWriting,
-  SpiritBox,
-} from './Icon'
+import { iconMap } from './Icon'
 
-type GhostProps = {
-  ghost: GhostData
+type GhostListItemProps = {
+  ghost: Ghost
 }
 
-const iconMap: Record<
-  EvidenceKey,
-  React.FunctionComponent<
-    React.SVGProps<SVGSVGElement> & {
-      title?: string | undefined
-    }
-  >
-> = {
-  emf: EMF,
-  spiritBox: SpiritBox,
-  fingerPrints: Fingerprints,
-  ghostOrbs: GhostOrbs,
-  ghostWriting: GhostWriting,
-  freezingTemp: FreezingTemp,
-  DOTS: DOTS,
-}
-
-const Ghost = ({ ghost }: GhostProps) => {
+const GhostListItem = ({ ghost }: GhostListItemProps) => {
   const possibleGhosts = useRecoilValue(possibleGhostsState)
   const possibleRemainingEvidence = useRecoilValue(
     possibleRemainingEvidenceState
@@ -96,4 +71,4 @@ const Ghost = ({ ghost }: GhostProps) => {
   )
 }
 
-export default Ghost
+export default GhostListItem

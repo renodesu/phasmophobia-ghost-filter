@@ -7,15 +7,11 @@ import { ReactComponent as GhostOrbs } from '../static/evidence/ghost-orbs.svg'
 import { ReactComponent as GhostWriting } from '../static/evidence/ghost-writing.svg'
 import { ReactComponent as SpiritBox } from '../static/evidence/spirit-box.svg'
 
-const Icon = () => {
-  return (
-    <div className="icon">
-      <DOTS />
-    </div>
-  )
-}
-
-export default Icon
+type SVGElement = React.FunctionComponent<
+  React.SVGProps<SVGSVGElement> & {
+    title?: string | undefined
+  }
+>
 
 export {
   DOTS,
@@ -27,14 +23,7 @@ export {
   SpiritBox,
 }
 
-export const iconMap: Record<
-  EvidenceKey,
-  React.FunctionComponent<
-    React.SVGProps<SVGSVGElement> & {
-      title?: string | undefined
-    }
-  >
-> = {
+export const iconMap: Record<EvidenceKey, SVGElement> = {
   emf: EMF,
   spiritBox: SpiritBox,
   fingerPrints: Fingerprints,

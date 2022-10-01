@@ -24,14 +24,14 @@ export type Evidence = {
   [key in EvidenceKey]: boolean
 }
 
-export type GhostData = {
+export type Ghost = {
   name: string
   evidence: Evidence
   fakeEvidence?: EvidenceKey[]
   description?: string
 }
 
-export const ghostData: GhostData[] = [
+export const ghostData: Ghost[] = [
   {
     name: 'Banshee',
     evidence: {

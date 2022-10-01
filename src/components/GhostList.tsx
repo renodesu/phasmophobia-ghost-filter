@@ -1,16 +1,15 @@
-import { useMemo } from 'react'
-
 import { ghostData } from '../data/ghostData'
 
-import Ghost from './Ghost'
+import GhostListItem from './GhostListItem'
 
 const GhostList = () => {
-  const ghostNodes = useMemo(
-    () => ghostData.map(ghost => <Ghost ghost={ghost} key={ghost.name} />),
-    [ghostData]
+  return (
+    <div className="flex flex-wrap">
+      {ghostData.map(ghost => (
+        <GhostListItem ghost={ghost} key={ghost.name} />
+      ))}
+    </div>
   )
-
-  return <div className="flex flex-wrap">{ghostNodes}</div>
 }
 
 export default GhostList
