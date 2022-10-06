@@ -1,7 +1,7 @@
 import { useRecoilValue } from 'recoil'
 
-import githubDark from '../static/GitHub-Mark-64px.png'
-import githubLight from '../static/GitHub-Mark-Light-64px.png'
+import githubDark from '../static/icons/GitHub-Mark-64px.png'
+import githubLight from '../static/icons/GitHub-Mark-Light-64px.png'
 import { darkModeState } from '../utils/state'
 
 const GithubMark = () => {

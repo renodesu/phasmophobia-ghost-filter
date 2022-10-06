@@ -1,7 +1,7 @@
 import { useRecoilState } from 'recoil'
 
-import { ReactComponent as MoonIcon } from '../static/moon.svg'
-import { ReactComponent as SunIcon } from '../static/sun.svg'
+import { ReactComponent as MoonIcon } from '../static/icons/moon.svg'
+import { ReactComponent as SunIcon } from '../static/icons/sun.svg'
 import { darkModeState } from '../utils/state'
 
 const DarkModeToggle = () => {
