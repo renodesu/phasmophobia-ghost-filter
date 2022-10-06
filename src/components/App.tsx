@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { FiRefreshCcw } from 'react-icons/fi'
 import { useRecoilValue, useResetRecoilState } from 'recoil'
 
-import '../styles/global.scss'
 import { darkModeState, evidenceState } from '../utils/state'
+import '../styles/global.scss'
 
 import DarkModeToggle from './DarkModeToggle'
 import GhostFilter from './GhostFilter'

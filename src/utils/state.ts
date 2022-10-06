@@ -1,3 +1,4 @@
+import { map } from 'fp-ts/lib/ReadonlyRecord'
 import { atom, selector } from 'recoil'
 
 import { Evidence, EvidenceKey, evidenceKeys } from '../data/ghostData'
@@ -58,12 +59,18 @@ export const possibleGhostsState = selector({
 
     const activeIncludedEvidence = pickTrues(evidence.included)
     const activeExcludedEvidence = pickTrues(evidence.excluded)
+
     const invertedExcludedEvidence: Partial<Evidence> = Object.keys(
       activeExcludedEvidence
     ).reduce((prev, curr) => {
       prev[curr as EvidenceKey] = false
       return prev
     }, {} as Partial<Evidence>)
+
+    // const invertMapper = map(val => !val)
+
+    // const res = invertMapper(activeExcludedEvidence)
+    // const res = invertMapper(activeExcludedEvidence as Partial<Record<string, unknown>>)
 
     const combinedEvidence = {
       ...activeIncludedEvidence,
@@ -78,13 +85,9 @@ export const impossibleRemainingEvidenceState = selector({
   key: 'impossibleRemainingEvidenceState',
   get: ({ get }) => {
     const possibleGhosts = get(possibleGhostsState)
-
-    const impossibleEvidence = evidenceKeys.filter(evidenceKey => {
-      return possibleGhosts.every(ghost => {
-        return ghost.evidence[evidenceKey] === false
-      })
-    })
-    return impossibleEvidence
+    return evidenceKeys.filter(evidenceKey =>
+      possibleGhosts.every(ghost => ghost.evidence[evidenceKey] === false)
+    )
   },
 })
 
@@ -128,7 +131,7 @@ const getDarkModeInitialState = () => {
 export const darkModeState = atom({
   key: 'darkModeState',
   default: getDarkModeInitialState(),
-  effects_UNSTABLE: [
+  effects: [
     ({ onSet }) => {
       onSet(darkMode => writeLocalStorage('darkMode', String(darkMode)))
     },

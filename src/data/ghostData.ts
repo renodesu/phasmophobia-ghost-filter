@@ -20,9 +20,7 @@ export const evidenceKeys = [
 ] as const
 
 export type EvidenceKey = typeof evidenceKeys[number]
-export type Evidence = {
-  [key in EvidenceKey]: boolean
-}
+export type Evidence = Record<EvidenceKey, boolean>
 
 export type Ghost = {
   name: string

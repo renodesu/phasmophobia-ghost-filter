@@ -1,4 +1,4 @@
-import { toArray } from 'fp-ts/lib/Record'
+import { filter, toArray } from 'fp-ts/lib/Record'
 
 import { Evidence, EvidenceKey, ghostData } from '../data/ghostData'
 
@@ -46,13 +46,17 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
  * @param source Evidence Object
  * @returns Filtered object
  */
-export const pickTrues = (source: Partial<Evidence>) => {
+export const pickTrues = (source: Evidence): Partial<Evidence> => {
   const res: Partial<Evidence> = {}
   Object.entries(source).forEach(([name, status]) => {
     if (status) {
       res[name as EvidenceKey] = status
     }
   })
+  const filterFunc = filter((status: boolean) => status)
+  const kek = filterFunc(source)
+  console.log('KEJ', kek, res)
+  return kek
   return res
 }
 
@@ -77,7 +81,7 @@ export const writeLocalStorage = (key: string, value: string) =>
 export const readLocalStorage = (key: string) => localStorage.getItem(key)
 export const clearLocalStorage = () => localStorage.clear()
 
-const sortingArr: EvidenceKey[] = [
+const evidendeSortOrder: EvidenceKey[] = [
   'emf',
   'fingerPrints',
   'ghostWriting',
@@ -92,4 +96,7 @@ type EvidenceSortOrder = [EvidenceKey, boolean][]
 export const sortEvidence = (evidenceArray: EvidenceSortOrder) =>
   evidenceArray
     .slice()
-    .sort((a, b) => sortingArr.indexOf(a[0]) - sortingArr.indexOf(b[0]))
+    .sort(
+      ([aKey], [bKey]) =>
+        evidendeSortOrder.indexOf(aKey) - evidendeSortOrder.indexOf(bKey)
+    )

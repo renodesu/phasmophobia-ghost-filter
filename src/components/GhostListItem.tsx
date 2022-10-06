@@ -8,7 +8,7 @@ import {
   possibleGhostsState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
-import { sortEvidence } from '../utils/utils'
+import { evidencePrettyName, sortEvidence } from '../utils/utils'
 
 import { iconMap } from './Icon'
 
@@ -26,7 +26,7 @@ const GhostListItem = ({ ghost }: GhostListItemProps) => {
   const ghostEvidenceEntries = toArray(ghost.evidence)
 
   const filteredEvidenceEntries = sortEvidence(
-    ghostEvidenceEntries.filter(ev => ev[1])
+    ghostEvidenceEntries.filter(([_, hasEvidence]) => hasEvidence)
   )
 
   const show =
@@ -54,6 +54,7 @@ const GhostListItem = ({ ghost }: GhostListItemProps) => {
             <div
               key={evidenceKey}
               id={id}
+              title={evidencePrettyName(evidenceKey)}
               className={clsx(
                 'w-10 mx-1 p-1 border border-transparent transition-all',
                 {
