@@ -1,6 +1,6 @@
 import { filter, toArray } from 'fp-ts/lib/Record'
 
-import { Evidence, EvidenceKey, ghostData } from '../data/ghostData'
+import { Evidence, EvidenceRecord, ghostData } from '../data/ghostData'
 
 export type AnyObject = Record<string, unknown>
 
@@ -21,7 +21,7 @@ export const filterKeysByProp = (object: AnyObject, filterValue: unknown) => {
  * @param ghostProps
  * @returns Array of possible Ghosts
  */
-export const filterGhost = (ghostProps: Partial<Evidence>) => {
+export const filterGhost = (ghostProps: Partial<EvidenceRecord>) => {
   const ghostIncludedEvidence = filterKeysByProp(ghostProps, true)
   const ghostExcludedEvidence = filterKeysByProp(ghostProps, false)
 
@@ -46,24 +46,22 @@ export const filterGhost = (ghostProps: Partial<Evidence>) => {
  * @param source Evidence Object
  * @returns Filtered object
  */
-export const pickTrues = (source: Evidence): Partial<Evidence> => {
-  const res: Partial<Evidence> = {}
+export const pickTrues = (source: EvidenceRecord): Partial<EvidenceRecord> => {
+  const res: Partial<EvidenceRecord> = {}
   Object.entries(source).forEach(([name, status]) => {
     if (status) {
-      res[name as EvidenceKey] = status
+      res[name as Evidence] = status
     }
   })
   const filterFunc = filter((status: boolean) => status)
   const kek = filterFunc(source)
-  console.log('KEJ', kek, res)
   return kek
-  return res
 }
 
 /**
  * Evidence pretty-name mapping
  */
-export const evidencePrettyNameMap: Record<EvidenceKey, string> = {
+export const evidencePrettyNameMap: Record<Evidence, string> = {
   emf: 'EMF5',
   spiritBox: 'Spirit box',
   fingerPrints: 'Fingerprints',
@@ -73,7 +71,7 @@ export const evidencePrettyNameMap: Record<EvidenceKey, string> = {
   DOTS: 'D.O.T.S.',
 }
 
-export const evidencePrettyName = (evidenceKey: EvidenceKey) =>
+export const evidencePrettyName = (evidenceKey: Evidence) =>
   evidencePrettyNameMap[evidenceKey]
 
 export const writeLocalStorage = (key: string, value: string) =>
@@ -81,17 +79,17 @@ export const writeLocalStorage = (key: string, value: string) =>
 export const readLocalStorage = (key: string) => localStorage.getItem(key)
 export const clearLocalStorage = () => localStorage.clear()
 
-const evidendeSortOrder: EvidenceKey[] = [
-  'emf',
-  'fingerPrints',
-  'ghostWriting',
-  'freezingTemp',
-  'DOTS',
-  'ghostOrbs',
-  'spiritBox',
+const evidendeSortOrder: Evidence[] = [
+  Evidence.EMF5,
+  Evidence.FingerPrints,
+  Evidence.GhostWriting,
+  Evidence.FreezingTemp,
+  Evidence.DOTS,
+  Evidence.GhostOrbs,
+  Evidence.SpiritBox,
 ]
 
-type EvidenceSortOrder = [EvidenceKey, boolean][]
+type EvidenceSortOrder = [Evidence, boolean][]
 
 export const sortEvidence = (evidenceArray: EvidenceSortOrder) =>
   evidenceArray

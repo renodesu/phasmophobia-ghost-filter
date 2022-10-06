@@ -1,7 +1,6 @@
-import { map } from 'fp-ts/lib/ReadonlyRecord'
 import { atom, selector } from 'recoil'
 
-import { Evidence, EvidenceKey, evidenceKeys } from '../data/ghostData'
+import { Evidence, EvidenceRecord } from '../data/ghostData'
 
 import {
   filterGhost,
@@ -11,8 +10,8 @@ import {
 } from './utils'
 
 type EvidenceState = {
-  included: Evidence
-  excluded: Evidence
+  included: EvidenceRecord
+  excluded: EvidenceRecord
 }
 
 export const initialEvidenceState: EvidenceState = {
@@ -60,12 +59,12 @@ export const possibleGhostsState = selector({
     const activeIncludedEvidence = pickTrues(evidence.included)
     const activeExcludedEvidence = pickTrues(evidence.excluded)
 
-    const invertedExcludedEvidence: Partial<Evidence> = Object.keys(
+    const invertedExcludedEvidence: Partial<EvidenceRecord> = Object.keys(
       activeExcludedEvidence
     ).reduce((prev, curr) => {
-      prev[curr as EvidenceKey] = false
+      prev[curr as Evidence] = false
       return prev
-    }, {} as Partial<Evidence>)
+    }, {} as Partial<EvidenceRecord>)
 
     // const invertMapper = map(val => !val)
 
@@ -85,7 +84,8 @@ export const impossibleRemainingEvidenceState = selector({
   key: 'impossibleRemainingEvidenceState',
   get: ({ get }) => {
     const possibleGhosts = get(possibleGhostsState)
-    return evidenceKeys.filter(evidenceKey =>
+
+    return Object.values(Evidence).filter(evidenceKey =>
       possibleGhosts.every(ghost => ghost.evidence[evidenceKey] === false)
     )
   },
@@ -107,7 +107,7 @@ export const possibleRemainingEvidenceState = selector({
     const activeAndImpossibleEvidence = Array.from(
       new Set([...uniqueActiveEvidence, ...impossibleRemainingEvidence])
     )
-    const possibleRemainingEvidence = evidenceKeys.filter(
+    const possibleRemainingEvidence = Object.values(Evidence).filter(
       evidenceKey => !activeAndImpossibleEvidence.includes(evidenceKey)
     )
 

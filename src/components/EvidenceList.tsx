@@ -3,7 +3,7 @@ import { toArray } from 'fp-ts/lib/Record'
 import { AiOutlineStop } from 'react-icons/ai'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { EvidenceKey } from '../data/ghostData'
+import { Evidence } from '../data/ghostData'
 import { evidenceState, impossibleRemainingEvidenceState } from '../utils/state'
 import { evidencePrettyNameMap, sortEvidence } from '../utils/utils'
 
@@ -17,7 +17,7 @@ const EvidenceList = () => {
 
   const evidenceList = sortEvidence(toArray(evidence.included))
 
-  const setConfirmedEvidence = (name: EvidenceKey) => {
+  const setConfirmedEvidence = (name: Evidence) => {
     const currentValue = evidence.included[name]
     const targetValue = !currentValue
 

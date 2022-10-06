@@ -1,4 +1,4 @@
-import { EvidenceKey } from '../data/ghostData'
+import { Evidence } from '../data/ghostData'
 import { ReactComponent as DOTS } from '../static/icons/evidence/DOTS.svg'
 import { ReactComponent as EMF } from '../static/icons/evidence/emf5.svg'
 import { ReactComponent as Fingerprints } from '../static/icons/evidence/fingerprints.svg'
@@ -19,7 +19,7 @@ export {
   SpiritBox,
 }
 
-export const iconMap: Record<EvidenceKey, SVGElement> = {
+export const iconMap: Record<Evidence, SVGElement> = {
   emf: EMF,
   spiritBox: SpiritBox,
   fingerPrints: Fingerprints,
@@ -27,4 +27,15 @@ export const iconMap: Record<EvidenceKey, SVGElement> = {
   ghostWriting: GhostWriting,
   freezingTemp: FreezingTemp,
   DOTS: DOTS,
+}
+
+export const EvidenceIcon = ({
+  name,
+  className,
+}: {
+  name: Evidence
+  className: string
+}) => {
+  const Icon = iconMap[name]
+  return <Icon className={className} />
 }

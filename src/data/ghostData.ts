@@ -1,5 +1,4 @@
-// TODO: enum
-export enum Ev {
+export enum Evidence {
   EMF5 = 'emf',
   SpiritBox = 'spiritBox',
   FingerPrints = 'fingerPrints',
@@ -9,23 +8,12 @@ export enum Ev {
   DOTS = 'DOTS',
 }
 
-export const evidenceKeys = [
-  'emf',
-  'spiritBox',
-  'fingerPrints',
-  'ghostOrbs',
-  'ghostWriting',
-  'freezingTemp',
-  'DOTS',
-] as const
-
-export type EvidenceKey = typeof evidenceKeys[number]
-export type Evidence = Record<EvidenceKey, boolean>
+export type EvidenceRecord = Record<Evidence, boolean>
 
 export type Ghost = {
   name: string
-  evidence: Evidence
-  fakeEvidence?: EvidenceKey[]
+  evidence: EvidenceRecord
+  fakeEvidence?: Evidence[]
   description?: string
 }
 
@@ -113,7 +101,7 @@ export const ghostData: Ghost[] = [
       freezingTemp: true,
       DOTS: false,
     },
-    fakeEvidence: ['ghostOrbs'],
+    fakeEvidence: [Evidence.GhostOrbs],
   },
   {
     name: 'Myling',
