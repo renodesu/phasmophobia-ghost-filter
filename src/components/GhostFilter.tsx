@@ -13,7 +13,7 @@ const GhostFilter = () => {
           </div>
         </div>
         <div className="border border-gray-300 p-4">
-          <h3 className="mb-2">Instructions</h3>
+          <h3 className="mb-2">Icon legend</h3>
           <Info />
         </div>
       </div>
