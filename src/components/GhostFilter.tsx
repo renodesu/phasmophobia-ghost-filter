@@ -4,7 +4,7 @@ import Info from './Info'
 
 const GhostFilter = () => {
   return (
-    <div className="flex">
+    <div className="flex gap-4">
       <div className="w-1/3 flex flex-col gap-4">
         <div className="border border-gray-300 p-4">
           <h3 className="mb-2">Confirmed evidence</h3>

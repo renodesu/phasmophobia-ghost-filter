@@ -44,7 +44,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
       )}
     >
       <div className="font-semibold mb-1">{ghost.name}</div>
-      <div className="flex">
+      <div className="flex justify-center">
         {filteredEvidenceEntries.map(([evidenceKey, status]) => {
           const id = `evidence-${ghost.name}-${evidenceKey}`
           const isRemainingEvidence =
@@ -57,7 +57,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
               id={id}
               title={evidencePrettyName(evidenceKey)}
               className={clsx(
-                'w-10 mx-1 p-1 border border-transparent transition-all',
+                'w-10 mx-1 p-1 border border-transparent transition-all flex',
                 {
                   'rounded border-orange-400':
                     isRemainingEvidence && isAnyEvidenceSelected,

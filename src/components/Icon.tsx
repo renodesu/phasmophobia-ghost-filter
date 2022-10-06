@@ -33,7 +33,7 @@ export const iconMap: Record<Evidence, SVGElement> = {
 
 export const EvidenceIcon: FC<{
   name: Evidence
-  className: string
+  className?: string
 }> = ({ name, className }) => {
   const Icon = iconMap[name]
   return <Icon className={className} />

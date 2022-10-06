@@ -6,11 +6,12 @@ import { darkModeState } from '../utils/state'
 
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState)
+  const toggleDarkMode = () => setDarkMode(!darkMode)
 
   return (
     <div
       className="w-8 h-8 flex items-center relative cursor-pointer mr-4"
-      onClick={() => setDarkMode(!darkMode)}
+      onClick={toggleDarkMode}
       title={`Switch to ${darkMode ? 'Light' : 'Dark'} theme`}
     >
       <SunIcon
