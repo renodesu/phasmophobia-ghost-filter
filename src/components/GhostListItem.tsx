@@ -1,5 +1,6 @@
 import clsx from 'clsx'
 import { toArray } from 'fp-ts/lib/Record'
+import { FC } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import { Ghost } from '../data/ghostData'
@@ -16,7 +17,7 @@ type GhostListItemProps = {
   ghost: Ghost
 }
 
-const GhostListItem = ({ ghost }: GhostListItemProps) => {
+const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
   const possibleGhosts = useRecoilValue(possibleGhostsState)
   const possibleRemainingEvidence = useRecoilValue(
     possibleRemainingEvidenceState

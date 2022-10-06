@@ -1,3 +1,5 @@
+import { FC } from 'react'
+
 import { Evidence } from '../data/ghostData'
 import { ReactComponent as DOTS } from '../static/icons/evidence/DOTS.svg'
 import { ReactComponent as EMF } from '../static/icons/evidence/emf5.svg'
@@ -29,13 +31,10 @@ export const iconMap: Record<Evidence, SVGElement> = {
   DOTS: DOTS,
 }
 
-export const EvidenceIcon = ({
-  name,
-  className,
-}: {
+export const EvidenceIcon: FC<{
   name: Evidence
   className: string
-}) => {
+}> = ({ name, className }) => {
   const Icon = iconMap[name]
   return <Icon className={className} />
 }
