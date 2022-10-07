@@ -11,15 +11,15 @@ import { ReactComponent as SpiritBox } from '../static/icons/evidence/spirit-box
 
 type SVGElement = React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 
-export {
-  DOTS,
-  EMF,
-  Fingerprints,
-  FreezingTemp,
-  GhostOrbs,
-  GhostWriting,
-  SpiritBox,
-}
+// export {
+//   DOTS,
+//   EMF,
+//   Fingerprints,
+//   FreezingTemp,
+//   GhostOrbs,
+//   GhostWriting,
+//   SpiritBox,
+// }
 
 export const iconMap: Record<Evidence, SVGElement> = {
   emf: EMF,

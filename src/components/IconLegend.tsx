@@ -4,7 +4,7 @@ import { Evidence } from '../data/ghostData'
 
 import { EvidenceIcon } from './Icon'
 
-const Info = () => {
+const IconLegend = () => {
   return (
     <div>
       <div className="grid grid-cols-[50px_auto] gap-2 gap-y-4">
@@ -25,4 +25,4 @@ const Info = () => {
   )
 }
 
-export default Info
+export default IconLegend

@@ -1,20 +1,18 @@
-import EvidenceList from './EvidenceList'
+import EvidenceSelector from './EvidenceSelector'
 import GhostList from './GhostList'
-import Info from './Info'
+import IconLegend from './IconLegend'
 
-const GhostFilter = () => {
+const MainContent = () => {
   return (
     <div className="flex gap-4">
       <div className="w-1/3 flex flex-col gap-4">
         <div className="border border-gray-300 p-4">
           <h3 className="mb-2">Confirmed evidence</h3>
-          <div className="flex flex-col">
-            <EvidenceList />
-          </div>
+          <EvidenceSelector />
         </div>
         <div className="border border-gray-300 p-4">
           <h3 className="mb-2">Icon legend</h3>
-          <Info />
+          <IconLegend />
         </div>
       </div>
       <div className="w-2/3">
@@ -27,4 +25,4 @@ const GhostFilter = () => {
   )
 }
 
-export default GhostFilter
+export default MainContent

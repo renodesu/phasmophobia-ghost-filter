@@ -9,7 +9,7 @@ import { evidencePrettyNameMap, sortEvidence } from '../utils/utils'
 
 import { iconMap } from './Icon'
 
-const EvidenceList = () => {
+const EvidenceSelector = () => {
   const [evidence, setEvidence] = useRecoilState(evidenceState)
   const impossibleRemainingEvidence = useRecoilValue(
     impossibleRemainingEvidenceState
@@ -71,4 +71,4 @@ const EvidenceList = () => {
   )
 }
 
-export default EvidenceList
+export default EvidenceSelector
