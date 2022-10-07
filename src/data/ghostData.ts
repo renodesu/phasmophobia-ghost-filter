@@ -133,7 +133,7 @@ export const ghostData: Ghost[] = [
       DOTS: false,
     },
     strengths: [
-      'Moves noticeably faster at low player sanity and can make players lose sanity quicker than usual while investigating.	',
+      'Moves noticeably faster at low player sanity and can make players lose sanity quicker than usual while investigating.',
     ],
     weaknesses: ['Smudge sticks blind the ghost for longer during hunts.'],
   },
