@@ -27,7 +27,7 @@ const Header = () => {
       <h1 className="text-xl font-bold">Phasmophobia Ghost Filter</h1>
       <div className="ml-4">
         <button
-          className="rounded p-2 px-6 border-2 font-semibold cursor-pointer opacity-70 hover:opacity-100 active:border-orange-400 flex items-center"
+          className="rounded p-2 px-6 border-2 text-balck dark:text-white font-semibold cursor-pointer opacity-70 hover:opacity-100 active:border-orange-400 flex items-center"
           onClick={resetEvidence}
         >
           <FiRefreshCcw className="w-4 h-4 mr-2 stroke-black fill-transparent dark:stroke-white" />
