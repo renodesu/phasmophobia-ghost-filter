@@ -21,6 +21,7 @@ const Header = () => {
       document.removeEventListener('keydown', handler)
     }
   })
+
   return (
     <div className="flex items-center py-4">
       <h1 className="text-xl font-bold">Phasmophobia Ghost Filter</h1>

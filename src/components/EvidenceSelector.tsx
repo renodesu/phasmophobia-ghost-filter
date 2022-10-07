@@ -17,7 +17,7 @@ const EvidenceSelector = () => {
 
   const evidenceList = sortEvidence(toArray(evidence.included))
 
-  const setConfirmedEvidence = (name: Evidence) => {
+  const setSelectedEvidence = (name: Evidence) => {
     const currentValue = evidence.included[name]
     const targetValue = !currentValue
 
@@ -52,7 +52,7 @@ const EvidenceSelector = () => {
                 'border-gray-400 opacity-100': checked,
               }
             )}
-            onClick={() => setConfirmedEvidence(name)}
+            onClick={() => setSelectedEvidence(name)}
           >
             <EvidenceIcon className="h-10 mr-4" />
             {evidencePrettyNameMap[name]}

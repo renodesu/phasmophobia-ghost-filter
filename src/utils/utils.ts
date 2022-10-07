@@ -65,7 +65,7 @@ export const evidencePrettyNameMap: Record<Evidence, string> = {
   emf: 'EMF5',
   spiritBox: 'Spirit box',
   fingerPrints: 'Fingerprints',
-  ghostOrbs: 'Ghost orbs',
+  ghostOrbs: 'Ghost orb',
   ghostWriting: 'Ghost writing',
   freezingTemp: 'Freezing temp',
   DOTS: 'D.O.T.S.',
