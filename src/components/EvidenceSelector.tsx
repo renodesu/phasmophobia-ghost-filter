@@ -5,7 +5,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { Evidence } from '../data/ghostData'
 import { evidenceState, impossibleRemainingEvidenceState } from '../utils/state'
-import { evidencePrettyNameMap, sortEvidence } from '../utils/utils'
+import { evidenceMap, sortEvidence } from '../utils/utils'
 
 import { iconMap } from './Icon'
 
@@ -55,7 +55,7 @@ const EvidenceSelector = () => {
             onClick={() => setSelectedEvidence(name)}
           >
             <EvidenceIcon className="h-10 mr-4" />
-            {evidencePrettyNameMap[name]}
+            {evidenceMap[name]}
             <div className="ml-auto">
               <AiOutlineStop
                 className={clsx('w-8 h-8 transition-all', {

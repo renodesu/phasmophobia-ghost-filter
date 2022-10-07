@@ -16,19 +16,19 @@ type EvidenceState = {
 
 export const initialEvidenceState: EvidenceState = {
   included: {
-    emf: false,
+    emf5: false,
     spiritBox: false,
     fingerPrints: false,
-    ghostOrbs: false,
+    ghostOrb: false,
     ghostWriting: false,
     freezingTemp: false,
     DOTS: false,
   },
   excluded: {
-    emf: false,
+    emf5: false,
     spiritBox: false,
     fingerPrints: false,
-    ghostOrbs: false,
+    ghostOrb: false,
     ghostWriting: false,
     freezingTemp: false,
     DOTS: false,
@@ -85,8 +85,8 @@ export const impossibleRemainingEvidenceState = selector({
   get: ({ get }) => {
     const possibleGhosts = get(possibleGhostsState)
 
-    return Object.values(Evidence).filter(evidenceKey =>
-      possibleGhosts.every(ghost => ghost.evidence[evidenceKey] === false)
+    return Object.values(Evidence).filter(evidence =>
+      possibleGhosts.every(ghost => ghost.evidence[evidence] === false)
     )
   },
 })
@@ -108,7 +108,7 @@ export const possibleRemainingEvidenceState = selector({
       new Set([...uniqueActiveEvidence, ...impossibleRemainingEvidence])
     )
     const possibleRemainingEvidence = Object.values(Evidence).filter(
-      evidenceKey => !activeAndImpossibleEvidence.includes(evidenceKey)
+      evidence => !activeAndImpossibleEvidence.includes(evidence)
     )
 
     return possibleRemainingEvidence

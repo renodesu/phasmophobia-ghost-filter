@@ -1,6 +1,6 @@
 import { AiOutlineStop } from 'react-icons/ai'
 
-import { EMFIcon } from './Icon'
+import { EMF5Icon } from './Icon'
 
 const IconLegend = () => {
   return (
@@ -12,7 +12,7 @@ const IconLegend = () => {
         <div className="flex items-center">Evidence cannot have a match.</div>
         <div className="flex justify-center">
           <span className="border border-orange-400 rounded p-1 mr-1">
-            <EMFIcon className="w-8 h-8" />
+            <EMF5Icon className="w-8 h-8" />
           </span>
         </div>
         <div className="flex items-center">

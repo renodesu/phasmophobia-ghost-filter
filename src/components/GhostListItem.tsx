@@ -11,7 +11,7 @@ import {
 } from '../utils/state'
 import { evidencePrettyName, sortEvidence } from '../utils/utils'
 
-import { iconMap } from './Icon'
+import { EvidenceIcon } from './Icon'
 
 type GhostListItemProps = {
   ghost: Ghost
@@ -45,17 +45,16 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
     >
       <div className="font-semibold mb-1">{ghost.name}</div>
       <div className="flex justify-center">
-        {filteredEvidenceEntries.map(([evidenceKey, status]) => {
-          const id = `evidence-${ghost.name}-${evidenceKey}`
+        {filteredEvidenceEntries.map(([evidence, status]) => {
+          const id = `evidence-${ghost.name}-${evidence}`
           const isRemainingEvidence =
-            status && possibleRemainingEvidence.includes(evidenceKey)
-          const EvidenceIcon = iconMap[evidenceKey]
+            status && possibleRemainingEvidence.includes(evidence)
 
           return (
             <div
-              key={evidenceKey}
+              key={evidence}
               id={id}
-              title={evidencePrettyName(evidenceKey)}
+              title={evidencePrettyName(evidence)}
               className={clsx(
                 'w-10 mx-1 p-1 border border-transparent transition-all flex',
                 {
@@ -66,7 +65,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
                 }
               )}
             >
-              <EvidenceIcon />
+              <EvidenceIcon name={evidence} />
             </div>
           )
         })}
