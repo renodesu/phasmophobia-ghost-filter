@@ -60,11 +60,11 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
       <div className="font-semibold mb-1">{ghost.name}</div>
       <div className="hidden group-hover:block absolute bg-black p-4 z-50 rounded w-max right-[calc(100%+10px)] top-[calc(-50%)] xborder-2 border-white shadow-[-2px_4px_10px_5px_rgba(255,255,255,0.3)]">
         <div>
-          <h2 className="font-semibold">Strenghts</h2>
+          <h2 className="font-semibold">Strengths</h2>
           <div>
-            <List items={ghost.strenghts} />
+            <List items={ghost.strengths} />
           </div>
-          <h2 className="font-semibold">Weaknessses</h2>
+          <h2 className="font-semibold">Weaknesses</h2>
           <div>
             <List items={ghost.weaknesses} />
           </div>

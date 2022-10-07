@@ -1,16 +1,3 @@
 {
-  "extends": "stylelint-config-idiomatic-order",
-  "plugins": [
-    "stylelint-scss",
-    "stylelint-order"
-  ],
-  "rules": {
-    "rule-empty-line-before": [
-      "always-multi-line",
-      {
-        "except": ["first-nested"]
-      }
-    ],
-    "block-closing-brace-empty-line-before": "never"
-  }
+  "extends": "@renodesu/stylelint-config"
 }
