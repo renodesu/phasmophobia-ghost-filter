@@ -44,7 +44,7 @@ export const ghostData: Ghost[] = [
       freezingTemp: true,
       DOTS: false,
     },
-    strengths: ['Can initiate hunts more often.	'],
+    strengths: ['Can initiate hunts more often.'],
     weaknesses: ['Crucifix effectiveness is increased to 5m against one.'],
   },
   {
