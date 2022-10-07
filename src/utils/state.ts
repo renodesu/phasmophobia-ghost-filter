@@ -3,7 +3,7 @@ import { atom, selector } from 'recoil'
 import { Evidence, EvidenceRecord } from '../data/ghostData'
 
 import {
-  filterGhost,
+  filterGhostsByEvidence,
   pickTrues,
   readLocalStorage,
   writeLocalStorage,
@@ -76,7 +76,7 @@ export const possibleGhostsState = selector({
       ...invertedExcludedEvidence,
     }
 
-    return filterGhost(combinedEvidence)
+    return filterGhostsByEvidence(combinedEvidence)
   },
 })
 

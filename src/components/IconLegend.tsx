@@ -16,7 +16,7 @@ const IconLegend = () => {
           </span>
         </div>
         <div className="flex items-center">
-          Evidence is missing for a match.
+          Evidence is remaining for a match.
         </div>
       </div>
     </div>

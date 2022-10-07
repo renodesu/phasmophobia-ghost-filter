@@ -1,11 +1,16 @@
+import { filter as filterArr, map } from 'fp-ts/lib/Array'
 import { filter, toArray } from 'fp-ts/lib/Record'
+import { pipe } from 'fp-ts/lib/function'
 
 import { Evidence, EvidenceRecord, ghostData } from '../data/ghostData'
 
 export type UnknownObject = Record<string, unknown>
 
+const filterEntriesByValue = (filterVal: unknown) =>
+  filterArr(([, val]) => val === filterVal)
+const mapEntryValueToIndex = map(([key]: [string, unknown]) => key)
 /**
- * Returns an array of object keys where keys match `filterValue`
+ * Returns an array of object's keys where key matches `filterValue`
  * @param object
  * @param filterValue
  * @returns String array
@@ -14,19 +19,27 @@ export const filterKeysByProp = (
   object: UnknownObject,
   filterValue: unknown
 ) => {
-  return toArray(object)
-    .filter(([, value]) => value === filterValue)
-    .map(([key]) => key)
+  return pipe(
+    object,
+    toArray,
+    filterEntriesByValue(filterValue),
+    mapEntryValueToIndex
+  )
+  // return toArray(object)
+  //   .filter(([, value]) => value === filterValue)
+  //   .map(([key]) => key)
 }
 
 /**
- * Filter ghosts based on `ghostProps`
- * @param ghostProps
+ * Filter ghosts based on `ghostEvidence`
+ * @param ghostEvidence
  * @returns Array of possible Ghosts
  */
-export const filterGhost = (ghostProps: Partial<EvidenceRecord>) => {
-  const ghostIncludedEvidence = filterKeysByProp(ghostProps, true)
-  const ghostExcludedEvidence = filterKeysByProp(ghostProps, false)
+export const filterGhostsByEvidence = (
+  ghostEvidence: Partial<EvidenceRecord>
+) => {
+  const ghostIncludedEvidence = filterKeysByProp(ghostEvidence, true)
+  const ghostExcludedEvidence = filterKeysByProp(ghostEvidence, false)
 
   const possibleGhosts = ghostData.filter(ghost => {
     const trueProps = filterKeysByProp(ghost.evidence, true)

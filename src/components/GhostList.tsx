@@ -4,7 +4,7 @@ import GhostListItem from './GhostListItem'
 
 const GhostList = () => {
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap gap-2">
       {ghostData.map(ghost => (
         <GhostListItem ghost={ghost} key={ghost.name} />
       ))}

@@ -36,7 +36,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
   return (
     <div
       className={clsx(
-        'w-[200px] p-2 px-4 m-1 border-gray-300 border rounded-md overflow-hidden transition-all',
+        'w-[200px] p-2 px-4 border-gray-300 border rounded-md overflow-hidden transition-all',
         {
           ['opacity-100']: show,
           ['opacity-10']: !show,
@@ -44,7 +44,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
       )}
     >
       <div className="font-semibold mb-1">{ghost.name}</div>
-      <div className="flex justify-center">
+      <div className="flex justify-evenly">
         {filteredEvidenceEntries.map(([evidence, status]) => {
           const id = `evidence-${ghost.name}-${evidence}`
           const isRemainingEvidence =
@@ -56,7 +56,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
               id={id}
               title={evidencePrettyName(evidence)}
               className={clsx(
-                'w-10 mx-1 p-1 border border-transparent transition-all flex',
+                'w-10 h-10 mx-0 p-1 border border-transparent transition-all flex',
                 {
                   'rounded border-orange-400':
                     isRemainingEvidence && isAnyEvidenceSelected,
