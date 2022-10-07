@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div id="app" className={clsx(theme, 'min-h-screen')}>
-      <div className="max-w-[1320px] mx-auto pb-20">
+      <div className="max-w-[1210px] mx-auto pb-20">
         <Header />
         <MainContent />
       </div>
