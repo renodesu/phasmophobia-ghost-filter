@@ -35,7 +35,7 @@ const EvidenceSelector = () => {
   }
 
   return (
-    <div>
+    <div className="flex flex-col gap-1">
       {evidenceList.map(([name, checked]) => {
         const id = `evidence-included-${name}`
         const isEvidenceImpossible = impossibleRemainingEvidence.includes(name)
@@ -46,7 +46,7 @@ const EvidenceSelector = () => {
             key={name}
             id={id}
             className={clsx(
-              'cursor-pointer border hover:opacity-100 rounded-md p-2 my-1 flex items-center',
+              'cursor-pointer border hover:opacity-100 rounded-md p-2 flex items-center',
               {
                 'border-transparent opacity-80': !checked,
                 'border-gray-400 opacity-100': checked,
