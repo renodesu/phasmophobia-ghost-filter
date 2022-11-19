@@ -15,27 +15,27 @@
   "repository": "https://github.com/renodesu/phasmophobia-ghost-filter",
   "dependencies": {
     "clsx": "^1.2.1",
-    "fp-ts": "^2.12.3",
+    "fp-ts": "^2.13.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
-    "recoil": "^0.7.5",
-    "usehooks-ts": "^2.7.2"
+    "react-icons": "^4.6.0",
+    "recoil": "^0.7.6",
+    "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
     "@renodesu/eslint-config": "github:renodesu/eslint-config",
     "@renodesu/stylelint-config": "github:renodesu/stylelint-config",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "@vitejs/plugin-react": "^2.1.0",
-    "autoprefixer": "^10.4.12",
-    "postcss": "^8.4.17",
-    "sass": "^1.55.0",
-    "stylelint": "^14.13.0",
-    "tailwindcss": "^3.1.8",
-    "typescript": "^4.8.4",
-    "vite": "^3.1.6",
-    "vite-plugin-svgr": "^2.2.1",
-    "vitest": "^0.23.4"
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^2.2.0",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.19",
+    "sass": "^1.56.1",
+    "stylelint": "^14.15.0",
+    "tailwindcss": "^3.2.4",
+    "typescript": "^4.9.3",
+    "vite": "^3.2.4",
+    "vite-plugin-svgr": "^2.2.2",
+    "vitest": "^0.25.2"
   }
 }
