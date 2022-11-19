@@ -23,8 +23,8 @@
     "usehooks-ts": "^2.7.2"
   },
   "devDependencies": {
-    "@renodesu/eslint-config": "github:renodesu/eslint-config#main#b8c3524bec17e05a622b59be9a5f3bc081c271cb",
-    "@renodesu/stylelint-config": "github:renodesu/stylelint-config#b7bba0ec59b00be3ac0077758ae085a4fb5fd579",
+    "@renodesu/eslint-config": "github:renodesu/eslint-config",
+    "@renodesu/stylelint-config": "github:renodesu/stylelint-config",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
