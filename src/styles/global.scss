@@ -1,8 +1,11 @@
-@use "reset";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html,
+body {
+  font-size: 16px;
+}
 
 svg {
   fill: #aaa;
@@ -20,4 +23,74 @@ svg {
 
 h3 {
   @apply font-semibold;
+}
+
+.darkModeToggle {
+  position: relative;
+  overflow: hidden;
+  width: 32px;
+  height: 32px;
+
+  .slot {
+    position: absolute;
+    top: -32px;
+    transition: all 0.3s;
+  }
+
+  &.darkMode {
+    .slot {
+      top: 0;
+    }
+  }
+}
+
+.scene {
+  // perspective: 400px;
+
+  .cube {
+    position: relative;
+    overflow: hidden;
+    width: 32px;
+    height: 32px;
+
+    // backface-visibility: hidden;
+
+    // { transform: translateZ(-100px) rotateY(-180deg); }
+    transform: translateZ(-100px) rotateY(-180deg);
+    transform-style: preserve-3d;
+    transition: transform 1s;
+
+    .sun {
+      transform: rotateY(0deg) translateZ(100px);
+    }
+
+    .moon {
+      transform: rotateY(180deg) translateZ(100px);
+    }
+
+    .sun,
+    .moon {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.githubMark {
+  width: 32px;
+  height: 32px;
+
+  path {
+    fill: #000;
+    transition: all 0.2s;
+  }
+}
+
+.dark {
+  .githubMark {
+    path {
+      fill: #fff;
+    }
+  }
 }

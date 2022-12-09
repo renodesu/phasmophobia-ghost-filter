@@ -15,11 +15,10 @@ const MainContent = () => {
           <IconLegend />
         </div>
       </div>
-      <div>
-        <div className="border border-gray-300 p-4">
-          <h3 className="mb-2">Ghosts</h3>
-          <GhostList />
-        </div>
+
+      <div className="border border-gray-300 p-4">
+        <h3 className="mb-2">Ghosts</h3>
+        <GhostList />
       </div>
     </div>
   )

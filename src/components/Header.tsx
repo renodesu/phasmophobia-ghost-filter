@@ -34,7 +34,7 @@ const Header = () => {
           RESET (ESC)
         </button>
       </div>
-      <div className="ml-auto flex">
+      <div className="ml-auto flex gap-4">
         <DarkModeToggle />
         <GithubMark />
       </div>

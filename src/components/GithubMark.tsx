@@ -1,27 +1,14 @@
-import { useRecoilValue } from 'recoil'
-
-import githubDark from '../static/icons/GitHub-Mark-64px.png'
-import githubLight from '../static/icons/GitHub-Mark-Light-64px.png'
-import { darkModeState } from '../utils/state'
+import { ReactComponent as Github } from '../static/icons/githubMark.svg'
 
 const GithubMark = () => {
-  const darkMode = useRecoilValue(darkModeState)
-
   return (
     <a
       href="https://github.com/renodesu/phasmophobia-ghost-filter"
       target="_blank"
       rel="noreferrer"
-      className="block"
       title="Check out the source code on Github!"
     >
-      <img
-        src={darkMode ? githubLight : githubDark}
-        className="block"
-        alt="By github.com/renodesu"
-        width={32}
-        height={32}
-      />
+      <Github className="githubMark" />
     </a>
   )
 }

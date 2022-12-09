@@ -3,7 +3,7 @@ import { describe, expect, test } from 'vitest'
 import { ghostData } from './ghostData'
 
 describe('Ghost data', () => {
-  test('has no duplicate entries', () => {
+  test('has unique evidence entries', () => {
     const ghostNames = ghostData.map(g => g.name)
     const mappedEvidences = ghostData.map(ghost =>
       Object.values(ghost.evidence).toString()
