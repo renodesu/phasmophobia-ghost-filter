@@ -28,7 +28,7 @@ const Header = () => {
       <SlGhost className="w-10 h-10" strokeWidth={4} />
       <h1 className="text-xl font-bold">Phasmophobia Ghost Filter</h1>
       <SlGhost className="w-10 h-10" strokeWidth={4} />
-      <div className="ml-4">
+      <div className="flex-grow">
         <button
           className="rounded p-2 px-6 border-2 text-balck dark:text-white font-semibold cursor-pointer opacity-70 hover:opacity-100 active:border-orange-400 flex items-center"
           onClick={resetEvidence}
@@ -37,7 +37,7 @@ const Header = () => {
           RESET (ESC)
         </button>
       </div>
-      <div className="ml-auto flex gap-4">
+      <div className="flex gap-4">
         <DarkModeToggle />
         <GithubMark />
       </div>

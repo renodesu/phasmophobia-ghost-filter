@@ -41,7 +41,7 @@ const EvidenceSelector = () => {
             key={ev}
             id={id}
             className={clsx(
-              'cursor-pointer border hover:opacity-100 rounded-md p-2 flex items-center select-none',
+              'cursor-pointer border hover:opacity-100 rounded-md p-2 flex items-center select-none gap-4',
               {
                 'border-transparent opacity-80': !isSelected,
                 'border-gray-400 opacity-100': isSelected,
@@ -49,7 +49,7 @@ const EvidenceSelector = () => {
             )}
             onClick={() => toggleEvidence(ev)}
           >
-            <EvidenceIcon className="h-10 mr-4" />
+            <EvidenceIcon className="h-10" />
             <div className="flex-grow">{evidenceMap[ev]}</div>
             <AiOutlineStop
               className={clsx('w-8 h-8 transition-all', {
