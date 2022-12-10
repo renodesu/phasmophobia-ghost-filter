@@ -18,10 +18,10 @@ export const initialEvidenceState: EvidenceState = {
   included: {
     emf5: false,
     spiritBox: false,
-    fingerPrints: false,
-    ghostOrb: false,
-    ghostWriting: false,
-    freezingTemp: false,
+          fingerPrints: false,
+          ghostOrb: false,
+          ghostWriting: false,
+          freezingTemp: false,
     DOTS: false,
   },
   excluded: {
