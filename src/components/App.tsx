@@ -19,6 +19,7 @@ const App = () => {
       <div className="max-w-[1220px] mx-auto pb-20">
         <Header />
         <MainContent />
+        {/* <StateDebug /> */}
       </div>
     </div>
   )

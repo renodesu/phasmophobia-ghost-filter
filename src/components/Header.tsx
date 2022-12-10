@@ -1,30 +1,33 @@
 import { useEffect } from 'react'
 import { FiRefreshCcw } from 'react-icons/fi'
+import { SlGhost } from 'react-icons/sl'
 import { useResetRecoilState } from 'recoil'
 
-import { evidenceState } from '../utils/state'
+import { selectedEvidenceState } from '../utils/state'
 
 import DarkModeToggle from './DarkModeToggle'
 import GithubMark from './GithubMark'
 
 const Header = () => {
-  const resetEvidence = useResetRecoilState(evidenceState)
+  const resetEvidence = useResetRecoilState(selectedEvidenceState)
 
   useEffect(() => {
-    const handler = (e: KeyboardEvent) => {
+    const keyDownHandler = (e: KeyboardEvent) => {
       if (e.code === 'Escape') {
         resetEvidence()
       }
     }
-    document.addEventListener('keydown', handler)
+    document.addEventListener('keydown', keyDownHandler)
     return () => {
-      document.removeEventListener('keydown', handler)
+      document.removeEventListener('keydown', keyDownHandler)
     }
   })
 
   return (
-    <div className="flex items-center py-4">
+    <div className="flex items-center py-4 gap-4">
+      <SlGhost className="w-10 h-10" strokeWidth={4} />
       <h1 className="text-xl font-bold">Phasmophobia Ghost Filter</h1>
+      <SlGhost className="w-10 h-10" strokeWidth={4} />
       <div className="ml-4">
         <button
           className="rounded p-2 px-6 border-2 text-balck dark:text-white font-semibold cursor-pointer opacity-70 hover:opacity-100 active:border-orange-400 flex items-center"

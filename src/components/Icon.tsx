@@ -22,19 +22,19 @@ export {
 }
 
 export const iconMap: Record<Evidence, SVGElement> = {
-  emf5: EMF5,
-  spiritBox: SpiritBox,
-  fingerPrints: Fingerprints,
-  ghostOrb: ghostOrb,
-  ghostWriting: GhostWriting,
-  freezingTemp: FreezingTemp,
-  DOTS: DOTS,
+  [Evidence.EMF5]: EMF5,
+  [Evidence.SpiritBox]: SpiritBox,
+  [Evidence.FingerPrints]: Fingerprints,
+  [Evidence.GhostOrb]: ghostOrb,
+  [Evidence.GhostWriting]: GhostWriting,
+  [Evidence.FreezingTemp]: FreezingTemp,
+  [Evidence.DOTS]: DOTS,
 }
 
 export const EvidenceIcon: FC<{
-  name: Evidence
+  evidence: Evidence
   className?: string
-}> = ({ name, className }) => {
-  const Icon = iconMap[name]
+}> = ({ evidence, className }) => {
+  const Icon = iconMap[evidence]
   return <Icon className={className} />
 }
