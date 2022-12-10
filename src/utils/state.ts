@@ -60,7 +60,7 @@ export const possibleRemainingEvidenceState = selector({
   },
 })
 
-const getDarkModeInitialState = () => {
+const getColorSchemeInitialState = () => {
   const themeState = readLocalStorage('darkMode')
   // const preferDarkTheme = window.matchMedia('(prefers-color-scheme)')?.matches
   const preferDarkTheme = true // Prefer darkmode initially
@@ -74,9 +74,9 @@ const getDarkModeInitialState = () => {
   }
 }
 
-export const darkModeState = atom({
-  key: 'darkModeState',
-  default: getDarkModeInitialState(),
+export const colorSchemeState = atom({
+  key: 'colorSchemeState',
+  default: getColorSchemeInitialState(),
   effects: [
     ({ onSet }) => {
       onSet(darkMode => writeLocalStorage('darkMode', String(darkMode)))

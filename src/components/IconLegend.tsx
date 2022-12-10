@@ -1,24 +1,40 @@
+import { ReactNode } from 'react'
 import { AiOutlineStop } from 'react-icons/ai'
 
 import { EMF5Icon } from './Icon'
 
+interface Legend {
+  icon: ReactNode
+  label: string
+}
+
+const legends: Legend[] = [
+  {
+    icon: <AiOutlineStop className="w-8 h-8" />,
+    label: 'Evidence cannot have a match.',
+  },
+  {
+    icon: (
+      <span className="border border-orange-400 rounded p-1">
+        <EMF5Icon className="w-[30px] h-[30px]" />
+      </span>
+    ),
+    label: 'Evidence is remaining for a match.',
+  },
+]
+
 const IconLegend = () => {
   return (
-    <div>
-      <div className="grid grid-cols-[50px_auto] gap-2 gap-y-4">
-        <div className="flex justify-center">
-          <AiOutlineStop className="w-8 h-8" />
-        </div>
-        <div className="flex items-center">Evidence cannot have a match.</div>
-        <div className="flex justify-center">
-          <span className="border border-orange-400 rounded p-1 mr-1">
-            <EMF5Icon className="w-8 h-8" />
-          </span>
-        </div>
-        <div className="flex items-center">
-          Evidence is remaining for a match.
-        </div>
-      </div>
+    <div className="grid grid-cols-[50px_auto] gap-2 gap-y-4">
+      {legends.map(legend => {
+        const { icon, label } = legend
+        return (
+          <>
+            <div className="flex justify-center">{icon}</div>
+            <div className="flex items-center">{label}</div>
+          </>
+        )
+      })}
     </div>
   )
 }

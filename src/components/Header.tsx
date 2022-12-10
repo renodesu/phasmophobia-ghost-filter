@@ -5,7 +5,7 @@ import { useResetRecoilState } from 'recoil'
 
 import { selectedEvidenceState } from '../utils/state'
 
-import DarkModeToggle from './DarkModeToggle'
+import ColorSchemeToggle from './ColorSchemeToggle'
 import GithubMark from './GithubMark'
 
 const Header = () => {
@@ -38,7 +38,7 @@ const Header = () => {
         </button>
       </div>
       <div className="flex gap-4">
-        <DarkModeToggle />
+        <ColorSchemeToggle />
         <GithubMark />
       </div>
     </div>
