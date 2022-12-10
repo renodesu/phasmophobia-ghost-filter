@@ -2,13 +2,13 @@ import { useEffect } from 'react'
 import { FiRefreshCcw } from 'react-icons/fi'
 import { useResetRecoilState } from 'recoil'
 
-import { evidenceState } from '../utils/state'
+import { selectedEvidenceState } from '../utils/state'
 
 import DarkModeToggle from './DarkModeToggle'
 import GithubMark from './GithubMark'
 
 const Header = () => {
-  const resetEvidence = useResetRecoilState(evidenceState)
+  const resetEvidence = useResetRecoilState(selectedEvidenceState)
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {

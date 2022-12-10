@@ -1,6 +1,7 @@
 {
   "name": "phasmophobia-ghost-filter",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,11 +14,6 @@
   },
   "license": "ISC",
   "repository": "https://github.com/renodesu/phasmophobia-ghost-filter",
-  "overrides": {
-    "vite-plugin-svgr": {
-      "vite": "4"
-    }
-  },
   "dependencies": {
     "clsx": "^1.2.1",
     "fp-ts": "^2.13.1",
@@ -40,7 +36,7 @@
     "tailwindcss": "^3.2.4",
     "typescript": "^4.9.4",
     "vite": "^4.0.0",
-    "vite-plugin-svgr": "^2.2.2",
-    "vitest": "^0.25.6"
+    "vite-plugin-svgr": "^2.3.0",
+    "vitest": "^0.25.7"
   }
 }

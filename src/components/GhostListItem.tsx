@@ -8,29 +8,25 @@ import {
   possibleGhostsState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
-import { evidencePrettyName } from '../utils/utils'
+import { evidencePrettyName, sortEvidence } from '../utils/utils'
 
 import { EvidenceIcon } from './Icon'
-
-type GhostListItemProps = {
-  ghost: Ghost
-}
 
 const List: FC<{ items: string[] }> = ({ items }) => {
   return (
     <div className="text-sm my-1">
-      {items.map(str => {
-        return (
-          <div key={str} className="list-item list-inside list-disc ml-2">
-            {str}
-          </div>
-        )
-      })}
+      {items.map(str => (
+        <div key={str} className="list-item list-inside list-disc ml-2">
+          {str}
+        </div>
+      ))}
     </div>
   )
 }
 
-const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
+const GhostListItem: FC<{
+  ghost: Ghost
+}> = ({ ghost }) => {
   const possibleGhosts = useRecoilValue(possibleGhostsState)
   const possibleRemainingEvidence = useRecoilValue(
     possibleRemainingEvidenceState
@@ -39,12 +35,10 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
   const isGhostPossible = possibleGhosts.includes(ghost)
   const ghostEvidenceEntries = ghost.evidence
 
-  // const filteredEvidenceEntries = sortEvidence(
-  //   ghostEvidenceEntries.filter(([_, hasEvidence]) => hasEvidence)
-  // )
-
   const show =
     (isGhostPossible && isAnyEvidenceSelected) || !isAnyEvidenceSelected
+
+  const sortedEvidence = sortEvidence(ghostEvidenceEntries)
 
   return (
     <div
@@ -70,7 +64,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
         </div>
       </div>
       <div className="flex justify-evenly">
-        {ghostEvidenceEntries.map(evidence => {
+        {sortedEvidence.map(evidence => {
           const id = `evidence-${ghost.name}-${evidence}`
 
           const isRemainingEvidence =
@@ -82,7 +76,7 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
               id={id}
               title={evidencePrettyName(evidence)}
               className={clsx(
-                'w-10 h-10 mx-0 p-1 border border-transparent transition-all flex',
+                'w-10 h-10 p-1 border border-transparent transition-all flex',
                 {
                   'rounded border-orange-400':
                     isRemainingEvidence && isAnyEvidenceSelected,

@@ -1,13 +1,12 @@
+import { FC } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { darkModeState } from '../utils/state'
 
-interface Props {
+const ModeToggler: FC<{
   light: React.ReactNode
   dark: React.ReactNode
-}
-
-const ModeToggler = ({ light, dark }: Props) => {
+}> = ({ light, dark }) => {
   const [darkMode, setDarkMode] = useRecoilState(darkModeState)
 
   return (

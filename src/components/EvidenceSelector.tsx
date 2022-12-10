@@ -3,18 +3,21 @@ import { AiOutlineStop } from 'react-icons/ai'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { Evidence, evidenceList } from '../data/ghostData'
-import { evidenceState, impossibleRemainingEvidenceState } from '../utils/state'
-import { evidenceMap } from '../utils/utils'
+import {
+  impossibleRemainingEvidenceState,
+  selectedEvidenceState,
+} from '../utils/state'
+import { evidenceMap, sortEvidence } from '../utils/utils'
 
 import { iconMap } from './Icon'
 
 const EvidenceSelector = () => {
-  const [selectedEvidence, setSelectedEvidence] = useRecoilState(evidenceState)
+  const [selectedEvidence, setSelectedEvidence] = useRecoilState(
+    selectedEvidenceState
+  )
   const impossibleRemainingEvidence = useRecoilValue(
     impossibleRemainingEvidenceState
   )
-
-  // const evidenceList = sortEvidence(toArray(evidence.included))
 
   const toggleEvidence = (evidence: Evidence) => {
     if (selectedEvidence.includes(evidence)) {
@@ -24,9 +27,11 @@ const EvidenceSelector = () => {
     }
   }
 
+  const sortedEvidenceList = sortEvidence(evidenceList)
+
   return (
     <div className="flex flex-col gap-1">
-      {evidenceList.map(ev => {
+      {sortedEvidenceList.map(ev => {
         const id = `evidence-included-${ev}`
         const isEvidenceImpossible = impossibleRemainingEvidence.includes(ev)
         const EvidenceIcon = iconMap[ev]
@@ -37,7 +42,7 @@ const EvidenceSelector = () => {
             key={ev}
             id={id}
             className={clsx(
-              'cursor-pointer border hover:opacity-100 rounded-md p-2 flex items-center',
+              'cursor-pointer border hover:opacity-100 rounded-md p-2 flex items-center select-none',
               {
                 'border-transparent opacity-80': !isSelected,
                 'border-gray-400 opacity-100': isSelected,
