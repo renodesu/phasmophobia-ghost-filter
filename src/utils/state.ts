@@ -1,13 +1,13 @@
 import { atom, selector } from 'recoil'
 
-import { Evidence, EvidenceRecord } from '../data/ghostData'
-
 import {
-  filterGhostsByEvidence,
-  pickTrues,
-  readLocalStorage,
-  writeLocalStorage,
-} from './utils'
+  Evidence,
+  EvidenceRecord,
+  evidenceList,
+  ghostData,
+} from '../data/ghostData'
+
+import { readLocalStorage, writeLocalStorage } from './utils'
 
 type EvidenceState = {
   included: EvidenceRecord
@@ -35,48 +35,64 @@ export const initialEvidenceState: EvidenceState = {
   },
 }
 
-export const evidenceState = atom({
+export const evidenceState = atom<Evidence[]>({
   key: 'evidenceState',
-  default: initialEvidenceState,
+  default: [],
 })
 
 export const isAnyEvidenceSelectedState = selector({
   key: 'isAnyEvidenceSelectedState',
   get: ({ get }) => {
     const evidence = get(evidenceState)
-    return (
-      Object.values(evidence.included).some(Boolean) ||
-      Object.values(evidence.excluded).some(Boolean)
-    )
+    return evidence.length > 0
+    // return (
+    //   Object.values(evidence.included).some(Boolean) ||
+    //   Object.values(evidence.excluded).some(Boolean)
+    // )
   },
 })
 
 export const possibleGhostsState = selector({
   key: 'possibleGhostsState',
   get: ({ get }) => {
-    const evidence = get(evidenceState)
+    const selectedEvidence = get(evidenceState)
+    const anySelectedState = get(isAnyEvidenceSelectedState)
+    console.log('selected evidence', selectedEvidence)
 
-    const activeIncludedEvidence = pickTrues(evidence.included)
-    const activeExcludedEvidence = pickTrues(evidence.excluded)
-
-    const invertedExcludedEvidence: Partial<EvidenceRecord> = Object.keys(
-      activeExcludedEvidence
-    ).reduce((prev, curr) => {
-      prev[curr as Evidence] = false
-      return prev
-    }, {} as Partial<EvidenceRecord>)
-
-    // const invertMapper = map(val => !val)
-
-    // const res = invertMapper(activeExcludedEvidence)
-    // const res = invertMapper(activeExcludedEvidence as Partial<Record<string, unknown>>)
-
-    const combinedEvidence = {
-      ...activeIncludedEvidence,
-      ...invertedExcludedEvidence,
+    if (!anySelectedState) {
+      return ghostData
     }
 
-    return filterGhostsByEvidence(combinedEvidence)
+    return ghostData.filter(ghost =>
+      // ghost.evidence.some(ev => selectedEvidence.includes(ev))
+      // ghost.evidence.every(ev => {
+      //   // console.log(selectedEvidence.includes(ev))
+      //   return selectedEvidence.includes(ev)
+      // })
+      selectedEvidence.every(ev => ghost.evidence.includes(ev))
+    )
+
+    // const activeIncludedEvidence = pickTrues(evidence.included)
+    // const activeExcludedEvidence = pickTrues(evidence.excluded)
+
+    // const invertedExcludedEvidence: Partial<EvidenceRecord> = Object.keys(
+    //   activeExcludedEvidence
+    // ).reduce((prev, curr) => {
+    //   prev[curr as Evidence] = false
+    //   return prev
+    // }, {} as Partial<EvidenceRecord>)
+
+    // // const invertMapper = map(val => !val)
+
+    // // const res = invertMapper(activeExcludedEvidence)
+    // // const res = invertMapper(activeExcludedEvidence as Partial<Record<string, unknown>>)
+
+    // const combinedEvidence = {
+    //   ...activeIncludedEvidence,
+    //   ...invertedExcludedEvidence,
+    // }
+
+    // return filterGhostsByEvidence(combinedEvidence)
   },
 })
 
@@ -84,9 +100,10 @@ export const impossibleRemainingEvidenceState = selector({
   key: 'impossibleRemainingEvidenceState',
   get: ({ get }) => {
     const possibleGhosts = get(possibleGhostsState)
+    // console.log('possibleGhosts', possibleGhosts)
 
     return Object.values(Evidence).filter(evidence =>
-      possibleGhosts.every(ghost => ghost.evidence[evidence] === false)
+      possibleGhosts.every(ghost => !ghost.evidence.includes(evidence))
     )
   },
 })
@@ -94,24 +111,16 @@ export const impossibleRemainingEvidenceState = selector({
 export const possibleRemainingEvidenceState = selector({
   key: 'possibleRemainingEvidenceState',
   get: ({ get }) => {
+    const selectedEvidence = get(evidenceState)
     const impossibleRemainingEvidence = get(impossibleRemainingEvidenceState)
-    const evidence = get(evidenceState)
+    const impossibleRemainingEvidenceWithoutSelectedEvidence =
+      evidenceList.filter(
+        ev =>
+          !selectedEvidence.includes(ev) &&
+          !impossibleRemainingEvidence.includes(ev)
+      )
 
-    const activeIncludedEvidence = Object.keys(pickTrues(evidence.included))
-    const activeExcludedEvidence = Object.keys(pickTrues(evidence.excluded))
-
-    // Included and Excluded are always mutually exclusive, but just in case - uniquefy them
-    const uniqueActiveEvidence = Array.from(
-      new Set([...activeIncludedEvidence, ...activeExcludedEvidence])
-    )
-    const activeAndImpossibleEvidence = Array.from(
-      new Set([...uniqueActiveEvidence, ...impossibleRemainingEvidence])
-    )
-    const possibleRemainingEvidence = Object.values(Evidence).filter(
-      evidence => !activeAndImpossibleEvidence.includes(evidence)
-    )
-
-    return possibleRemainingEvidence
+    return impossibleRemainingEvidenceWithoutSelectedEvidence
   },
 })
 

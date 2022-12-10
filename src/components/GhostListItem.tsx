@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { toArray } from 'fp-ts/lib/Record'
 import { FC } from 'react'
 import { useRecoilValue } from 'recoil'
 
@@ -9,7 +8,7 @@ import {
   possibleGhostsState,
   possibleRemainingEvidenceState,
 } from '../utils/state'
-import { evidencePrettyName, sortEvidence } from '../utils/utils'
+import { evidencePrettyName } from '../utils/utils'
 
 import { EvidenceIcon } from './Icon'
 
@@ -38,11 +37,11 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
   )
   const isAnyEvidenceSelected = useRecoilValue(isAnyEvidenceSelectedState)
   const isGhostPossible = possibleGhosts.includes(ghost)
-  const ghostEvidenceEntries = toArray(ghost.evidence)
+  const ghostEvidenceEntries = ghost.evidence
 
-  const filteredEvidenceEntries = sortEvidence(
-    ghostEvidenceEntries.filter(([_, hasEvidence]) => hasEvidence)
-  )
+  // const filteredEvidenceEntries = sortEvidence(
+  //   ghostEvidenceEntries.filter(([_, hasEvidence]) => hasEvidence)
+  // )
 
   const show =
     (isGhostPossible && isAnyEvidenceSelected) || !isAnyEvidenceSelected
@@ -71,10 +70,11 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
         </div>
       </div>
       <div className="flex justify-evenly">
-        {filteredEvidenceEntries.map(([evidence, status]) => {
+        {ghostEvidenceEntries.map(evidence => {
           const id = `evidence-${ghost.name}-${evidence}`
+
           const isRemainingEvidence =
-            status && possibleRemainingEvidence.includes(evidence)
+            possibleRemainingEvidence.includes(evidence)
 
           return (
             <div
@@ -86,8 +86,6 @@ const GhostListItem: FC<GhostListItemProps> = ({ ghost }) => {
                 {
                   'rounded border-orange-400':
                     isRemainingEvidence && isAnyEvidenceSelected,
-                  'opacity-10': !status,
-                  'opacity-100': status,
                 }
               )}
             >
