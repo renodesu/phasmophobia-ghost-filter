@@ -54,13 +54,9 @@ const GhostListItem: FC<{
       <div className="hidden group-hover:block absolute bg-black p-4 z-50 rounded w-max right-[calc(100%+10px)] top-[calc(-50%)] xborder-2 border-white shadow-[-2px_4px_10px_5px_rgba(255,255,255,0.3)]">
         <div>
           <h2 className="font-semibold">Strengths</h2>
-          <div>
-            <List items={ghost.strengths} />
-          </div>
+          <List items={ghost.strengths} />
           <h2 className="font-semibold">Weaknesses</h2>
-          <div>
-            <List items={ghost.weaknesses} />
-          </div>
+          <List items={ghost.weaknesses} />
         </div>
       </div>
       <div className="flex justify-evenly">
@@ -83,7 +79,7 @@ const GhostListItem: FC<{
                 }
               )}
             >
-              <EvidenceIcon name={evidence} />
+              <EvidenceIcon evidence={evidence} />
             </div>
           )
         })}
