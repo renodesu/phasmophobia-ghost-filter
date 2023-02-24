@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 import { AiOutlineStop } from 'react-icons/ai'
 
 import { EMF5Icon } from './Icon'
@@ -29,10 +29,10 @@ const IconLegend = () => {
       {legends.map(legend => {
         const { icon, label } = legend
         return (
-          <>
+          <React.Fragment key={label}>
             <div className="flex justify-center">{icon}</div>
             <div className="flex items-center">{label}</div>
-          </>
+          </React.Fragment>
         )
       })}
     </div>

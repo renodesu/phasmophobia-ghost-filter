@@ -1,7 +1,5 @@
 import { Evidence } from '../data/ghostData'
 
-export type UnknownObject = Record<string, unknown>
-
 /**
  * Evidence pretty-name mapping
  */
@@ -31,8 +29,6 @@ const evidendeSortOrder: Evidence[] = [
   Evidence.GhostOrb,
   Evidence.SpiritBox,
 ]
-
-type EvidenceSortOrder = [Evidence, boolean][]
 
 export const sortEvidence = (evidenceArray: Evidence[]) =>
   evidenceArray
