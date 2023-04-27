@@ -10,7 +10,7 @@
     "test:watch": "vitest"
   },
   "engines": {
-    "node": ">=16"
+    "node": ">=18"
   },
   "license": "ISC",
   "repository": "https://github.com/renodesu/phasmophobia-ghost-filter",
@@ -23,7 +23,7 @@
     "recoil": "^0.7.7"
   },
   "devDependencies": {
-    "@renodesu/eslint-config": "github:renodesu/eslint-config",
+    "@renodesu/eslint-config": "^1.0.4",
     "@renodesu/stylelint-config": "github:renodesu/stylelint-config",
     "@types/react": "^18.2.0",
     "@types/react-dom": "^18.2.1",
