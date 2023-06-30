@@ -12,13 +12,13 @@ svg {
 }
 
 .dark {
-  background-color: #000;
   color: #ccc;
+  background-color: #000;
 }
 
 .light {
-  background-color: #fff;
   color: #000;
+  background-color: #fff;
 }
 
 h3 {
@@ -49,15 +49,18 @@ h3 {
 
   .cube {
     position: relative;
-    overflow: hidden;
-    width: 32px;
-    height: 32px;
+    transform-style: preserve-3d;
 
     // backface-visibility: hidden;
 
     // { transform: translateZ(-100px) rotateY(-180deg); }
     transform: translateZ(-100px) rotateY(-180deg);
-    transform-style: preserve-3d;
+
+    overflow: hidden;
+
+    width: 32px;
+    height: 32px;
+
     transition: transform 1s;
 
     .sun {
@@ -97,9 +100,12 @@ h3 {
 
 code {
   display: block;
-  padding: 0.5rem;
+
   margin: 0.5rem 0;
-  background: #666;
+  padding: 0.5rem;
+
   font-size: 12px;
   white-space: pre;
+
+  background: #666;
 }

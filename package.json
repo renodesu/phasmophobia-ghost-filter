@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -17,25 +18,25 @@
   "repository": "https://github.com/renodesu/phasmophobia-ghost-filter",
   "dependencies": {
     "clsx": "^1.2.1",
-    "fp-ts": "^2.14.0",
+    "fp-ts": "^2.16.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.8.0",
+    "react-icons": "^4.10.1",
     "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@renodesu/eslint-config": "github:renodesu/eslint-config",
     "@renodesu/stylelint-config": "github:renodesu/stylelint-config",
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.1",
-    "@vitejs/plugin-react-swc": "^3.3.0",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.23",
-    "sass": "^1.62.1",
+    "postcss": "^8.4.24",
+    "sass": "^1.63.6",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.4",
-    "vite": "^4.3.3",
-    "vite-plugin-svgr": "^2.4.0",
-    "vitest": "^0.30.1"
+    "typescript": "^5.1.6",
+    "vite": "^4.3.9",
+    "vite-plugin-svgr": "^3.2.0",
+    "vitest": "^0.32.2"
   }
 }
