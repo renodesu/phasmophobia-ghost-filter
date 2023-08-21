@@ -6,7 +6,7 @@ import { Evidence } from '../data/ghostData'
 export const evidenceMap: Record<Evidence, string> = {
   emf5: 'EMF5',
   spiritBox: 'Spirit Box',
-  fingerPrints: 'Fingerprints',
+  ultraViolet: 'Ultraviolet',
   ghostOrb: 'Ghost Orb',
   ghostWriting: 'Ghost Writing',
   freezingTemp: 'Freezing Temp',
@@ -22,7 +22,7 @@ export const clearLocalStorage = () => localStorage.clear()
 
 const evidendeSortOrder: Evidence[] = [
   Evidence.EMF5,
-  Evidence.FingerPrints,
+  Evidence.UltraViolet,
   Evidence.GhostWriting,
   Evidence.FreezingTemp,
   Evidence.DOTS,

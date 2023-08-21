@@ -1,7 +1,7 @@
 export enum Evidence {
   EMF5 = 'emf5',
   SpiritBox = 'spiritBox',
-  FingerPrints = 'fingerPrints',
+  UltraViolet = 'ultraViolet',
   GhostOrb = 'ghostOrb',
   GhostWriting = 'ghostWriting',
   FreezingTemp = 'freezingTemp',
@@ -20,14 +20,14 @@ export const evidenceList = Object.values(Evidence)
 export const ghostData: Ghost[] = [
   {
     name: 'Banshee',
-    evidence: [Evidence.FingerPrints, Evidence.GhostOrb, Evidence.DOTS],
+    evidence: [Evidence.UltraViolet, Evidence.GhostOrb, Evidence.DOTS],
     strengths: ['Will target only one player at a time.'],
     weaknesses: ['Has a distinctive wail on the Parabolic Microphone.'],
   },
   {
     name: 'Demon',
     evidence: [
-      Evidence.FingerPrints,
+      Evidence.UltraViolet,
       Evidence.GhostWriting,
       Evidence.FreezingTemp,
     ],
@@ -44,7 +44,7 @@ export const ghostData: Ghost[] = [
   },
   {
     name: 'Goryo',
-    evidence: [Evidence.EMF5, Evidence.FingerPrints, Evidence.DOTS],
+    evidence: [Evidence.EMF5, Evidence.UltraViolet, Evidence.DOTS],
     strengths: [
       'Can only be seen interacting with D.O.T.S. through a camera when nobody is nearby.',
     ],
@@ -52,13 +52,13 @@ export const ghostData: Ghost[] = [
   },
   {
     name: 'Hantu',
-    evidence: [Evidence.FingerPrints, Evidence.GhostOrb, Evidence.FreezingTemp],
+    evidence: [Evidence.UltraViolet, Evidence.GhostOrb, Evidence.FreezingTemp],
     strengths: ['Lower temperatures allow the Hantu to move faster.	'],
     weaknesses: ["Warmer areas slow the Hantu's movement."],
   },
   {
     name: 'Jinn',
-    evidence: [Evidence.EMF5, Evidence.FingerPrints, Evidence.FreezingTemp],
+    evidence: [Evidence.EMF5, Evidence.UltraViolet, Evidence.FreezingTemp],
     strengths: ['Travels at faster speeds if its victim is far away.'],
     weaknesses: ["Cannot use its ability if the site's fuse box is off."],
   },
@@ -84,7 +84,7 @@ export const ghostData: Ghost[] = [
     name: 'The Mimic',
     evidence: [
       Evidence.SpiritBox,
-      Evidence.FingerPrints,
+      Evidence.UltraViolet,
       Evidence.GhostOrb,
       Evidence.FreezingTemp,
     ],
@@ -93,13 +93,13 @@ export const ghostData: Ghost[] = [
   },
   {
     name: 'Myling',
-    evidence: [Evidence.EMF5, Evidence.FingerPrints, Evidence.GhostWriting],
+    evidence: [Evidence.EMF5, Evidence.UltraViolet, Evidence.GhostWriting],
     strengths: ['Has quieter footsteps during a hunt.'],
     weaknesses: ['Produces paranormal sounds more frequently.'],
   },
   {
     name: 'Obake',
-    evidence: [Evidence.EMF5, Evidence.FingerPrints, Evidence.GhostOrb],
+    evidence: [Evidence.EMF5, Evidence.UltraViolet, Evidence.GhostOrb],
     strengths: ['May leave fingerprints that disappear quicker.'],
     weaknesses: ['Has a small chance of leaving six-fingered handprints.'],
   },
@@ -119,7 +119,7 @@ export const ghostData: Ghost[] = [
   },
   {
     name: 'Phantom',
-    evidence: [Evidence.SpiritBox, Evidence.FingerPrints, Evidence.DOTS],
+    evidence: [Evidence.SpiritBox, Evidence.UltraViolet, Evidence.DOTS],
     strengths: [
       "Looking at a Phantom will lower the player's sanity considerably.",
     ],
@@ -131,7 +131,7 @@ export const ghostData: Ghost[] = [
     name: 'Poltergeist',
     evidence: [
       Evidence.SpiritBox,
-      Evidence.FingerPrints,
+      Evidence.UltraViolet,
       Evidence.GhostWriting,
     ],
     strengths: ['Capable of throwing multiple objects at once.'],
