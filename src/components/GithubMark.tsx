@@ -1,4 +1,4 @@
-import { ReactComponent as Github } from '../static/icons/githubMark.svg'
+import Github from '../static/icons/githubMark.svg?react'
 
 const GithubMark = () => {
   return (

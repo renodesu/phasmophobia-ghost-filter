@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import { useRecoilState } from 'recoil'
 
-import { ReactComponent as MoonIcon } from '../static/icons/moon.svg'
-import { ReactComponent as SunIcon } from '../static/icons/sun.svg'
+import MoonIcon from '../static/icons/moon.svg?react'
+import SunIcon from '../static/icons/sun.svg?react'
 import { colorSchemeState } from '../utils/state'
 
 const ColorSchemeToggle = () => {

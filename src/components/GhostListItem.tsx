@@ -1,8 +1,6 @@
 import clsx from 'clsx'
-import { FC } from 'react'
 import { useRecoilValue } from 'recoil'
 
-import { Ghost } from '../data/ghostData'
 import {
   isAnyEvidenceSelectedState,
   possibleGhostsState,
@@ -11,6 +9,9 @@ import {
 import { evidencePrettyName, sortEvidence } from '../utils/utils'
 
 import { EvidenceIcon } from './Icon'
+
+import type { Ghost } from '../data/ghostData'
+import type { FC } from 'react'
 
 const List: FC<{ items: string[] }> = ({ items }) => {
   return (

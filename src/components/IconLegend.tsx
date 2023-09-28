@@ -1,7 +1,7 @@
-import React, { ReactNode } from 'react'
+import { Fragment, type ReactNode } from 'react'
 import { AiOutlineStop } from 'react-icons/ai'
 
-import { EMF5Icon } from './Icon'
+import { EMF5 } from './Icon'
 
 interface Legend {
   icon: ReactNode
@@ -16,7 +16,7 @@ const legends: Legend[] = [
   {
     icon: (
       <span className="border border-orange-400 rounded p-1">
-        <EMF5Icon className="w-[30px] h-[30px]" />
+        <EMF5 className="w-[30px] h-[30px]" />
       </span>
     ),
     label: 'Evidence is remaining for a match.',
@@ -29,10 +29,10 @@ const IconLegend = () => {
       {legends.map(legend => {
         const { icon, label } = legend
         return (
-          <React.Fragment key={label}>
+          <Fragment key={label}>
             <div className="flex justify-center">{icon}</div>
             <div className="flex items-center">{label}</div>
-          </React.Fragment>
+          </Fragment>
         )
       })}
     </div>

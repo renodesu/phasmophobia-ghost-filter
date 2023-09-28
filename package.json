@@ -21,22 +21,24 @@
     "fp-ts": "^2.16.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1",
+    "react-icons": "^4.11.0",
     "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@renodesu/eslint-config": "github:renodesu/eslint-config",
     "@renodesu/stylelint-config": "github:renodesu/stylelint-config",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react-swc": "^3.3.2",
-    "autoprefixer": "^10.4.15",
-    "postcss": "^8.4.28",
-    "sass": "^1.66.1",
+    "@types/react": "^18.2.23",
+    "@types/react-dom": "^18.2.8",
+    "@vitejs/plugin-react-swc": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "postcss": "^8.4.30",
+    "sass": "^1.68.0",
     "tailwindcss": "^3.3.3",
-    "typescript": "^5.1.6",
+    "typescript": "^5.2.2",
     "vite": "^4.4.9",
-    "vite-plugin-svgr": "^3.2.0",
-    "vitest": "^0.34.2"
+    "vite-plugin-svgr": "^4.0.0",
+    "vitest": "^0.34.5"
   }
 }

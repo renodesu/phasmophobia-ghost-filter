@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { AiOutlineStop } from 'react-icons/ai'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
-import { Evidence, evidenceList } from '../data/ghostData'
+import { evidenceList } from '../data/ghostData'
 import {
   impossibleRemainingEvidenceState,
   selectedEvidenceState,
@@ -10,6 +10,8 @@ import {
 import { evidenceMap, sortEvidence } from '../utils/utils'
 
 import { iconMap } from './Icon'
+
+import type { Evidence} from '../data/ghostData'
 
 const EvidenceSelector = () => {
   const [selectedEvidence, setSelectedEvidence] = useRecoilState(
