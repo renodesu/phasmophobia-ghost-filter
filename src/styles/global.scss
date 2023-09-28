@@ -45,22 +45,13 @@ h3 {
 }
 
 .scene {
-  // perspective: 400px;
-
   .cube {
     position: relative;
     transform-style: preserve-3d;
-
-    // backface-visibility: hidden;
-
-    // { transform: translateZ(-100px) rotateY(-180deg); }
     transform: translateZ(-100px) rotateY(-180deg);
-
     overflow: hidden;
-
     width: 32px;
     height: 32px;
-
     transition: transform 1s;
 
     .sun {
@@ -100,12 +91,9 @@ h3 {
 
 code {
   display: block;
-
   margin: 0.5rem 0;
   padding: 0.5rem;
-
   font-size: 12px;
   white-space: pre;
-
   background: #666;
 }

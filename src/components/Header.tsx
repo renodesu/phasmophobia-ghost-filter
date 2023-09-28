@@ -5,7 +5,6 @@ import { useResetRecoilState } from 'recoil'
 
 import { selectedEvidenceState } from '../utils/state'
 
-import ColorSchemeToggle from './ColorSchemeToggle'
 import GithubMark from './GithubMark'
 
 const Header = () => {
@@ -30,15 +29,14 @@ const Header = () => {
       <SlGhost className="w-10 h-10" strokeWidth={4} />
       <div className="flex-grow">
         <button
-          className="rounded p-2 px-6 border-2 text-balck dark:text-white font-semibold cursor-pointer opacity-70 hover:opacity-100 active:border-orange-400 flex items-center"
+          className="rounded p-2 px-6 border-2 text-balck dark:text-white font-semibold cursor-pointer opacity-70 hover:opacity-100 active:border-orange-400 flex items-center gap-2"
           onClick={resetEvidence}
         >
-          <FiRefreshCcw className="w-4 h-4 mr-2 stroke-black fill-transparent dark:stroke-white" />
-          RESET (ESC)
+          <FiRefreshCcw className="w-4 h-4 stroke-black fill-transparent dark:stroke-white" />
+          ESC to reset
         </button>
       </div>
       <div className="flex gap-4">
-        <ColorSchemeToggle />
         <GithubMark />
       </div>
     </div>
